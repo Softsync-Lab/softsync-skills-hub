@@ -66,13 +66,16 @@ The assistant should look the company up, read the emails, show you a short summ
 | `softsync-workflows` | Running automations |
 | `softsync-enrichment` | Looking up companies and people |
 
-The skills are generated from the same guidance the SoftSync MCP server gives every assistant, so they always match the tools it offers. Please don't edit them here — changes are overwritten on the next release.
+`softsync-records`, `softsync-messages` and `softsync-email` also carry detailed guides in their `references/` folder (how to filter, avoid duplicates, find everything said with a company, write templates). The assistant opens them only when a task needs them.
+
+The skills are generated from the same guidance SoftSync's own in-app assistant and MCP server use, so all three always teach the same, current way of working. Please don't edit them here — changes are overwritten on the next release.
 
 ## What's in this repository
 
 | File | Read by |
 | --- | --- |
 | `skills/*/SKILL.md` | Every assistant that supports Agent Skills |
+| `skills/*/references/*.md` | Detailed guides a skill opens when it needs them |
 | `plugin.json`, `mcp.json` | Agent Plugins clients, including Codex |
 | `.claude-plugin/` | Claude Code |
 | `.agents/plugins/marketplace.json` | Codex marketplace |
