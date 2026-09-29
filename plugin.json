@@ -1,0 +1,24 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.1.0/plugin.schema.json",
+  "name": "softsync",
+  "version": "0.2.0",
+  "description": "Work with your SoftSync CRM from any AI assistant: find and update companies, contacts and deals, read emails and meeting summaries, check your calendar and book meetings, write notes, set reminders, manage forms and email templates, and run your automations.",
+  "author": { "name": "SoftSync", "url": "https://softsync.ai" },
+  "homepage": "https://softsync.ai",
+  "repository": "https://github.com/Softsync-Lab/softsync-skills-hub",
+  "license": "MIT",
+  "keywords": ["softsync","crm","sales","contacts","companies","deals","email","meetings","reminders","forms","mcp"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "SoftSync",
+        "shortDescription": "Your SoftSync CRM in chat",
+        "longDescription": "Work with your SoftSync CRM from any AI assistant: find and update companies, contacts and deals, read emails and meeting summaries, check your calendar and book meetings, write notes, set reminders, manage forms and email templates, and run your automations.",
+        "developerName": "SoftSync",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"],
+        "websiteURL": "https://softsync.ai"
+      }
+    }
+  }
+}

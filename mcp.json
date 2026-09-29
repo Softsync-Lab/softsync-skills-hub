@@ -1,0 +1,6 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.1.0/mcp.schema.json",
+  "mcpServers": {
+    "softsync": { "type": "streamable-http", "url": "https://api.softsync.ai/mcp/softsync" }
+  }
+}
