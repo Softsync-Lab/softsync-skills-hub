@@ -3,7 +3,7 @@ name: softsync-records
 description: "Find, create, update, merge, delete and restore records such as companies, contacts, deals and tasks, and chart them. Use when the user names a company, person or deal, wants to add or change one, clean up duplicates, or count and chart their data."
 ---
 
-<!-- Generated from the SoftSync API MCP skills. Edit them there and re-export. -->
+<!-- Generated from the SoftSync API skills. Edit them there and re-export. -->
 
 # Records
 
@@ -41,3 +41,9 @@ Records are the rows of workspace tables: companies, contacts, deals, tasks and 
 - Never invent ids. Look records, people and groups up first and use the ids that come back.
 - A relation field takes record ids; a person field takes workspace member ids.
 - Say what you are about to change before a bulk update, a merge or a delete, and wait for the user to agree.
+
+## More detail
+Read these when the task needs them:
+- [searching-records](references/searching-records.md): Filters, operators, sorting, related-record filters and counting, with good and bad examples.
+- [resolving-records](references/resolving-records.md): Turning a company or person into every linked record id before reading their messages or acting on them.
+- [writing-records](references/writing-records.md): Creating and updating records without duplicates, linking them, enriching them and formatting each field kind.

@@ -3,7 +3,7 @@ name: softsync-forms
 description: "Create and manage public forms that save every answer as a record, and share their links. Use when the user wants a sign-up, contact or event form, or to open, close or change one."
 ---
 
-<!-- Generated from the SoftSync API MCP skills. Edit them there and re-export. -->
+<!-- Generated from the SoftSync API skills. Edit them there and re-export. -->
 
 # Forms
 

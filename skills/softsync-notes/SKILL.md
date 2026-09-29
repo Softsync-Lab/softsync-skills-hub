@@ -3,7 +3,7 @@ name: softsync-notes
 description: "Write, edit, share and delete notes on records, such as a summary after a call. Use when the user wants to write something down on a company, person or deal."
 ---
 
-<!-- Generated from the SoftSync API MCP skills. Edit them there and re-export. -->
+<!-- Generated from the SoftSync API skills. Edit them there and re-export. -->
 
 # Notes
 

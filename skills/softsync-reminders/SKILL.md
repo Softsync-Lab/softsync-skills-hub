@@ -3,7 +3,7 @@ name: softsync-reminders
 description: "Set one-time or repeating reminders, optionally linked to a record. Use when the user says \"remind me…\" or wants a follow-up on a date — \"remind me to follow up with Acme on Friday\"."
 ---
 
-<!-- Generated from the SoftSync API MCP skills. Edit them there and re-export. -->
+<!-- Generated from the SoftSync API skills. Edit them there and re-export. -->
 
 # Reminders
 

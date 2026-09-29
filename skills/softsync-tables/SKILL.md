@@ -3,7 +3,7 @@ name: softsync-tables
 description: "Read the workspace structure — tables, fields, choices and groups — and add or change tables. Use before any other SoftSync task to learn what the workspace holds, or when the user wants a new table or field."
 ---
 
-<!-- Generated from the SoftSync API MCP skills. Edit them there and re-export. -->
+<!-- Generated from the SoftSync API skills. Edit them there and re-export. -->
 
 # Tables
 

@@ -3,7 +3,7 @@ name: softsync-workflows
 description: "Run the workspace automations — manual workflows and published ones — and check their results. Use when the user wants to start one of their automations or asks whether one finished."
 ---
 
-<!-- Generated from the SoftSync API MCP skills. Edit them there and re-export. -->
+<!-- Generated from the SoftSync API skills. Edit them there and re-export. -->
 
 # Workflows
 

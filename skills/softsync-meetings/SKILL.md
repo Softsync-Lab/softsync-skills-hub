@@ -3,7 +3,7 @@ name: softsync-meetings
 description: "Find calendar events, and manage booking pages: free times, bookings, booking a meeting for someone, rescheduling and cancelling. Use when the user asks when they meet someone, or wants to book, move or cancel a meeting."
 ---
 
-<!-- Generated from the SoftSync API MCP skills. Edit them there and re-export. -->
+<!-- Generated from the SoftSync API skills. Edit them there and re-export. -->
 
 # Meetings
 

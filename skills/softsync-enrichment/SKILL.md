@@ -3,7 +3,7 @@ name: softsync-enrichment
 description: "Look up facts about a company or person from a website, work email, LinkedIn profile or organisation number, and save them. Use when a record is missing details such as industry, size, title or contact info."
 ---
 
-<!-- Generated from the SoftSync API MCP skills. Edit them there and re-export. -->
+<!-- Generated from the SoftSync API skills. Edit them there and re-export. -->
 
 # Enrichment
 

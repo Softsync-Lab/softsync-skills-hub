@@ -3,7 +3,7 @@ name: softsync-groups-and-views
 description: "Organise records into groups, share them with people, and set up table, board and calendar views. Use when the user wants a list of records, to share records with teammates, or a saved way to look at them."
 ---
 
-<!-- Generated from the SoftSync API MCP skills. Edit them there and re-export. -->
+<!-- Generated from the SoftSync API skills. Edit them there and re-export. -->
 
 # Groups and views
 
