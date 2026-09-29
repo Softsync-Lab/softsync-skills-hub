@@ -1,0 +1,11 @@
+{
+  "name": "softsync",
+  "version": "0.2.0",
+  "description": "Work with your SoftSync CRM from any AI assistant: find and update companies, contacts and deals, read emails and meeting summaries, check your calendar and book meetings, write notes, set reminders, manage forms and email templates, and run your automations.",
+  "author": { "name": "SoftSync", "url": "https://softsync.ai" },
+  "homepage": "https://softsync.ai",
+  "repository": "https://github.com/Softsync-Lab/softsync-skills-hub",
+  "license": "MIT",
+  "keywords": ["softsync","crm","sales","contacts","companies","deals","email","meetings","reminders","forms","mcp"],
+  "mcpServers": { "softsync": { "type": "http", "url": "https://api.softsync.ai/mcp/softsync" } }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "softsync",
+  "owner": {
+    "name": "SoftSync",
+    "url": "https://softsync.ai"
+  },
+  "metadata": {
+    "description": "SoftSync CRM skills and connection for AI assistants."
+  },
+  "plugins": [
+    {
+      "name": "softsync",
+      "source": "./",
+      "description": "Work with your SoftSync CRM from any AI assistant: find and update companies, contacts and deals, read emails and meeting summaries, check your calendar and book meetings, write notes, set reminders, manage forms and email templates, and run your automations."
+    }
+  ]
+}
