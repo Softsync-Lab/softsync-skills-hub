@@ -18,7 +18,8 @@ Both follow open standards ([Agent Skills](https://agentskills.io) and [Agent Pl
 | **Claude Code** | `/plugin marketplace add Softsync-Lab/softsync-skills-hub`, then `/plugin install softsync@softsync` |
 | **Codex** (OpenAI) | `codex plugin marketplace add Softsync-Lab/softsync-skills-hub`, then install **SoftSync** from `/plugins` |
 | **Gemini CLI** | `gemini extensions install https://github.com/Softsync-Lab/softsync-skills-hub` |
-| **Cursor and Grok Bot** | Install **SoftSync** from the Cursor Marketplace |
+| **Cursor** | Install **SoftSync** from the Cursor Marketplace |
+| **Grok Bot** | Install the Claude Code plugin as above. Grok Bot picks up Claude Code plugins, skills and connections on its own |
 | **Other agents** (Copilot, Windsurf, Cline, OpenCode…) | `npx skills add Softsync-Lab/softsync-skills-hub`, then add the SoftSync connection in the agent's MCP settings |
 | **Claude.ai and ChatGPT** | Add a custom connector with the SoftSync connection address. For the skills, run `scripts/package-skills.sh` and upload the files from `dist/` under the assistant's skills settings |
 
@@ -77,10 +78,10 @@ The skills are generated from the same guidance SoftSync's own in-app assistant 
 | `skills/*/SKILL.md` | Every assistant that supports Agent Skills |
 | `skills/*/references/*.md` | Detailed guides a skill opens when it needs them |
 | `plugin.json`, `mcp.json` | Agent Plugins clients, including Codex |
-| `.claude-plugin/` | Claude Code |
+| `.claude-plugin/` | Claude Code and Grok Bot |
 | `.agents/plugins/marketplace.json` | Codex marketplace |
 | `gemini-extension.json`, `GEMINI.md` | Gemini CLI |
-| `.cursor-plugin/plugin.json` | Cursor and Grok Bot |
+| `.cursor-plugin/plugin.json` | Cursor |
 
 ## Test locally
 
