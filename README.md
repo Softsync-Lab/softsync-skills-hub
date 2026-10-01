@@ -21,7 +21,8 @@ Both follow open standards ([Agent Skills](https://agentskills.io) and [Agent Pl
 | **Cursor** | Install **SoftSync** from the Cursor Marketplace |
 | **Grok Bot** | Install the Claude Code plugin as above. Grok Bot picks up Claude Code plugins, skills and connections on its own |
 | **Other agents** (Copilot, Windsurf, Cline, OpenCode…) | `npx skills add Softsync-Lab/softsync-skills-hub`, then add the SoftSync connection in the agent's MCP settings |
-| **Claude.ai and ChatGPT** | Add a custom connector with the SoftSync connection address. For the skills, run `scripts/package-skills.sh` and upload the files from `dist/` under the assistant's skills settings |
+| **ChatGPT** | Install **SoftSync** from the ChatGPT plugin directory |
+| **Claude.ai** | Add a custom connector with the SoftSync connection address. For the skills, run `scripts/package-skills.sh` and upload the files from `dist/` under the assistant's skills settings |
 
 The first time the assistant uses SoftSync, you are sent to SoftSync to sign in and choose a workspace. No API key is needed and nothing secret is stored here. The assistant can only see and change what your SoftSync account can see and change.
 
@@ -77,11 +78,15 @@ The skills are generated from the same guidance SoftSync's own in-app assistant 
 | --- | --- |
 | `skills/*/SKILL.md` | Every assistant that supports Agent Skills |
 | `skills/*/references/*.md` | Detailed guides a skill opens when it needs them |
-| `plugin.json`, `mcp.json` | Agent Plugins clients, including Codex |
+| `plugin.json`, `mcp.json` | Agent Plugins clients, including Codex and ChatGPT |
 | `.claude-plugin/` | Claude Code and Grok Bot |
 | `.agents/plugins/marketplace.json` | Codex marketplace |
 | `gemini-extension.json`, `GEMINI.md` | Gemini CLI |
 | `.cursor-plugin/plugin.json` | Cursor |
+
+## Publish to ChatGPT
+
+Run `scripts/package-plugin.sh` and upload `dist/softsync-plugin.zip` at [platform.openai.com/plugins](https://platform.openai.com/plugins). The ZIP carries the listing, icon, skills, connection and review test cases. Reviewer sign-in details and the demo video link are entered in the dashboard, never in this repository.
 
 ## Test locally
 

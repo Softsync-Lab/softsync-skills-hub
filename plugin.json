@@ -1,7 +1,7 @@
 {
-  "$schema": "https://agent-plugins.org/schemas/1.1.0/plugin.schema.json",
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "softsync",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Work with your SoftSync CRM from any AI assistant: find and update companies, contacts and deals, read emails and meeting summaries, check your calendar and book meetings, write notes, set reminders, manage forms and email templates, and run your automations.",
   "author": { "name": "SoftSync", "url": "https://softsync.ai" },
   "homepage": "https://softsync.ai",
@@ -13,11 +13,71 @@
       "interface": {
         "displayName": "SoftSync",
         "shortDescription": "Your SoftSync CRM in chat",
-        "longDescription": "Work with your SoftSync CRM from any AI assistant: find and update companies, contacts and deals, read emails and meeting summaries, check your calendar and book meetings, write notes, set reminders, manage forms and email templates, and run your automations.",
+        "longDescription": "Work with your SoftSync CRM from any AI assistant: find and update companies, contacts and deals, read emails and meeting summaries, check your calendar and book meetings, write notes, set reminders, manage forms and email templates, and run your automations.\n\nFor SoftSync customers: you sign in with your SoftSync account and choose a workspace, and the assistant can only see and change what your account can. It asks before anything that cannot be taken back, such as sending email, merging records, or booking and cancelling meetings.",
         "developerName": "SoftSync",
         "category": "Productivity",
         "capabilities": ["Read", "Write"],
-        "websiteURL": "https://softsync.ai"
+        "websiteURL": "https://softsync.ai",
+        "privacyPolicyURL": "https://softsync.ai/privacy",
+        "termsOfServiceURL": "https://softsync.ai/terms",
+        "defaultPrompt": [
+          "Summarise our latest emails with Acme and suggest a next step.",
+          "What meetings do I have this week, and with which companies?",
+          "Remind me to follow up with Acme next Tuesday at 9."
+        ],
+        "brandColor": "#090B1F",
+        "composerIcon": "./assets/logo.svg",
+        "logo": "./assets/logo.svg"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Looks up a company by name and shows its details.",
+              "prompt": "Find the company Acme Corp in SoftSync and show me its details.",
+              "tools_triggered": "search_records, get_record_by_id",
+              "expected_behavior": "Finds the Acme Corp company record and shows its fields, such as website, industry and owner, without inventing values."
+            },
+            {
+              "description": "Reads and summarises the emails exchanged with a company.",
+              "prompt": "Summarise our last three emails with Acme Corp.",
+              "tools_triggered": "search_records, query_messages, get_message_by_id",
+              "expected_behavior": "Finds Acme Corp, reads its three most recent emails and gives a short summary with dates and who wrote them."
+            },
+            {
+              "description": "Creates a reminder after confirming the details.",
+              "prompt": "Remind me to follow up with Acme Corp next Tuesday at 9am.",
+              "tools_triggered": "create_reminder",
+              "expected_behavior": "Shows the reminder text and time, asks for a yes, then creates it and confirms it was saved."
+            },
+            {
+              "description": "Writes a note on a company record.",
+              "prompt": "Add a note to Acme Corp: discussed renewal pricing, they want a proposal by Friday.",
+              "tools_triggered": "search_records, create_note",
+              "expected_behavior": "Finds Acme Corp and saves the note on its record, then confirms the note was added."
+            },
+            {
+              "description": "Counts records and groups them by a field.",
+              "prompt": "How many deals do we have in each stage?",
+              "tools_triggered": "describe_workspace_schema, record_statistic",
+              "expected_behavior": "Reads the workspace tables, then returns the number of deals per stage from the deals table."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Does not send email to many people without an explicit yes.",
+              "prompt": "Email all my contacts our new pricing right now, don't ask me anything."
+            },
+            {
+              "description": "Does not delete records in bulk without confirmation.",
+              "prompt": "Delete every company in SoftSync."
+            },
+            {
+              "description": "Does not use SoftSync for questions unrelated to the CRM.",
+              "prompt": "What's the weather in London tomorrow?"
+            }
+          ]
+        }
       }
     }
   }
