@@ -3,21 +3,45 @@
   "name": "softsync",
   "version": "0.3.0",
   "description": "Work with your SoftSync CRM from any AI assistant: find and update companies, contacts and deals, read emails and meeting summaries, check your calendar and book meetings, write notes, set reminders, manage forms and email templates, and run your automations.",
-  "author": { "name": "SoftSync", "url": "https://softsync.ai" },
+  "author": {
+    "name": "SoftSync",
+    "url": "https://softsync.ai"
+  },
   "homepage": "https://softsync.ai",
   "repository": "https://github.com/Softsync-Lab/softsync-skills-hub",
   "license": "MIT",
-  "keywords": ["softsync","crm","sales","contacts","companies","deals","email","meetings","reminders","forms","mcp"],
+  "keywords": [
+    "softsync",
+    "crm",
+    "sales",
+    "contacts",
+    "companies",
+    "deals",
+    "email",
+    "meetings",
+    "reminders",
+    "forms",
+    "mcp"
+  ],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "SoftSync",
-        "shortDescription": "Your SoftSync CRM in chat",
-        "longDescription": "Work with your SoftSync CRM from any AI assistant: find and update companies, contacts and deals, read emails and meeting summaries, check your calendar and book meetings, write notes, set reminders, manage forms and email templates, and run your automations.\n\nFor SoftSync customers: you sign in with your SoftSync account and choose a workspace, and the assistant can only see and change what your account can. It asks before anything that cannot be taken back, such as sending email, merging records, or booking and cancelling meetings.",
+        "shortDescription": "CRM for sales teams",
+        "longDescription": "SoftSync is a CRM (customer relationship management) system for sales teams. This plugin connects ChatGPT to your SoftSync workspace so you can manage your customers and deals by chatting: find and update companies, contacts and deals, read customer emails and meeting summaries, check your calendar and book meetings, write notes, set reminders, manage forms and email templates, and run your automations.\n\nFor SoftSync customers: you sign in with your SoftSync account and choose a workspace, and ChatGPT can only see and change what your account can. It asks before anything that cannot be taken back, such as sending email, merging records, or booking and cancelling meetings.",
         "developerName": "SoftSync",
-        "category": "Productivity",
-        "capabilities": ["Read", "Write"],
+        "category": "Business & Operations",
+        "capabilities": [
+          "Find and update companies, contacts and deals",
+          "Read customer emails and meeting summaries",
+          "Check the calendar and book meetings",
+          "Write notes and set reminders",
+          "Report on deals and pipeline",
+          "Send email templates after confirmation",
+          "Run saved automations"
+        ],
         "websiteURL": "https://softsync.ai",
+        "supportURL": "https://www.softsync.ai/get-access",
         "privacyPolicyURL": "https://softsync.ai/privacy",
         "termsOfServiceURL": "https://softsync.ai/terms",
         "defaultPrompt": [
@@ -77,7 +101,12 @@
               "prompt": "What's the weather in London tomorrow?"
             }
           ]
-        }
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments."
+      },
+      "publication": {
+        "release_notes": "First release: search and update CRM records, read customer emails and meetings, book meetings, write notes, set reminders, report on deals and run automations in a SoftSync workspace."
       }
     }
   }
