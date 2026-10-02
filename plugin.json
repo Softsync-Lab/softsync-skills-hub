@@ -54,6 +54,7 @@
         "logo": "./assets/logo.svg"
       },
       "review": {
+        "demo_recording_url": "https://github.com/Softsync-Lab/softsync-skills-hub/releases/download/demo-video/softsync-chatgpt-demo.mp4",
         "test_cases": {
           "positive": [
             {
