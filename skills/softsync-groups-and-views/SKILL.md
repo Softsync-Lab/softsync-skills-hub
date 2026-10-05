@@ -21,8 +21,8 @@ A group is a shared collection of records with its own members and access levels
 
 ## Views
 - `list_views` and `get_view` to read them; `create_view`, `update_view` and `delete_view` to manage them.
-- Three kinds: table, kanban board and calendar.
-- A board needs a choice field to make its columns; a calendar needs a date field.
+- Four kinds: table, kanban board, calendar and timeline (a Gantt chart).
+- A board needs a choice field to make its columns; a calendar needs a date field; a timeline needs a start date and can take an end date and a "waits on" link to the same object.
 - Views refer to fields by id. Take them from `describe_workspace_schema`.
 
 ## Rules
