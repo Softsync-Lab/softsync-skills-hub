@@ -15,6 +15,7 @@ A form is a public page anyone with the link can fill in. Each answer becomes a 
 - `create_form`: a new form. Pick the table and group from the workspace description and list the fields to ask for by their apiName. When asked for someone's name, include both the first and last name fields. The form is open at once; share its `publicUrl`.
 - `update_form`: rename it, open or close it (`enabled`), or change the thank-you message or the page people go to afterwards.
 - `delete_form`: the link stops working. Records it already created are kept.
+- `new_link_form`: a new public link when the old one was shared where it should not be. The old link stops working at once.
 
 ## Answers
 There is no separate answers list: answers are records in the form's table. Use `search_records` on that table, newest first by `__system_created_at`, to see who answered.

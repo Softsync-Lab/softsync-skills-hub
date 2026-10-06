@@ -21,12 +21,17 @@ Records are the rows of workspace tables: companies, contacts, deals, tasks and 
 - `query_records_by_view`: the records a saved view shows, with that view's filters and sort.
 - `get_related_record_ids`: records linked to one record, such as the contacts at a company.
 - `get_record_activity`: what changed on a record, when and by whom. Use it to answer "what happened?" instead of guessing.
+- `get_record_moves`: which statuses a record may move to next, and which moves need a comment.
 
 ## Creating and changing records
 - `record_creation`: create one or many records, across tables in one call. Records in the same call can link to each other through `_ref`. Pick a duplicate-detection field per table so existing records are matched instead of duplicated.
 - `update_record`: change fields on specific records. Send only the fields that change.
 - `update_field_on_records`: set the same values on many records. For "all of them", get the ids first with `find_matching_record_ids`.
 - `add_records_to_group` / `remove_records_from_group`: change which group records appear in.
+- A status move that needs a comment is refused without one; pass `comment` with the update.
+
+## Time on records
+`start_timer` starts your timer on a record, `stop_timer` stops it and logs the time, and `get_timer` shows what is running. You have one timer: starting another stops the running one and keeps its time.
 
 ## Cleaning up
 - `check_duplicate_records`: find likely duplicates in a table so the user can review them.

@@ -17,6 +17,8 @@ Two different things live here: **calendar events** synced from Google and Outlo
 - Each event lists its attendees, the video link and the records it is linked to. `get_message_by_id` with the `eventId` returns everything.
 Recorded meeting summaries are not calendar events: a saved summary is a note on the company or contact.
 
+To put something in your own calendar: `list_calendars` on a connected mailbox, then `create_calendar_event`. `update_calendar_event` and `cancel_calendar_event` change or call it off. Everyone invited is emailed each time.
+
 ## Booking pages
 A meeting type is a booking page guests use to book time with the team.
 1. `list_meeting_types`: each type, its length and its public `bookingUrl`. Sharing that link is usually all a user needs.
@@ -28,6 +30,14 @@ A meeting type is a booking page guests use to book time with the team.
 - `list_meeting_bookings`: booked meetings, soonest first, with the guest, the hosts and the video link.
 - `reschedule_meeting_booking`: move a booking to a new start time; it keeps its length. Check the time with `find_meeting_slots` first.
 - `cancel_meeting_booking`: cancel and notify everyone. For an event session this cancels it for every guest.
+
+## Running booking pages (Admin)
+- `enable_meetings` switches booking pages on for the workspace; `list_meeting_hosts` shows who can take bookings.
+- `create_meeting_type`, `update_meeting_type`, `delete_meeting_type` and `new_link_meeting_type`. An update replaces the hosts, questions and other lists you send, so read the type first.
+- `list_meeting_reminders`, `create_meeting_reminder`, `update_meeting_reminder` and `delete_meeting_reminder`: the emails sent before a meeting.
+- `reassign_meeting_booking` hands a booking to another host; the guest gets a new invitation. `add_meeting_guests` and `remove_meeting_attendee` change who comes.
+- `create_meeting_session` adds a date to an event type; `update_meeting_booking` changes how many places a session has.
+- `get_my_availability` / `set_my_availability` are your own bookable hours; `get_shared_calendar` / `set_shared_calendar` choose the calendar bookings land in.
 
 ## Rules
 - Booking, rescheduling and cancelling send invites and emails to real people. Say who, when and what, and wait for a clear yes.

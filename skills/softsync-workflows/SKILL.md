@@ -19,6 +19,10 @@ The ones people start by hand in the app.
 Workflows published as API endpoints, identified by a slug.
 - `list_published_workflows`, then `run_published_workflow`. Short runs return the result; long runs return a runId for `get_workflow_run_status_by_id`.
 
+## Past runs
+- `list_workflow_runs`: what ran in the workspace and how each went, newest first.
+- `cancel_workflow_runs`: stop runs that are still going or waiting, with anything they started. A stopped run cannot be resumed.
+
 ## Rules
 - Only pass input the workflow declares. Ask the user for anything missing.
 - A workflow can change records or send messages. Tell the user what it will do and confirm before running it.

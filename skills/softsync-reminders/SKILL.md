@@ -12,6 +12,7 @@ description: "Set one-time or repeating reminders, optionally linked to a record
 - `list_reminders`: the reminders you can see.
 - `update_reminder`: change the text or time, or pause a repeating reminder.
 - `delete_reminder`: cancel a reminder so it never fires.
+- `complete_reminder`: mark a one-time reminder done; it stays in the history as completed.
 
 ## Rules
 - Turn relative dates ("next Friday at 9") into an exact time in the user's time zone, and repeat it back to them.
