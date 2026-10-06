@@ -7,11 +7,11 @@ description: "Organise records into groups, share them with people, and set up t
 
 # Groups and views
 
-A group is a shared collection of records with its own members and access levels. A view is a saved way of looking at a group's records.
+A group is a named area of the workspace, listed in the sidebar, holding records with its own members and access levels. People also call it a section, space, area or folder. A view is a saved way of looking at a group's records (a table, board or calendar); it holds no records itself.
 
 ## Groups
 - Find groups through `describe_workspace_schema`, then `groups` with action `get` for one group and its views.
-- `manage_groups` with action `create`, `update` (name, description, sharing), `duplicate` or `delete`.
+- `manage_groups` with action `create`, `update` (name, description, sharing), `duplicate` or `delete`. Renaming a group means changing its `title`; the description is a separate note under it.
 - A group is either private to its members or visible to the whole workspace.
 
 ## People in a group

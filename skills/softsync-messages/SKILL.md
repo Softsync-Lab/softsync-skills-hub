@@ -1,6 +1,6 @@
 ---
 name: softsync-messages
-description: "Read emails, notes and saved meeting summaries linked to records, and search them by content. Use when the user asks what was said, agreed or sent — \"what did Acme reply?\", \"summarise our last call\"."
+description: "Read emails, notes and saved meeting summaries linked to records, search them by content, answer from the workspace's own help articles, and send a text. Use when the user asks what was said, agreed or sent — \"what did Acme reply?\", \"summarise our last call\" — asks a how-to or policy question, or wants to text someone."
 ---
 
 <!-- Generated from the SoftSync API skills. Edit them there and re-export. -->
@@ -16,6 +16,13 @@ Messages are everything the workspace has received or written about its records:
 - **Calendar events** ("my meetings this week", "when did we last meet Acme?"): use `calendar_events` (action `list`) from the meetings skill, not `query_messages`.
 - **Meeting summaries**: a summary someone saved to a record is a note on that record. Find it with `query_messages` on the record. Recordings that were never saved to a record stay in the desktop app and cannot be reached from here.
 - **How many** ("how many emails have we exchanged with Acme?"): `get_message_statistics` counts messages linked to a record or person.
+- **How-to and policy questions** ("what is our refund policy?", "how do I reset the router?"): `search_knowledge` finds the passages in the workspace's own articles and guides. Quote them and name the source; do not answer from memory. When drafting a reply to a customer, set `audience` to `public` so only what customers may see is used.
+
+## Sending a text
+- `send_message` sends a text (SMS) to a contact (`toRecordId`) or a phone number (`to`). It shows on the contact's timeline like an email.
+- To answer a text conversation in a shared inbox, reply there instead (shared inbox skill), so the answer stays in the same thread.
+- A text reaches a real phone and cannot be recalled. Show the exact text and recipient and wait for a clear yes. Pass a `clientRef` of your own so a retry never sends twice.
+- People who replied STOP are skipped; say so if the result reports it rather than claiming it was sent.
 
 ## Rules
 - Resolve a company or person to its record id first (see the records skill), then filter messages by that id.
