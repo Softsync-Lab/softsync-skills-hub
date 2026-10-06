@@ -9,18 +9,18 @@ description: "Run the workspace itself: who is in it and what they may do, its n
 
 ## People
 - `list_workspace_members`: everyone with their role — Admin, Editor or Viewer.
-- `add_workspace_member`: invite by email. They get an invitation and a seat is used.
-- `update_workspace_member_role`: change what someone may do. The last admin cannot step down.
-- `remove_workspace_member`: take someone out of the workspace and all its groups. Their records stay. Admins can remove anyone; others only themselves.
+- `manage_workspace` with action `add_member`: invite by email. They get an invitation and a seat is used.
+- Action `update_member_role`: change what someone may do. The last admin cannot step down.
+- Action `remove_member`: take someone out of the workspace and all its groups. Their records stay. Admins can remove anyone; others only themselves.
 
 ## Settings
-`update_workspace`: the name, country, currency or language. Send only what changes.
+`manage_workspace` with action `update`: the name, country, currency or language. Send only what changes.
 
 ## Add-ons
-1. `list_templates`: the ready-made add-ons, what each adds, and whether it is installed or has an update.
-2. `preview_template`: what installing would add, and any clash with fields the team already has. Show this to the user.
-3. `install_template`: install or update for the whole workspace. It only adds what is missing and never changes what the team already has.
-4. `uninstall_template`: hides the add-on's groups from everyone. Records are kept, and installing again brings the groups back.
+1. `add_ons` with action `list`: the ready-made add-ons, what each adds, and whether it is installed or has an update.
+2. `add_ons` with action `preview`: what installing would add, and any clash with fields the team already has. Show this to the user.
+3. `manage_add_ons` with action `install`: install or update for the whole workspace. It only adds what is missing and never changes what the team already has.
+4. `manage_add_ons` with action `uninstall`: hides the add-on's groups from everyone. Records are kept, and installing again brings the groups back.
 
 ## Rules
 - People, settings and add-ons need the Admin role.

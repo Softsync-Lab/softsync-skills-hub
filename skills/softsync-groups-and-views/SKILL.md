@@ -10,17 +10,17 @@ description: "Organise records into groups, share them with people, and set up t
 A group is a shared collection of records with its own members and access levels. A view is a saved way of looking at a group's records.
 
 ## Groups
-- Find groups through `describe_workspace_schema`, then `get_group` for one group and its views.
-- `create_group`, `update_group` (name, description, sharing), `duplicate_group` and `delete_group`.
+- Find groups through `describe_workspace_schema`, then `groups` with action `get` for one group and its views.
+- `manage_groups` with action `create`, `update` (name, description, sharing), `duplicate` or `delete`.
 - A group is either private to its members or visible to the whole workspace.
 
 ## People in a group
-- `list_group_members`, `add_group_member`, `update_group_member_role`, `remove_group_member`.
+- `groups` with action `members` lists them. `manage_groups` with action `add_member`, `update_member_role` or `remove_member` changes them.
 - Roles: Owner (full control), Admin (manage people and views), Editor (change records), Viewer (read only).
 - Someone added by email who is not yet in the workspace joins as a guest.
 
 ## Views
-- `list_views` and `get_view` to read them; `create_view`, `update_view` and `delete_view` to manage them.
+- `views` with action `list` or `get` to read them; `manage_views` with action `create`, `update` or `delete` to change them.
 - Four kinds: table, kanban board, calendar and timeline (a Gantt chart).
 - A board needs a choice field to make its columns; a calendar needs a date field; a timeline needs a start date and can take an end date and a "waits on" link to the same object.
 - Views refer to fields by id. Take them from `describe_workspace_schema`.

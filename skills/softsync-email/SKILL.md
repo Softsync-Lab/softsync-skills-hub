@@ -11,10 +11,10 @@ Mail goes out from a mailbox the workspace has already connected. Each recipient
 
 ## Order of operations
 1. `list_mailboxes`: check a mailbox is connected. If the list is empty, stop. Connecting a mailbox needs a sign-in in the app.
-2. `list_email_templates`, then `get_email_template` to read the one you will send.
+2. `email_templates` with action `list`, then action `get` to read the one you will send.
 3. No suitable template, or one needs fixing? Follow the `email-templates` reference.
-4. `send_email_campaign` with the template and the recipient record ids. One recipient is fine.
-5. `get_email_campaign` to follow progress, and `cancel_email_campaign` to stop what has not gone out yet.
+4. `manage_email_campaigns` with action `send`, the template and the recipient record ids. One recipient is fine.
+5. `get_email_campaign` to follow progress, and `manage_email_campaigns` with action `cancel` to stop what has not gone out yet.
 
 ## What to know
 - A template belongs to one object (for example contacts) and can only be sent to records of that object.

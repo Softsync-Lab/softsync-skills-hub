@@ -10,34 +10,34 @@ description: "Find calendar events, and manage booking pages: free times, bookin
 Two different things live here: **calendar events** synced from Google and Outlook, and **bookings** made through the workspace's booking pages.
 
 ## Calendar events
-`list_calendar_events` answers "what meetings do I have this week?", "when did we last meet Acme?" and "who was at the kickoff?".
+`calendar_events` with action `list` answers "what meetings do I have this week?", "when did we last meet Acme?" and "who was at the kickoff?".
 - A time window: `from` and `to` as ISO 8601 times. Use `order: oldest_first` for what is coming up, `newest_first` for the most recent.
 - About a company or contact: look it up with `search_records`, then pass its id as the recordId.
 - By words in the title or description: `search`.
 - Each event lists its attendees, the video link and the records it is linked to. `get_message_by_id` with the `eventId` returns everything.
 Recorded meeting summaries are not calendar events: a saved summary is a note on the company or contact.
 
-To put something in your own calendar: `list_calendars` on a connected mailbox, then `create_calendar_event`. `update_calendar_event` and `cancel_calendar_event` change or call it off. Everyone invited is emailed each time.
+To put something in your own calendar: `calendar_events` with action `calendars` on a connected mailbox, then `manage_calendar_events` with action `create`. Actions `update` and `cancel` change or call it off. Everyone invited is emailed each time.
 
 ## Booking pages
 A meeting type is a booking page guests use to book time with the team.
-1. `list_meeting_types`: each type, its length and its public `bookingUrl`. Sharing that link is usually all a user needs.
-2. `find_meeting_slots`: free times in a window of up to 31 days. For an event type, it returns sessions with seats left and their `sessionId`.
-3. `get_meeting_type`: the questions a guest must answer.
-4. `book_meeting`: book for a guest with a free `start` and `answers` keyed by question label, e.g. {"Email": "ann@acme.com"}. Pass `sessionId` for an event. If an answer is missing, the error lists the questions.
+1. `meeting_types` with action `list`: each type, its length and its public `bookingUrl`. Sharing that link is usually all a user needs.
+2. `meeting_bookings` with action `find_slots`: free times in a window of up to 31 days. For an event type, it returns sessions with seats left and their `sessionId`.
+3. `meeting_types` with action `get`: the questions a guest must answer.
+4. `manage_meeting_bookings` with action `book`: book for a guest with a free `start` and `answers` keyed by question label, e.g. {"Email": "ann@acme.com"}. Pass `sessionId` for an event. If an answer is missing, the error lists the questions.
 
 ## Managing bookings
-- `list_meeting_bookings`: booked meetings, soonest first, with the guest, the hosts and the video link.
-- `reschedule_meeting_booking`: move a booking to a new start time; it keeps its length. Check the time with `find_meeting_slots` first.
-- `cancel_meeting_booking`: cancel and notify everyone. For an event session this cancels it for every guest.
+- `meeting_bookings` with action `list`: booked meetings, soonest first, with the guest, the hosts and the video link.
+- `manage_meeting_bookings` with action `reschedule`: move a booking to a new start time; it keeps its length. Check the time with action `find_slots` first.
+- `manage_meeting_bookings` with action `cancel`: cancel and notify everyone. For an event session this cancels it for every guest.
 
 ## Running booking pages (Admin)
-- `enable_meetings` switches booking pages on for the workspace; `list_meeting_hosts` shows who can take bookings.
-- `create_meeting_type`, `update_meeting_type`, `delete_meeting_type` and `new_link_meeting_type`. An update replaces the hosts, questions and other lists you send, so read the type first.
-- `list_meeting_reminders`, `create_meeting_reminder`, `update_meeting_reminder` and `delete_meeting_reminder`: the emails sent before a meeting.
-- `reassign_meeting_booking` hands a booking to another host; the guest gets a new invitation. `add_meeting_guests` and `remove_meeting_attendee` change who comes.
-- `create_meeting_session` adds a date to an event type; `update_meeting_booking` changes how many places a session has.
-- `get_my_availability` / `set_my_availability` are your own bookable hours; `get_shared_calendar` / `set_shared_calendar` choose the calendar bookings land in.
+- `manage_meeting_settings` with action `enable` switches booking pages on for the workspace; `meeting_settings` with action `hosts` shows who can take bookings.
+- `manage_meeting_types` with action `create`, `update`, `delete` or `new_link`. An update replaces the hosts, questions and other lists you send, so read the type first.
+- The emails sent before a meeting: `meeting_types` with action `reminders` lists them, and `manage_meeting_types` with action `create_reminder`, `update_reminder` or `delete_reminder` changes them.
+- `manage_meeting_bookings` with action `reassign` hands a booking to another host; the guest gets a new invitation. Actions `add_guests` and `remove_attendee` change who comes.
+- `manage_meeting_bookings` with action `create_session` adds a date to an event type; action `update` changes how many places a session has.
+- Your own bookable hours and the calendar bookings land in: `meeting_settings` with action `my_availability` or `shared_calendar` reads them, and `manage_meeting_settings` with action `set_my_availability` or `set_shared_calendar` changes them.
 
 ## Rules
 - Booking, rescheduling and cancelling send invites and emails to real people. Say who, when and what, and wait for a clear yes.

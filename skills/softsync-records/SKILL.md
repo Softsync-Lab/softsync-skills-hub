@@ -13,6 +13,7 @@ Records are the rows of workspace tables: companies, contacts, deals, tasks and 
 1. Call `describe_workspace_schema` to learn the tables, their fields and the groups you can see.
 2. Name tables and fields by their `apiName` (snake_case), never by display label.
 3. System fields are `__system_created_at`, `__system_updated_at` and `__system_created_by`. The double underscore is required.
+4. Most features have one tool for reading (such as `groups`) and one for changing (such as `manage_groups`). Say what to do with `action`, and send only the fields that action uses.
 
 ## Finding records
 - `search_records`: exact filters on fields (equals, contains, greater than, empty…) with sort and paging. Use it for "deals in negotiation" or "contacts at Acme".
@@ -27,16 +28,16 @@ Records are the rows of workspace tables: companies, contacts, deals, tasks and 
 - `record_creation`: create one or many records, across tables in one call. Records in the same call can link to each other through `_ref`. Pick a duplicate-detection field per table so existing records are matched instead of duplicated.
 - `update_record`: change fields on specific records. Send only the fields that change.
 - `update_field_on_records`: set the same values on many records. For "all of them", get the ids first with `find_matching_record_ids`.
-- `add_records_to_group` / `remove_records_from_group`: change which group records appear in.
+- `manage_records` with action `add_to_group` or `remove_from_group`: change which group records appear in.
 - A status move that needs a comment is refused without one; pass `comment` with the update.
 
 ## Time on records
-`start_timer` starts your timer on a record, `stop_timer` stops it and logs the time, and `get_timer` shows what is running. You have one timer: starting another stops the running one and keeps its time.
+`manage_timers` with action `start` starts your timer on a record and `stop` stops it and logs the time. `get_timer` shows what is running. You have one timer: starting another stops the running one and keeps its time.
 
 ## Cleaning up
 - `check_duplicate_records`: find likely duplicates in a table so the user can review them.
-- `merge_records`: fold duplicates into one record. The service chooses the survivor, and a merge cannot be undone.
-- `delete_records`: move records to the Bin. `restore_records` brings them back within 30 days.
+- `manage_records` with action `merge`: fold duplicates into one record. The service chooses the survivor, and a merge cannot be undone.
+- `manage_records` with action `delete`: move records to the Bin. Action `restore` brings them back within 30 days.
 
 ## Numbers and charts
 - `record_statistic`: one count, sum, average or ratio, optionally split by a field — "how many open deals per stage?".

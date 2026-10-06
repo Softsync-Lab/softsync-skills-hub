@@ -29,9 +29,9 @@ Each customer conversation in a shared mailbox is a normal task record in the gr
 - Confirm before handing out or closing many tasks at once.
 
 ## Reading and replying in the inbox
-- `list_inbox_mailboxes`: the shared inboxes you can work, with unread, waiting and yours counts.
-- `list_inbox_conversations` for one inbox, newest first, then `get_inbox_conversation` for the whole thread.
-- `mark_inbox_conversation`: read or unread, for you only.
-- `reply_inbox_conversation`: answer as the shared mailbox in the same thread — an email for email, a text for texts. Pass a client reference of your own so a retry never sends twice.
-- `list_message_channels`: which kinds of messages the workspace keeps and the connections texts can go out through.
+- `inbox` with action `mailboxes`: the shared inboxes you can work, with unread, waiting and yours counts.
+- `inbox` with action `list` for one inbox's conversations, newest first, then action `get` for the whole thread.
+- `manage_inbox` with action `mark`: read or unread, for you only.
+- `manage_inbox` with action `reply`: answer as the shared mailbox in the same thread — an email for email, a text for texts. Pass a client reference of your own so a retry never sends twice.
+- `inbox` with action `channels`: which kinds of messages the workspace keeps and the connections texts can go out through.
 - A reply reaches the customer and cannot be recalled. Show the text and wait for a clear yes.

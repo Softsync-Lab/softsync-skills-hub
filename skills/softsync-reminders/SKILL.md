@@ -8,11 +8,11 @@ description: "Set one-time or repeating reminders, optionally linked to a record
 # Reminders
 
 ## Tools
-- `create_reminder`: a one-time reminder at a set moment, or a repeating one (daily, weekly or monthly at a local time). Link it to a record so the notification opens that record.
+- `manage_reminders` with action `create`: a one-time reminder at a set moment, or a repeating one (daily, weekly or monthly at a local time). Link it to a record so the notification opens that record.
 - `list_reminders`: the reminders you can see.
-- `update_reminder`: change the text or time, or pause a repeating reminder.
-- `delete_reminder`: cancel a reminder so it never fires.
-- `complete_reminder`: mark a one-time reminder done; it stays in the history as completed.
+- Action `update`: change the text or time, or pause a repeating reminder.
+- Action `delete`: cancel a reminder so it never fires.
+- Action `complete`: mark a one-time reminder done; it stays in the history as completed.
 
 ## Rules
 - Turn relative dates ("next Friday at 9") into an exact time in the user's time zone, and repeat it back to them.
