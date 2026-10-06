@@ -19,4 +19,4 @@ A document template turns one record into a PDF, for example an invoice from an 
 
 ## Rules
 - Changing templates needs editor rights in the template's group.
-- Preview on a real record before saving a new layout, and show the user the result.
+- Saving a template makes no PDF and is easy to change back, so save what the user asked for without asking first. Then preview it on a real record and show them the result.
