@@ -1,6 +1,6 @@
 ---
 name: softsync-groups-and-views
-description: "Organise records into groups, share them with people, and set up table, board and calendar views. Use when the user wants a list of records, to share records with teammates, or a saved way to look at them."
+description: "Organise records into groups, share them with people, set up table, board and calendar views, and keep report dashboards. Use when the user wants a list of records, to share records with teammates, a saved way to look at them, or a chart saved for the team."
 ---
 
 <!-- Generated from the SoftSync API skills. Edit them there and re-export. -->
@@ -24,6 +24,11 @@ A group is a named area of the workspace, listed in the sidebar, holding records
 - Four kinds: table, kanban board, calendar and timeline (a Gantt chart).
 - A board needs a choice field to make its columns; a calendar needs a date field; a timeline needs a start date and can take an end date and a "waits on" link to the same object.
 - Views refer to fields by id. Take them from `describe_workspace_schema`.
+
+## Report dashboards
+- A group's reports are dashboards of charts the whole group sees. `list_dashboards` shows them and each chart's position.
+- `manage_dashboards` with action `create`, `update` (rename) or `delete` changes a dashboard; `add_chart`, `update_chart` or `remove_chart` changes one chart, by its position. Group editors may change charts; renaming or deleting a dashboard needs a group owner or admin.
+- A chart takes the same definition as `generate_analytics`, forecasts and past snapshots included. Try it there first; a chart that cannot be drawn is refused with the reason.
 
 ## Rules
 - Check for an existing group before creating a new one.

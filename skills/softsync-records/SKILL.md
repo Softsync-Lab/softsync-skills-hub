@@ -41,7 +41,9 @@ Records are the rows of workspace tables: companies, contacts, deals, tasks and 
 
 ## Numbers and charts
 - `record_statistic`: one count, sum, average or ratio, optionally split by a field — "how many open deals per stage?".
-- `generate_analytics`: several chart datasets at once. Both return data, not pictures.
+- `generate_analytics`: several chart datasets at once. Both return data, not pictures. To keep a chart on a group's Reports page, use `manage_dashboards` with action `add_chart`.
+- For forecasts and trends use `generate_analytics`: a period with `compareTo` for "this quarter vs last", `forecast` on a bar chart over time for "where will we land", `asOf` for "what did the pipeline look like on 1 March", a `bridge` for "what moved the pipeline this month", and `reached` / `days_in_value` for stage conversion and time in each stage.
+- A weighted pipeline needs a probability per deal: if the deals table has none, offer to add a number field (filled from the stage) and a formula field multiplying value by probability, then sum it.
 
 ## Rules
 - Never invent ids. Look records, people and groups up first and use the ids that come back.
