@@ -72,6 +72,16 @@ The assistant should look the company up, read the emails, show you a short summ
 
 The skills are generated from the same guidance SoftSync's own in-app assistant and MCP server use, so all three always teach the same, current way of working. Please don't edit them here — changes are overwritten on the next release.
 
+## Calling the REST API directly
+
+The skills above are for AI assistants. If you are writing code instead, the public API reference has a
+scenario guide for each area, each with copy-paste calls and what comes back: records, groups and views,
+notes, messages, email (send, campaigns and tracking timestamps), files, documents, signing, meetings,
+calendar, reminders and timers, forms, portals, lead search, enrichment, workflows (including starting a
+workflow from an outside system) and syncing your own system into the workspace. Open the API docs of
+your workspace at `/openapi/docs`. There are no outbound webhooks; the workflows guide shows how to have
+a workflow call your system instead.
+
 ## What's in this repository
 
 | File | Read by |
