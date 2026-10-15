@@ -27,8 +27,8 @@
     "com.openai": {
       "interface": {
         "displayName": "SoftSync",
-        "shortDescription": "CRM for sales teams",
-        "longDescription": "SoftSync is a CRM (customer relationship management) system for sales teams. This plugin connects ChatGPT to your SoftSync workspace so you can manage your customers and deals by chatting: find and update companies, contacts and deals, read customer emails and meeting summaries, check your calendar and book meetings, write notes, set reminders, manage forms and email templates, and run your automations.\n\nFor SoftSync customers: you sign in with your SoftSync account and choose a workspace, and ChatGPT can only see and change what your account can. It asks before anything that cannot be taken back, such as sending email, merging records, or booking and cancelling meetings.",
+        "shortDescription": "CRM for growing teams",
+        "longDescription": "SoftSync is a CRM (customer relationship management) system for growing teams. This plugin connects ChatGPT to your SoftSync workspace so you can manage your customers, deals and day-to-day work by chatting: find and update companies, contacts and deals, read customer emails and meeting summaries, check your calendar and book meetings, write notes, set reminders, manage forms and email templates, and run your automations.\n\nFor SoftSync customers: you sign in with your SoftSync account and choose a workspace, and ChatGPT can only see and change what your account can. It asks before anything that cannot be taken back, such as sending email, merging records, or booking and cancelling meetings.",
         "developerName": "SoftSync",
         "category": "Business & Operations",
         "capabilities": [
@@ -36,7 +36,7 @@
           "Read customer emails and meeting summaries",
           "Check the calendar and book meetings",
           "Write notes and set reminders",
-          "Report on deals and pipeline",
+          "Report on customers, deals and pipeline",
           "Send email templates after confirmation",
           "Run saved automations"
         ],
