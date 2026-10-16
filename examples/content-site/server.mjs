@@ -23,6 +23,16 @@ export function createBlog({
   siteName = process.env.SITE_NAME || 'The Journal',
   tagline = process.env.SITE_TAGLINE || 'Stories, guides and ideas from our team',
   cacheSeconds = Number(process.env.CACHE_SECONDS ?? 60),
+  // Where the list of articles lives. Keep '/' for a blog-only site, or use '/blog'
+  // when your own home page sits at '/' (see `home`).
+  listPath = '/',
+  // The links in the header.
+  nav = [{ label: 'Articles', href: listPath }, { label: 'FAQ', href: '/faq' }],
+  // Your own home page: `home({ content, cards, esc, base })` returns
+  // `{ title, description, body, jsonLd? }`, and the site wraps it in the same header and footer.
+  home,
+  // HTML added before </body> on every page: the chat bubble, an analytics line…
+  bodyEnd = '',
 } = {}) {
   const content = createClient({ api, apiKey, cacheSeconds });
   const base = siteUrl.replace(/\/$/, '');
@@ -50,10 +60,11 @@ ${extraHead}
 ${jsonLd.map((d) => `<script type="application/ld+json">${JSON.stringify(d).replace(/</g, '\\u003c')}</script>`).join('\n')}
 <style>${CSS}</style></head>
 <body>
-<header class="top"><div class="wrap bar"><a class="brand" href="/">${esc(siteName)}</a><nav class="links"><a href="/">Articles</a><a href="/faq">FAQ</a></nav>
+<header class="top"><div class="wrap bar"><a class="brand" href="/">${esc(siteName)}</a><nav class="links">${nav.map((l) => `<a href="${esc(l.href)}">${esc(l.label)}</a>`).join('')}</nav>
 <form class="search" action="/search" method="get" role="search"><input type="search" name="q" placeholder="Search articles" aria-label="Search articles" value="${esc(q)}"><button type="submit">Search</button></form></div></header>
 ${body}
 <footer><div class="wrap"><b>${esc(siteName)}</b> · ${esc(tagline)} · <a href="/feed.xml">RSS</a> · <a href="/sitemap.xml">Sitemap</a> · <a href="/llms.txt">For AI assistants</a></div></footer>
+${bodyEnd}
 </body></html>`;
   }
 
@@ -72,13 +83,13 @@ ${body}
     const tags = Object.entries(schema.tags).map(([value, label]) => `<a class="chip big${tag === value ? ' on' : ''}" style="--c:${tint(value)}" href="/tag/${esc(value)}">${esc(label)}</a>`).join('');
     const body = `<main class="wrap">
 ${tag || q ? '' : `<section class="hero"><h1>${esc(siteName)}</h1><p>${esc(tagline)}</p></section>`}
-<nav class="tags" aria-label="Filter by tag"><a class="chip big${!tag ? ' on' : ''}" style="--c:#44403c" href="/">All</a>${tags}</nav>
+<nav class="tags" aria-label="Filter by tag"><a class="chip big${!tag ? ' on' : ''}" style="--c:#44403c" href="${listPath}">All</a>${tags}</nav>
 <h2 class="section">${esc(heading)} <small>${posts.length} ${posts.length === 1 ? 'article' : 'articles'}</small></h2>
 <div class="grid">${posts.filter((p) => !p.hidden || q).map((p) => card(p, who, schema.tags)).join('') || '<p class="empty">Nothing here yet. Try another tag or search.</p>'}</div></main>`;
     return layout({
       title: q ? `Search: ${q} · ${siteName}` : tag ? `${schema.tags[tag] ?? tag} · ${siteName}` : `${siteName} — ${tagline}`,
       description: tag ? `Articles tagged ${schema.tags[tag] ?? tag} on ${siteName}.` : tagline,
-      path: tag ? `/tag/${tag}` : '/',
+      path: tag ? `/tag/${tag}` : listPath,
       robots: q ? 'noindex, follow' : 'index, follow',
       q,
       body,
@@ -112,11 +123,11 @@ ${tag || q ? '' : `<section class="hero"><h1>${esc(siteName)}</h1><p>${esc(tagli
     const jsonLd = [article,
       { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: base },
-        { '@type': 'ListItem', position: 2, name: schema.categories[post.category] ?? 'Articles', item: `${base}/` },
+        { '@type': 'ListItem', position: 2, name: 'Articles', item: `${base}${listPath}` },
         { '@type': 'ListItem', position: 3, name: post.title, item: url }] },
       ...(post.faqs.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: post.faqs.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })) }] : [])];
     const body = `<main class="wrap post"><article>
-<p class="crumbs"><a href="/">Home</a> / ${esc(schema.categories[post.category] ?? 'Articles')}</p>
+<p class="crumbs"><a href="/">Home</a> / <a href="${listPath}">Articles</a> / ${esc(schema.categories[post.category] ?? 'Guides')}</p>
 <div class="chips">${chips(post, schema.tags)}</div>
 <h1>${esc(post.title)}</h1><p class="lede">${esc(post.summary)}</p>
 <div class="byline">${author.avatar ? `<img src="${esc(author.avatar)}" alt="">` : `<span class="avatar">${esc(author.name[0])}</span>`}<div><b>${esc(author.name)}</b><br><small>Published <time datetime="${esc(post.publishedOn)}">${day(post.publishedOn)}</time> · ${post.readingMinutes} min read</small></div></div>
@@ -156,7 +167,8 @@ ${[...groups].map(([category, items]) => `<section class="faq"><h2>${esc(schema.
     const [posts, schema] = await Promise.all([content.listPosts({ limit: 100 }), content.schema()]);
     const visible = posts.filter((p) => !p.hidden);
     const urls = [
-      `<url><loc>${base}/</loc><lastmod>${(visible[0]?.updatedAt ?? new Date().toISOString())}</lastmod></url>`,
+      `<url><loc>${base}${listPath}</loc><lastmod>${(visible[0]?.updatedAt ?? new Date().toISOString())}</lastmod></url>`,
+      ...(home ? [`<url><loc>${base}/</loc></url>`] : []),
       ...((await content.listFaq()).length ? [`<url><loc>${base}/faq</loc></url>`] : []),
       ...Object.keys(schema.tags).filter((t) => visible.some((p) => p.tags.includes(t))).map((t) => `<url><loc>${base}/tag/${t}</loc></url>`),
       ...visible.map((p) => `<url><loc>${base}/blog/${p.slug}</loc><lastmod>${p.updatedAt}</lastmod>${p.cover ? `<image:image><image:loc>${esc(p.cover.url)}</image:loc></image:image>` : ''}</url>`),
@@ -196,7 +208,15 @@ ${[...groups].map(([category, items]) => `<section class="faq"><h2>${esc(schema.
     const path = decodeURIComponent(url.pathname).replace(/(.)\/$/, '$1');
     const send = (status, type, text) => { res.writeHead(status, { 'content-type': types[type], 'cache-control': 'public, max-age=60' }); res.end(text); };
     try {
-      if (path === '/') return send(200, 'html', await listPage({}));
+      if (path === '/' && home) {
+        const cards = async (posts) => {
+          const [who, schema] = await Promise.all([content.authors(), content.schema()]);
+          return posts.map((post) => card(post, who, schema.tags)).join('');
+        };
+        const page = await home({ content, cards, tint, day, esc, base });
+        return send(200, 'html', layout({ path: '/', ...page }));
+      }
+      if (path === listPath) return send(200, 'html', await listPage({}));
       if (path === '/search') return send(200, 'html', await listPage({ q: (url.searchParams.get('q') ?? '').trim().slice(0, 100) || undefined }));
       if (path.startsWith('/tag/')) return send(200, 'html', await listPage({ tag: path.slice(5) }));
       if (path === '/faq') {
@@ -214,7 +234,7 @@ ${[...groups].map(([category, items]) => `<section class="faq"><h2>${esc(schema.
         const page = wantsMarkdown ? await markdownOf(slug) : await postPage(slug);
         if (page) return send(200, wantsMarkdown ? 'md' : 'html', page);
       }
-      return send(404, 'html', layout({ title: `Not found · ${siteName}`, description: 'That page does not exist.', path: '/404', robots: 'noindex', body: '<main class="wrap"><h1>We could not find that page</h1><p><a href="/">Back to all articles</a></p></main>' }));
+      return send(404, 'html', layout({ title: `Not found · ${siteName}`, description: 'That page does not exist.', path: '/404', robots: 'noindex', body: '<main class="wrap"><h1>We could not find that page</h1><p><a href="${listPath}">Back to all articles</a></p></main>' }));
     } catch (error) {
       console.error(error);
       return send(502, 'html', layout({ title: `Try again · ${siteName}`, description: 'Something went wrong.', path: '/error', robots: 'noindex', body: '<main class="wrap"><h1>Something went wrong</h1><p>Please try again in a moment.</p></main>' }));
