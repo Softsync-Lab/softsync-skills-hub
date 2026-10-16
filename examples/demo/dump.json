@@ -1,0 +1,3708 @@
+{
+  "info": {
+    "userId": "00000000-0000-4000-8000-000000000001",
+    "email": "emma@pipspost.example",
+    "firstName": "Emma",
+    "lastName": "Larsen",
+    "workspaceId": "00000000-0000-4000-8000-000000000002",
+    "workspaceName": "Pip's Post"
+  },
+  "members": {
+    "success": true,
+    "members": [
+      {
+        "id": "00000000-0000-4000-8000-000000000003",
+        "userId": "00000000-0000-4000-8000-000000000001",
+        "userEmail": "emma@pipspost.example",
+        "userFirstName": "Emma",
+        "userLastName": "Larsen",
+        "userAvatarUrl": "{{origin}}/images/b0968fb55b.png",
+        "role": "ADMIN",
+        "joinedAt": "2026-10-12T09:00:00.000Z",
+        "acceptedAt": "2026-10-12T09:00:00.000Z"
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000004",
+        "userId": "00000000-0000-4000-8000-000000000005",
+        "userEmail": "oskar@pipspost.example",
+        "userFirstName": "Oskar",
+        "userLastName": "Nilsen",
+        "userAvatarUrl": "{{origin}}/images/860f12d280.png",
+        "role": "EDITOR",
+        "joinedAt": "2026-10-12T09:00:00.000Z",
+        "acceptedAt": null
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000006",
+        "userId": "00000000-0000-4000-8000-000000000007",
+        "userEmail": "maja@pipspost.example",
+        "userFirstName": "Maja",
+        "userLastName": "Holm",
+        "userAvatarUrl": "{{origin}}/images/489b1308b0.png",
+        "role": "EDITOR",
+        "joinedAt": "2026-10-12T09:00:00.000Z",
+        "acceptedAt": null
+      }
+    ]
+  },
+  "describe": {
+    "workspaceId": "00000000-0000-4000-8000-000000000002",
+    "workspaceName": "Pip's Post",
+    "metadata": {
+      "provider": "softsync",
+      "template": "crm",
+      "installedTemplates": [
+        {
+          "name": "cms",
+          "version": 1,
+          "updatedAt": "2026-10-12T09:00:00.000Z",
+          "installedAt": "2026-10-12T09:00:00.000Z",
+          "installedBy": "00000000-0000-4000-8000-000000000001",
+          "uninstalledAt": null
+        },
+        {
+          "name": "wiki",
+          "version": 1,
+          "updatedAt": "2026-10-12T09:00:00.000Z",
+          "installedAt": "2026-10-12T09:00:00.000Z",
+          "installedBy": "00000000-0000-4000-8000-000000000001",
+          "uninstalledAt": null
+        }
+      ],
+      "sidebar": {
+        "items": [
+          {
+            "key": "assistant",
+            "shown": true
+          },
+          {
+            "key": "notifications",
+            "shown": true
+          },
+          {
+            "key": "email",
+            "shown": true
+          },
+          {
+            "key": "autopilot",
+            "shown": true
+          },
+          {
+            "key": "reports",
+            "shown": true
+          }
+        ]
+      }
+    },
+    "plugins": [
+      "notes",
+      "private_notes",
+      "GOOGLE_NATIVE",
+      "MICROSOFT_NATIVE",
+      "GOOGLE_CALENDAR",
+      "MICROSOFT_CALENDAR",
+      "meetings"
+    ],
+    "tables": [
+      {
+        "apiName": "articles",
+        "id": "00000000-0000-4000-8000-000000000008",
+        "displayName": "Articles",
+        "fields": [
+          {
+            "apiName": "title",
+            "displayName": "Title",
+            "id": "title",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "text"
+            },
+            "order": 0
+          },
+          {
+            "apiName": "body",
+            "displayName": "Body",
+            "id": "body",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "textarea"
+            },
+            "order": 1
+          },
+          {
+            "apiName": "status",
+            "displayName": "Status",
+            "id": "status",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "choices": [
+                {
+                  "color": "#64748b",
+                  "label": "Draft",
+                  "value": "draft"
+                },
+                {
+                  "color": "#10b981",
+                  "label": "Published",
+                  "value": "published"
+                },
+                {
+                  "color": "#94a3b8",
+                  "label": "Archived",
+                  "value": "archived"
+                }
+              ]
+            },
+            "order": 2
+          },
+          {
+            "apiName": "audience",
+            "displayName": "Who can read it",
+            "id": "audience",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "choices": [
+                {
+                  "color": "#3b82f6",
+                  "label": "Team only",
+                  "value": "team"
+                },
+                {
+                  "color": "#10b981",
+                  "label": "Customers too",
+                  "value": "public"
+                }
+              ]
+            },
+            "order": 3
+          },
+          {
+            "apiName": "category",
+            "displayName": "Category",
+            "id": "category",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "choices": [
+                {
+                  "color": "#3b82f6",
+                  "label": "Getting started",
+                  "value": "getting_started"
+                },
+                {
+                  "color": "#10b981",
+                  "label": "How-to",
+                  "value": "how_to"
+                },
+                {
+                  "color": "#f59e0b",
+                  "label": "Troubleshooting",
+                  "value": "troubleshooting"
+                },
+                {
+                  "color": "#8b5cf6",
+                  "label": "Billing",
+                  "value": "billing"
+                },
+                {
+                  "color": "#64748b",
+                  "label": "Policies",
+                  "value": "policies"
+                }
+              ]
+            },
+            "order": 4
+          },
+          {
+            "apiName": "tags",
+            "displayName": "Tags",
+            "id": "tags",
+            "kind": "multi_select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "choices": [
+                {
+                  "color": "#3b82f6",
+                  "label": "Account",
+                  "value": "account"
+                },
+                {
+                  "color": "#10b981",
+                  "label": "Orders",
+                  "value": "orders"
+                },
+                {
+                  "color": "#8b5cf6",
+                  "label": "Payments",
+                  "value": "payments"
+                },
+                {
+                  "color": "#f59e0b",
+                  "label": "Delivery",
+                  "value": "delivery"
+                },
+                {
+                  "color": "#ef4444",
+                  "label": "Security",
+                  "value": "security"
+                }
+              ]
+            },
+            "order": 5
+          },
+          {
+            "apiName": "is_public",
+            "displayName": "Shown to customers",
+            "id": "is_public",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": false,
+                  "local": [
+                    "status",
+                    "audience"
+                  ],
+                  "paths": [],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 3,
+                "volatile": false,
+                "expression": "IF(AND({fld:status} = {choice:published}, {fld:audience} = {choice:public}), \"yes\", \"no\")"
+              },
+              "choices": [
+                {
+                  "color": "#10b981",
+                  "label": "Yes",
+                  "value": "yes"
+                },
+                {
+                  "color": "#64748b",
+                  "label": "No",
+                  "value": "no"
+                }
+              ]
+            },
+            "order": 6
+          },
+          {
+            "apiName": "parent",
+            "displayName": "Inside page",
+            "id": "parent",
+            "kind": "relation",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "isMany": false,
+              "tableId": "00000000-0000-4000-8000-000000000008",
+              "targetTable": "articles"
+            },
+            "order": 7
+          }
+        ],
+        "description": "Your team's pages and how-tos. The assistant reads them when it answers.",
+        "hasEmbeddings": true,
+        "isHidden": false,
+        "rules": [
+          {
+            "id": "article-parent-no-loop",
+            "name": "Pages can't sit inside themselves",
+            "type": "acyclic",
+            "fields": [
+              "parent"
+            ],
+            "message": "A page can't sit inside itself or one of its own sub-pages."
+          }
+        ],
+        "options": {
+          "layout": "page"
+        },
+        "calculating": [
+          "is_public"
+        ]
+      },
+      {
+        "apiName": "post_faqs",
+        "id": "00000000-0000-4000-8000-000000000009",
+        "displayName": "Post questions",
+        "fields": [
+          {
+            "apiName": "title",
+            "displayName": "Question",
+            "id": "title",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "text"
+            },
+            "order": 0
+          },
+          {
+            "apiName": "answer",
+            "displayName": "Answer",
+            "id": "answer",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "textarea"
+            },
+            "order": 1
+          },
+          {
+            "apiName": "position",
+            "displayName": "Order",
+            "id": "position",
+            "kind": "number",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "decimals": 0
+            },
+            "order": 2
+          },
+          {
+            "apiName": "post",
+            "displayName": "Post",
+            "id": "post",
+            "kind": "relation",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "isMany": false,
+              "tableId": "00000000-0000-4000-8000-000000000010",
+              "targetTable": "posts"
+            },
+            "order": 3
+          }
+        ],
+        "description": "Questions and answers shown under a post.",
+        "hasEmbeddings": false,
+        "isHidden": false
+      },
+      {
+        "apiName": "posts",
+        "id": "00000000-0000-4000-8000-000000000010",
+        "displayName": "Posts",
+        "fields": [
+          {
+            "apiName": "title",
+            "displayName": "Title",
+            "id": "title",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "text"
+            },
+            "order": 0
+          },
+          {
+            "apiName": "slug",
+            "displayName": "Address ending",
+            "id": "slug",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "text"
+            },
+            "order": 1
+          },
+          {
+            "apiName": "summary",
+            "displayName": "Summary",
+            "id": "summary",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "textarea"
+            },
+            "order": 2
+          },
+          {
+            "apiName": "cover_image",
+            "displayName": "Cover image",
+            "id": "cover_image",
+            "kind": "file",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "isMany": false,
+              "maxSize": 5242880,
+              "fileType": "image",
+              "allowedMimeTypes": [
+                "image/jpeg",
+                "image/png",
+                "image/webp"
+              ]
+            },
+            "order": 3
+          },
+          {
+            "apiName": "cover_image_alt",
+            "displayName": "Cover image description",
+            "id": "cover_image_alt",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "text"
+            },
+            "order": 4
+          },
+          {
+            "apiName": "category",
+            "displayName": "Category",
+            "id": "category",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "choices": [
+                {
+                  "color": "#3b82f6",
+                  "label": "Guides",
+                  "value": "guides"
+                },
+                {
+                  "color": "#10b981",
+                  "label": "News",
+                  "value": "news"
+                },
+                {
+                  "color": "#8b5cf6",
+                  "label": "Case studies",
+                  "value": "case_studies"
+                },
+                {
+                  "color": "#f59e0b",
+                  "label": "Opinion",
+                  "value": "opinion"
+                }
+              ]
+            },
+            "order": 5
+          },
+          {
+            "apiName": "tags",
+            "displayName": "Tags",
+            "id": "tags",
+            "kind": "multi_select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "choices": [
+                {
+                  "color": "#3b82f6",
+                  "label": "How-to",
+                  "value": "how_to"
+                },
+                {
+                  "color": "#10b981",
+                  "label": "Tips",
+                  "value": "tips"
+                },
+                {
+                  "color": "#8b5cf6",
+                  "label": "Announcement",
+                  "value": "announcement"
+                },
+                {
+                  "color": "#f59e0b",
+                  "label": "Interview",
+                  "value": "interview"
+                },
+                {
+                  "color": "#ef4444",
+                  "label": "Research",
+                  "value": "research"
+                }
+              ]
+            },
+            "order": 6
+          },
+          {
+            "apiName": "author",
+            "displayName": "Author",
+            "id": "author",
+            "kind": "user",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "isMany": false
+            },
+            "order": 7
+          },
+          {
+            "apiName": "status",
+            "displayName": "Status",
+            "id": "status",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "choices": [
+                {
+                  "color": "#64748b",
+                  "label": "Draft",
+                  "value": "draft"
+                },
+                {
+                  "color": "#10b981",
+                  "label": "Published",
+                  "value": "published"
+                },
+                {
+                  "color": "#94a3b8",
+                  "label": "Archived",
+                  "value": "archived"
+                }
+              ]
+            },
+            "order": 8
+          },
+          {
+            "apiName": "published_on",
+            "displayName": "Published on",
+            "id": "published_on",
+            "kind": "date",
+            "required": false,
+            "canRemove": true,
+            "options": {},
+            "order": 9
+          },
+          {
+            "apiName": "focus_keyword",
+            "displayName": "Focus keyword",
+            "id": "focus_keyword",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "text"
+            },
+            "order": 10
+          },
+          {
+            "apiName": "canonical_url",
+            "displayName": "Original address (if published elsewhere first)",
+            "id": "canonical_url",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "text"
+            },
+            "order": 11
+          },
+          {
+            "apiName": "hide_from_search",
+            "displayName": "Hide from search engines",
+            "id": "hide_from_search",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "choices": [
+                {
+                  "color": "#10b981",
+                  "label": "Yes",
+                  "value": "yes"
+                },
+                {
+                  "color": "#64748b",
+                  "label": "No",
+                  "value": "no"
+                }
+              ]
+            },
+            "order": 12
+          },
+          {
+            "apiName": "key_takeaways",
+            "displayName": "Key takeaways (one per line)",
+            "id": "key_takeaways",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "textarea"
+            },
+            "order": 13
+          },
+          {
+            "apiName": "sources",
+            "displayName": "Sources (one per line)",
+            "id": "sources",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "textarea"
+            },
+            "order": 14
+          },
+          {
+            "apiName": "word_count",
+            "displayName": "Words",
+            "id": "word_count",
+            "kind": "number",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": true,
+                  "local": [],
+                  "paths": [
+                    {
+                      "hops": [
+                        {
+                          "dir": "backward",
+                          "fieldId": "post",
+                          "tableId": "00000000-0000-4000-8000-000000000011"
+                        }
+                      ],
+                      "fieldId": "word_count"
+                    }
+                  ],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 1,
+                "volatile": false,
+                "expression": "SUM({rev:00000000-0000-4000-8000-000000000011/post}.{fld:word_count})"
+              },
+              "decimals": 0
+            },
+            "order": 15
+          },
+          {
+            "apiName": "reading_minutes",
+            "displayName": "Reading minutes",
+            "id": "reading_minutes",
+            "kind": "number",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": true,
+                  "local": [],
+                  "paths": [
+                    {
+                      "hops": [
+                        {
+                          "dir": "backward",
+                          "fieldId": "post",
+                          "tableId": "00000000-0000-4000-8000-000000000011"
+                        }
+                      ],
+                      "fieldId": "word_count"
+                    }
+                  ],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 1,
+                "volatile": false,
+                "expression": "MAX(1, ROUNDUP(SUM({rev:00000000-0000-4000-8000-000000000011/post}.{fld:word_count}) / 200, 0))"
+              },
+              "decimals": 0
+            },
+            "order": 16
+          },
+          {
+            "apiName": "image_count",
+            "displayName": "Images",
+            "id": "image_count",
+            "kind": "number",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": true,
+                  "local": [],
+                  "paths": [
+                    {
+                      "hops": [
+                        {
+                          "dir": "backward",
+                          "fieldId": "post",
+                          "tableId": "00000000-0000-4000-8000-000000000011"
+                        }
+                      ],
+                      "fieldId": "image_count"
+                    }
+                  ],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 1,
+                "volatile": false,
+                "expression": "SUM({rev:00000000-0000-4000-8000-000000000011/post}.{fld:image_count})"
+              },
+              "decimals": 0
+            },
+            "order": 17
+          },
+          {
+            "apiName": "missing_alt_count",
+            "displayName": "Images without a description",
+            "id": "missing_alt_count",
+            "kind": "number",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": true,
+                  "local": [],
+                  "paths": [
+                    {
+                      "hops": [
+                        {
+                          "dir": "backward",
+                          "fieldId": "post",
+                          "tableId": "00000000-0000-4000-8000-000000000011"
+                        }
+                      ],
+                      "fieldId": "missing_alt_count"
+                    }
+                  ],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 1,
+                "volatile": false,
+                "expression": "SUM({rev:00000000-0000-4000-8000-000000000011/post}.{fld:missing_alt_count})"
+              },
+              "decimals": 0
+            },
+            "order": 18
+          },
+          {
+            "apiName": "heading_count",
+            "displayName": "Subheadings",
+            "id": "heading_count",
+            "kind": "number",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": true,
+                  "local": [],
+                  "paths": [
+                    {
+                      "hops": [
+                        {
+                          "dir": "backward",
+                          "fieldId": "post",
+                          "tableId": "00000000-0000-4000-8000-000000000011"
+                        }
+                      ],
+                      "fieldId": "heading_count"
+                    }
+                  ],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 1,
+                "volatile": false,
+                "expression": "SUM({rev:00000000-0000-4000-8000-000000000011/post}.{fld:heading_count})"
+              },
+              "decimals": 0
+            },
+            "order": 19
+          },
+          {
+            "apiName": "ck_title",
+            "displayName": "Title is 30–60 characters",
+            "id": "ck_title",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": false,
+                  "local": [
+                    "title"
+                  ],
+                  "paths": [],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 2,
+                "volatile": false,
+                "expression": "IF(AND(LEN({fld:title}) >= 30, LEN({fld:title}) <= 60), \"yes\", \"no\")"
+              },
+              "choices": [
+                {
+                  "color": "#10b981",
+                  "label": "Yes",
+                  "value": "yes"
+                },
+                {
+                  "color": "#64748b",
+                  "label": "No",
+                  "value": "no"
+                }
+              ]
+            },
+            "order": 20
+          },
+          {
+            "apiName": "ck_summary",
+            "displayName": "Summary is 70–160 characters",
+            "id": "ck_summary",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": false,
+                  "local": [
+                    "summary"
+                  ],
+                  "paths": [],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 1,
+                "volatile": false,
+                "expression": "IF(AND(LEN({fld:summary}) >= 70, LEN({fld:summary}) <= 160), \"yes\", \"no\")"
+              },
+              "choices": [
+                {
+                  "color": "#10b981",
+                  "label": "Yes",
+                  "value": "yes"
+                },
+                {
+                  "color": "#64748b",
+                  "label": "No",
+                  "value": "no"
+                }
+              ]
+            },
+            "order": 21
+          },
+          {
+            "apiName": "ck_slug",
+            "displayName": "Address is clean",
+            "id": "ck_slug",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": false,
+                  "local": [
+                    "slug"
+                  ],
+                  "paths": [],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 1,
+                "volatile": false,
+                "expression": "IF(AND(NOT(ISBLANK({fld:slug})), EXACT({fld:slug}, LOWER({fld:slug})), NOT(CONTAINS({fld:slug}, \" \"))), \"yes\", \"no\")"
+              },
+              "choices": [
+                {
+                  "color": "#10b981",
+                  "label": "Yes",
+                  "value": "yes"
+                },
+                {
+                  "color": "#64748b",
+                  "label": "No",
+                  "value": "no"
+                }
+              ]
+            },
+            "order": 22
+          },
+          {
+            "apiName": "ck_cover",
+            "displayName": "Cover image has a description",
+            "id": "ck_cover",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": false,
+                  "local": [
+                    "cover_image",
+                    "cover_image_alt"
+                  ],
+                  "paths": [],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 1,
+                "volatile": false,
+                "expression": "IF(AND(NOT(ISBLANK({fld:cover_image})), NOT(ISBLANK({fld:cover_image_alt}))), \"yes\", \"no\")"
+              },
+              "choices": [
+                {
+                  "color": "#10b981",
+                  "label": "Yes",
+                  "value": "yes"
+                },
+                {
+                  "color": "#64748b",
+                  "label": "No",
+                  "value": "no"
+                }
+              ]
+            },
+            "order": 23
+          },
+          {
+            "apiName": "ck_length",
+            "displayName": "Long enough (300+ words)",
+            "id": "ck_length",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": false,
+                  "local": [
+                    "word_count"
+                  ],
+                  "paths": [],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 1,
+                "volatile": false,
+                "expression": "IF({fld:word_count} >= 300, \"yes\", \"no\")"
+              },
+              "choices": [
+                {
+                  "color": "#10b981",
+                  "label": "Yes",
+                  "value": "yes"
+                },
+                {
+                  "color": "#64748b",
+                  "label": "No",
+                  "value": "no"
+                }
+              ]
+            },
+            "order": 24
+          },
+          {
+            "apiName": "ck_keyword",
+            "displayName": "Focus keyword is in the title or summary",
+            "id": "ck_keyword",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": false,
+                  "local": [
+                    "focus_keyword",
+                    "title",
+                    "summary"
+                  ],
+                  "paths": [],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 2,
+                "volatile": false,
+                "expression": "IF(AND(NOT(ISBLANK({fld:focus_keyword})), OR(CONTAINS(LOWER({fld:title}), LOWER({fld:focus_keyword})), CONTAINS(LOWER({fld:summary}), LOWER({fld:focus_keyword})))), \"yes\", \"no\")"
+              },
+              "choices": [
+                {
+                  "color": "#10b981",
+                  "label": "Yes",
+                  "value": "yes"
+                },
+                {
+                  "color": "#64748b",
+                  "label": "No",
+                  "value": "no"
+                }
+              ]
+            },
+            "order": 25
+          },
+          {
+            "apiName": "ck_alt",
+            "displayName": "Every image has a description",
+            "id": "ck_alt",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": false,
+                  "local": [
+                    "missing_alt_count"
+                  ],
+                  "paths": [],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 1,
+                "volatile": false,
+                "expression": "IF({fld:missing_alt_count} = 0, \"yes\", \"no\")"
+              },
+              "choices": [
+                {
+                  "color": "#10b981",
+                  "label": "Yes",
+                  "value": "yes"
+                },
+                {
+                  "color": "#64748b",
+                  "label": "No",
+                  "value": "no"
+                }
+              ]
+            },
+            "order": 26
+          },
+          {
+            "apiName": "ck_takeaways",
+            "displayName": "Key takeaways filled in",
+            "id": "ck_takeaways",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": false,
+                  "local": [
+                    "key_takeaways"
+                  ],
+                  "paths": [],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 1,
+                "volatile": false,
+                "expression": "IF(NOT(ISBLANK({fld:key_takeaways})), \"yes\", \"no\")"
+              },
+              "choices": [
+                {
+                  "color": "#10b981",
+                  "label": "Yes",
+                  "value": "yes"
+                },
+                {
+                  "color": "#64748b",
+                  "label": "No",
+                  "value": "no"
+                }
+              ]
+            },
+            "order": 27
+          },
+          {
+            "apiName": "ck_sources",
+            "displayName": "Sources listed",
+            "id": "ck_sources",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": false,
+                  "local": [
+                    "sources"
+                  ],
+                  "paths": [],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 1,
+                "volatile": false,
+                "expression": "IF(NOT(ISBLANK({fld:sources})), \"yes\", \"no\")"
+              },
+              "choices": [
+                {
+                  "color": "#10b981",
+                  "label": "Yes",
+                  "value": "yes"
+                },
+                {
+                  "color": "#64748b",
+                  "label": "No",
+                  "value": "no"
+                }
+              ]
+            },
+            "order": 28
+          },
+          {
+            "apiName": "ck_author",
+            "displayName": "Author chosen",
+            "id": "ck_author",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": false,
+                  "local": [
+                    "author"
+                  ],
+                  "paths": [],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 1,
+                "volatile": false,
+                "expression": "IF(NOT(ISBLANK({fld:author})), \"yes\", \"no\")"
+              },
+              "choices": [
+                {
+                  "color": "#10b981",
+                  "label": "Yes",
+                  "value": "yes"
+                },
+                {
+                  "color": "#64748b",
+                  "label": "No",
+                  "value": "no"
+                }
+              ]
+            },
+            "order": 29
+          },
+          {
+            "apiName": "ck_faq",
+            "displayName": "Has questions and answers",
+            "id": "ck_faq",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": true,
+                  "local": [],
+                  "paths": [
+                    {
+                      "hops": [
+                        {
+                          "dir": "backward",
+                          "fieldId": "post",
+                          "tableId": "00000000-0000-4000-8000-000000000009"
+                        }
+                      ]
+                    }
+                  ],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 1,
+                "volatile": false,
+                "expression": "IF(COUNT({rev:00000000-0000-4000-8000-000000000009/post}) > 0, \"yes\", \"no\")"
+              },
+              "choices": [
+                {
+                  "color": "#10b981",
+                  "label": "Yes",
+                  "value": "yes"
+                },
+                {
+                  "color": "#64748b",
+                  "label": "No",
+                  "value": "no"
+                }
+              ]
+            },
+            "order": 30
+          },
+          {
+            "apiName": "seo_score",
+            "displayName": "Search score (0–100)",
+            "id": "seo_score",
+            "kind": "number",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": false,
+                  "local": [
+                    "ck_title",
+                    "ck_summary",
+                    "ck_slug",
+                    "ck_cover",
+                    "ck_length",
+                    "ck_keyword",
+                    "ck_alt"
+                  ],
+                  "paths": [],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 2,
+                "volatile": false,
+                "expression": "ROUND((IF({fld:ck_title} = {choice:yes}, 1, 0) + IF({fld:ck_summary} = {choice:yes}, 1, 0) + IF({fld:ck_slug} = {choice:yes}, 1, 0) + IF({fld:ck_cover} = {choice:yes}, 1, 0) + IF({fld:ck_length} = {choice:yes}, 1, 0) + IF({fld:ck_keyword} = {choice:yes}, 1, 0) + IF({fld:ck_alt} = {choice:yes}, 1, 0)) / 7 * 100, 0)"
+              },
+              "decimals": 0
+            },
+            "order": 31
+          },
+          {
+            "apiName": "geo_score",
+            "displayName": "AI answer score (0–100)",
+            "id": "geo_score",
+            "kind": "number",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": false,
+                  "local": [
+                    "ck_summary",
+                    "ck_takeaways",
+                    "ck_sources",
+                    "ck_author",
+                    "ck_faq"
+                  ],
+                  "paths": [],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 2,
+                "volatile": false,
+                "expression": "ROUND((IF({fld:ck_summary} = {choice:yes}, 1, 0) + IF({fld:ck_takeaways} = {choice:yes}, 1, 0) + IF({fld:ck_sources} = {choice:yes}, 1, 0) + IF({fld:ck_author} = {choice:yes}, 1, 0) + IF({fld:ck_faq} = {choice:yes}, 1, 0)) / 5 * 100, 0)"
+              },
+              "decimals": 0
+            },
+            "order": 32
+          },
+          {
+            "apiName": "live",
+            "displayName": "Live",
+            "id": "live",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": false,
+                  "local": [
+                    "status"
+                  ],
+                  "paths": [],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 4,
+                "volatile": false,
+                "expression": "IF({fld:status} = {choice:published}, \"yes\", \"no\")"
+              },
+              "choices": [
+                {
+                  "color": "#10b981",
+                  "label": "Yes",
+                  "value": "yes"
+                },
+                {
+                  "color": "#64748b",
+                  "label": "No",
+                  "value": "no"
+                }
+              ]
+            },
+            "order": 33
+          }
+        ],
+        "description": "Articles your website or app reads through the API. Writers use the editor here; the text itself lives in the post's sections.",
+        "hasEmbeddings": false,
+        "isHidden": false,
+        "rules": [
+          {
+            "id": "post-slug-once",
+            "name": "Post addresses are used once",
+            "type": "unique",
+            "fields": [
+              "slug"
+            ],
+            "message": "Another post already uses this address. Give this one its own."
+          },
+          {
+            "id": "post-slug-clean",
+            "name": "Clean post address",
+            "type": "validate",
+            "when": "OR(ISBLANK({fld:slug}), AND(EXACT({fld:slug}, LOWER({fld:slug})), NOT(CONTAINS({fld:slug}, \" \"))))",
+            "message": "The address must be lowercase and have no spaces."
+          },
+          {
+            "id": "post-publish-gate",
+            "name": "Ready to publish",
+            "type": "validate",
+            "when": "OR({fld:status} <> {choice:published}, IS_NEW(), NOT(CHANGED({fld:status})), AND(NOT(ISBLANK({fld:title})), NOT(ISBLANK({fld:slug})), NOT(ISBLANK({fld:summary})), {fld:ck_cover} = {choice:yes}, {fld:ck_author} = {choice:yes}, {fld:ck_length} = {choice:yes}, {fld:ck_alt} = {choice:yes}))",
+            "message": "Before publishing, add a title, address, summary, cover image with description, an author and at least 300 words, and describe every image."
+          }
+        ],
+        "calculating": [
+          "word_count",
+          "reading_minutes",
+          "image_count",
+          "missing_alt_count",
+          "heading_count",
+          "ck_title",
+          "ck_summary",
+          "ck_slug",
+          "ck_cover",
+          "ck_length",
+          "ck_keyword",
+          "ck_alt",
+          "ck_takeaways",
+          "ck_sources",
+          "ck_author",
+          "ck_faq",
+          "seo_score",
+          "geo_score",
+          "live"
+        ]
+      },
+      {
+        "apiName": "post_sections",
+        "id": "00000000-0000-4000-8000-000000000011",
+        "displayName": "Post sections",
+        "fields": [
+          {
+            "apiName": "title",
+            "displayName": "Heading",
+            "id": "title",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "text"
+            },
+            "order": 0
+          },
+          {
+            "apiName": "body",
+            "displayName": "Body",
+            "id": "body",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "textarea"
+            },
+            "order": 1
+          },
+          {
+            "apiName": "position",
+            "displayName": "Order",
+            "id": "position",
+            "kind": "number",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "decimals": 0
+            },
+            "order": 2
+          },
+          {
+            "apiName": "post",
+            "displayName": "Post",
+            "id": "post",
+            "kind": "relation",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "isMany": false,
+              "tableId": "00000000-0000-4000-8000-000000000010",
+              "targetTable": "posts"
+            },
+            "order": 3
+          },
+          {
+            "apiName": "word_count",
+            "displayName": "Words",
+            "id": "word_count",
+            "kind": "number",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": false,
+                  "local": [
+                    "body"
+                  ],
+                  "paths": [],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 1,
+                "volatile": false,
+                "expression": "COUNTA(SPLIT(SUBSTITUTE(IFBLANK({fld:body}, \"\"), CHAR(10), \" \"), \" \"))"
+              },
+              "decimals": 0
+            },
+            "order": 4
+          },
+          {
+            "apiName": "image_count",
+            "displayName": "Images",
+            "id": "image_count",
+            "kind": "number",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": false,
+                  "local": [
+                    "body"
+                  ],
+                  "paths": [],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 1,
+                "volatile": false,
+                "expression": "LET(b, CONCAT(CHAR(10), IFBLANK({fld:body}, \"\")), (LEN(b) - LEN(SUBSTITUTE(b, \"![\", \"\"))) / 2)"
+              },
+              "decimals": 0
+            },
+            "order": 5
+          },
+          {
+            "apiName": "missing_alt_count",
+            "displayName": "Images without a description",
+            "id": "missing_alt_count",
+            "kind": "number",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": false,
+                  "local": [
+                    "body"
+                  ],
+                  "paths": [],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 1,
+                "volatile": false,
+                "expression": "LET(b, CONCAT(CHAR(10), IFBLANK({fld:body}, \"\")), (LEN(b) - LEN(SUBSTITUTE(b, \"![](\", \"\"))) / 4)"
+              },
+              "decimals": 0
+            },
+            "order": 6
+          },
+          {
+            "apiName": "heading_count",
+            "displayName": "Subheadings",
+            "id": "heading_count",
+            "kind": "number",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "source": {
+                "deps": {
+                  "async": false,
+                  "local": [
+                    "body"
+                  ],
+                  "paths": [],
+                  "tables": []
+                },
+                "type": "formula",
+                "version": 1,
+                "volatile": false,
+                "expression": "LET(b, CONCAT(CHAR(10), IFBLANK({fld:body}, \"\")), (LEN(b) - LEN(SUBSTITUTE(b, CONCAT(CHAR(10), \"#\"), \"\"))) / 2)"
+              },
+              "decimals": 0
+            },
+            "order": 7
+          }
+        ],
+        "description": "The text of a post, written in markdown. Add images with the picture button.",
+        "hasEmbeddings": false,
+        "isHidden": false,
+        "options": {
+          "layout": "page"
+        },
+        "calculating": [
+          "word_count",
+          "image_count",
+          "missing_alt_count",
+          "heading_count"
+        ]
+      }
+    ],
+    "members": [
+      {
+        "userId": "00000000-0000-4000-8000-000000000001",
+        "firstName": "Emma",
+        "lastName": "Larsen",
+        "email": "emma@pipspost.example",
+        "avatarUrl": "{{origin}}/images/b0968fb55b.png",
+        "role": "ADMIN",
+        "joinedAt": "2026-10-12T09:00:00.000Z",
+        "lastLoginAt": "2026-10-12T09:00:00.000Z",
+        "acceptedAt": "2026-10-12T09:00:00.000Z"
+      },
+      {
+        "userId": "00000000-0000-4000-8000-000000000005",
+        "firstName": "Oskar",
+        "lastName": "Nilsen",
+        "email": "oskar@pipspost.example",
+        "avatarUrl": "{{origin}}/images/860f12d280.png",
+        "role": "EDITOR",
+        "joinedAt": "2026-10-12T09:00:00.000Z",
+        "lastLoginAt": "2026-10-12T09:00:00.000Z"
+      },
+      {
+        "userId": "00000000-0000-4000-8000-000000000007",
+        "firstName": "Maja",
+        "lastName": "Holm",
+        "email": "maja@pipspost.example",
+        "avatarUrl": "{{origin}}/images/489b1308b0.png",
+        "role": "EDITOR",
+        "joinedAt": "2026-10-12T09:00:00.000Z",
+        "lastLoginAt": "2026-10-12T09:00:00.000Z"
+      }
+    ],
+    "groups": [
+      {
+        "id": "00000000-0000-4000-8000-000000000012",
+        "title": "Companies",
+        "description": "Active and potential companies",
+        "visibility": "PRIVATE",
+        "charts": [],
+        "members": [
+          {
+            "userId": "00000000-0000-4000-8000-000000000001",
+            "firstName": "Emma",
+            "lastName": "Larsen",
+            "email": "emma@pipspost.example",
+            "avatarUrl": "{{origin}}/images/b0968fb55b.png",
+            "role": "OWNER",
+            "joinedAt": "2026-10-12T09:00:00.000Z",
+            "lastLoginAt": "2026-10-12T09:00:00.000Z"
+          }
+        ],
+        "metadata": {
+          "emoji": "💼"
+        },
+        "order": 0,
+        "views": [
+          {
+            "id": "00000000-0000-4000-8000-000000000013",
+            "name": "Table",
+            "tableId": "00000000-0000-4000-8000-000000000014",
+            "viewType": "table",
+            "config": {
+              "columns": [
+                "name",
+                "status",
+                "industry",
+                "websites",
+                "account_owner"
+              ]
+            },
+            "order": 0,
+            "isDefault": true
+          }
+        ]
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000015",
+        "title": "Contacts",
+        "description": "People contacts",
+        "visibility": "PRIVATE",
+        "charts": [],
+        "members": [
+          {
+            "userId": "00000000-0000-4000-8000-000000000001",
+            "firstName": "Emma",
+            "lastName": "Larsen",
+            "email": "emma@pipspost.example",
+            "avatarUrl": "{{origin}}/images/b0968fb55b.png",
+            "role": "OWNER",
+            "joinedAt": "2026-10-12T09:00:00.000Z",
+            "lastLoginAt": "2026-10-12T09:00:00.000Z"
+          }
+        ],
+        "metadata": {
+          "emoji": "👤"
+        },
+        "order": 0,
+        "views": [
+          {
+            "id": "00000000-0000-4000-8000-000000000016",
+            "name": "Table",
+            "tableId": "00000000-0000-4000-8000-000000000017",
+            "viewType": "table",
+            "config": {
+              "columns": [
+                "first_name",
+                "last_name",
+                "emails",
+                "companies",
+                "job_title",
+                "prospect_owner"
+              ]
+            },
+            "order": 0,
+            "isDefault": true
+          }
+        ]
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000018",
+        "title": "Tasks",
+        "description": "Tasks and activities",
+        "visibility": "PRIVATE",
+        "charts": [],
+        "members": [
+          {
+            "userId": "00000000-0000-4000-8000-000000000001",
+            "firstName": "Emma",
+            "lastName": "Larsen",
+            "email": "emma@pipspost.example",
+            "avatarUrl": "{{origin}}/images/b0968fb55b.png",
+            "role": "OWNER",
+            "joinedAt": "2026-10-12T09:00:00.000Z",
+            "lastLoginAt": "2026-10-12T09:00:00.000Z"
+          }
+        ],
+        "metadata": {
+          "emoji": "📋"
+        },
+        "order": 0,
+        "views": [
+          {
+            "id": "00000000-0000-4000-8000-000000000019",
+            "name": "List",
+            "tableId": "00000000-0000-4000-8000-000000000020",
+            "viewType": "table",
+            "config": {
+              "columns": [
+                "title",
+                "priority",
+                "status",
+                "start_date",
+                "end_date",
+                "owner",
+                "customers",
+                "contacts"
+              ]
+            },
+            "order": 0,
+            "isDefault": false
+          },
+          {
+            "id": "00000000-0000-4000-8000-000000000021",
+            "name": "Board",
+            "tableId": "00000000-0000-4000-8000-000000000020",
+            "viewType": "kanban",
+            "config": {
+              "groupBy": "priority",
+              "columns": [
+                "title",
+                "description",
+                "priority",
+                "start_date",
+                "end_date",
+                "owner",
+                "customers",
+                "contacts"
+              ]
+            },
+            "order": 0,
+            "isDefault": true
+          }
+        ]
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000022",
+        "title": "Deals",
+        "description": "Sales pipeline deals",
+        "visibility": "PRIVATE",
+        "charts": [
+          {
+            "id": "stats",
+            "title": "Sales Dashboard",
+            "charts": [
+              {
+                "chartId": "# of Companies",
+                "tableId": "00000000-0000-4000-8000-000000000014",
+                "groupId": "00000000-0000-4000-8000-000000000012",
+                "chartType": "metric",
+                "measure": "count"
+              },
+              {
+                "chartId": "# of Contacts",
+                "tableId": "00000000-0000-4000-8000-000000000017",
+                "groupId": "00000000-0000-4000-8000-000000000015",
+                "chartType": "metric",
+                "measure": "count"
+              },
+              {
+                "chartId": "Total Pipeline Value",
+                "tableId": "00000000-0000-4000-8000-000000000023",
+                "groupId": "00000000-0000-4000-8000-000000000022",
+                "chartType": "metric",
+                "measure": "sum",
+                "measureField": "deal_value"
+              },
+              {
+                "chartId": "Deal by Stage",
+                "tableId": "00000000-0000-4000-8000-000000000023",
+                "groupId": "00000000-0000-4000-8000-000000000022",
+                "chartType": "bar",
+                "measure": "sum",
+                "measureField": "deal_value",
+                "viewByField": "stage"
+              },
+              {
+                "chartId": "Deal Sources",
+                "tableId": "00000000-0000-4000-8000-000000000023",
+                "groupId": "00000000-0000-4000-8000-000000000022",
+                "chartType": "pie",
+                "measure": "count",
+                "viewByField": "source"
+              },
+              {
+                "chartId": "Industry Distribution",
+                "tableId": "00000000-0000-4000-8000-000000000014",
+                "groupId": "00000000-0000-4000-8000-000000000012",
+                "chartType": "pie",
+                "measure": "count",
+                "viewByField": "industry"
+              }
+            ]
+          }
+        ],
+        "members": [
+          {
+            "userId": "00000000-0000-4000-8000-000000000001",
+            "firstName": "Emma",
+            "lastName": "Larsen",
+            "email": "emma@pipspost.example",
+            "avatarUrl": "{{origin}}/images/b0968fb55b.png",
+            "role": "OWNER",
+            "joinedAt": "2026-10-12T09:00:00.000Z",
+            "lastLoginAt": "2026-10-12T09:00:00.000Z"
+          }
+        ],
+        "metadata": {
+          "emoji": "💰"
+        },
+        "order": 0,
+        "views": [
+          {
+            "id": "00000000-0000-4000-8000-000000000024",
+            "name": "List",
+            "tableId": "00000000-0000-4000-8000-000000000023",
+            "viewType": "table",
+            "config": {
+              "columns": [
+                "title",
+                "stage",
+                "deal_value",
+                "end_date",
+                "company",
+                "contacts",
+                "deal_owner"
+              ]
+            },
+            "order": 0,
+            "isDefault": false
+          },
+          {
+            "id": "00000000-0000-4000-8000-000000000025",
+            "name": "Pipeline",
+            "tableId": "00000000-0000-4000-8000-000000000023",
+            "viewType": "kanban",
+            "config": {
+              "groupBy": "stage",
+              "columns": [
+                "title",
+                "stage",
+                "deal_value",
+                "end_date",
+                "company",
+                "contacts",
+                "deal_owner"
+              ],
+              "primary": "deal_value"
+            },
+            "order": 0,
+            "isDefault": true
+          }
+        ]
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000026",
+        "title": "Content",
+        "description": "Posts your website reads through the API.",
+        "visibility": "WORKSPACE",
+        "charts": [],
+        "members": [
+          {
+            "userId": "00000000-0000-4000-8000-000000000001",
+            "firstName": "Emma",
+            "lastName": "Larsen",
+            "email": "emma@pipspost.example",
+            "avatarUrl": "{{origin}}/images/b0968fb55b.png",
+            "role": "OWNER",
+            "joinedAt": "2026-10-12T09:00:00.000Z",
+            "lastLoginAt": "2026-10-12T09:00:00.000Z"
+          }
+        ],
+        "metadata": {
+          "emoji": "📰",
+          "templateName": "cms"
+        },
+        "order": 0,
+        "views": [
+          {
+            "id": "00000000-0000-4000-8000-000000000027",
+            "name": "All posts",
+            "tableId": "00000000-0000-4000-8000-000000000010",
+            "viewType": "table",
+            "config": {
+              "sort": {
+                "fieldId": "published_on",
+                "direction": "desc"
+              },
+              "columns": [
+                "title",
+                "category",
+                "tags",
+                "author",
+                "status",
+                "published_on",
+                "reading_minutes",
+                "seo_score",
+                "geo_score"
+              ]
+            },
+            "order": 0,
+            "isDefault": true
+          },
+          {
+            "id": "00000000-0000-4000-8000-000000000028",
+            "name": "Drafts",
+            "tableId": "00000000-0000-4000-8000-000000000010",
+            "viewType": "table",
+            "config": {
+              "filters": [
+                {
+                  "fieldId": "status",
+                  "operator": "eq",
+                  "value": "draft"
+                }
+              ],
+              "sort": {
+                "fieldId": "published_on",
+                "direction": "desc"
+              },
+              "columns": [
+                "title",
+                "category",
+                "author",
+                "reading_minutes",
+                "seo_score",
+                "geo_score"
+              ]
+            },
+            "order": 0,
+            "isDefault": false
+          },
+          {
+            "id": "00000000-0000-4000-8000-000000000029",
+            "name": "Published",
+            "tableId": "00000000-0000-4000-8000-000000000010",
+            "viewType": "table",
+            "config": {
+              "filters": [
+                {
+                  "fieldId": "status",
+                  "operator": "eq",
+                  "value": "published"
+                }
+              ],
+              "sort": {
+                "fieldId": "published_on",
+                "direction": "desc"
+              },
+              "columns": [
+                "title",
+                "category",
+                "tags",
+                "author",
+                "status",
+                "published_on",
+                "reading_minutes",
+                "seo_score",
+                "geo_score"
+              ]
+            },
+            "order": 0,
+            "isDefault": false
+          },
+          {
+            "id": "00000000-0000-4000-8000-000000000030",
+            "name": "Archived",
+            "tableId": "00000000-0000-4000-8000-000000000010",
+            "viewType": "table",
+            "config": {
+              "filters": [
+                {
+                  "fieldId": "status",
+                  "operator": "eq",
+                  "value": "archived"
+                }
+              ],
+              "sort": {
+                "fieldId": "published_on",
+                "direction": "desc"
+              },
+              "columns": [
+                "title",
+                "category",
+                "author",
+                "published_on"
+              ]
+            },
+            "order": 0,
+            "isDefault": false
+          }
+        ]
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000031",
+        "title": "Wiki",
+        "description": "Pages your team writes once and finds again.",
+        "visibility": "WORKSPACE",
+        "charts": [],
+        "members": [
+          {
+            "userId": "00000000-0000-4000-8000-000000000001",
+            "firstName": "Emma",
+            "lastName": "Larsen",
+            "email": "emma@pipspost.example",
+            "avatarUrl": "{{origin}}/images/b0968fb55b.png",
+            "role": "OWNER",
+            "joinedAt": "2026-10-12T09:00:00.000Z",
+            "lastLoginAt": "2026-10-12T09:00:00.000Z"
+          }
+        ],
+        "metadata": {
+          "emoji": "📚",
+          "templateName": "wiki"
+        },
+        "order": 0,
+        "views": [
+          {
+            "id": "00000000-0000-4000-8000-000000000032",
+            "name": "All pages",
+            "tableId": "00000000-0000-4000-8000-000000000008",
+            "viewType": "table",
+            "config": {
+              "sort": {
+                "fieldId": "title",
+                "direction": "asc"
+              },
+              "columns": [
+                "title",
+                "parent",
+                "category",
+                "tags",
+                "status",
+                "audience"
+              ]
+            },
+            "order": 0,
+            "isDefault": true
+          },
+          {
+            "id": "00000000-0000-4000-8000-000000000033",
+            "name": "Team pages",
+            "tableId": "00000000-0000-4000-8000-000000000008",
+            "viewType": "table",
+            "config": {
+              "filters": [
+                {
+                  "fieldId": "audience",
+                  "operator": "eq",
+                  "value": "team"
+                }
+              ],
+              "sort": {
+                "fieldId": "title",
+                "direction": "asc"
+              },
+              "columns": [
+                "title",
+                "parent",
+                "category",
+                "status"
+              ]
+            },
+            "order": 0,
+            "isDefault": false
+          },
+          {
+            "id": "00000000-0000-4000-8000-000000000034",
+            "name": "Drafts",
+            "tableId": "00000000-0000-4000-8000-000000000008",
+            "viewType": "table",
+            "config": {
+              "filters": [
+                {
+                  "fieldId": "status",
+                  "operator": "eq",
+                  "value": "draft"
+                }
+              ],
+              "columns": [
+                "title",
+                "parent",
+                "category",
+                "audience"
+              ]
+            },
+            "order": 0,
+            "isDefault": false
+          }
+        ]
+      }
+    ],
+    "dashboards": [
+      {
+        "groupId": "00000000-0000-4000-8000-000000000022",
+        "config": {
+          "id": "stats",
+          "title": "Sales Dashboard",
+          "charts": [
+            {
+              "chartId": "# of Companies",
+              "tableId": "00000000-0000-4000-8000-000000000014",
+              "groupId": "00000000-0000-4000-8000-000000000012",
+              "chartType": "metric",
+              "measure": "count"
+            },
+            {
+              "chartId": "# of Contacts",
+              "tableId": "00000000-0000-4000-8000-000000000017",
+              "groupId": "00000000-0000-4000-8000-000000000015",
+              "chartType": "metric",
+              "measure": "count"
+            },
+            {
+              "chartId": "Total Pipeline Value",
+              "tableId": "00000000-0000-4000-8000-000000000023",
+              "groupId": "00000000-0000-4000-8000-000000000022",
+              "chartType": "metric",
+              "measure": "sum",
+              "measureField": "deal_value"
+            },
+            {
+              "chartId": "Deal by Stage",
+              "tableId": "00000000-0000-4000-8000-000000000023",
+              "groupId": "00000000-0000-4000-8000-000000000022",
+              "chartType": "bar",
+              "measure": "sum",
+              "measureField": "deal_value",
+              "viewByField": "stage"
+            },
+            {
+              "chartId": "Deal Sources",
+              "tableId": "00000000-0000-4000-8000-000000000023",
+              "groupId": "00000000-0000-4000-8000-000000000022",
+              "chartType": "pie",
+              "measure": "count",
+              "viewByField": "source"
+            },
+            {
+              "chartId": "Industry Distribution",
+              "tableId": "00000000-0000-4000-8000-000000000014",
+              "groupId": "00000000-0000-4000-8000-000000000012",
+              "chartType": "pie",
+              "measure": "count",
+              "viewByField": "industry"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "records": {
+    "articles": [
+      {
+        "id": "00000000-0000-4000-8000-000000000035",
+        "tableId": "00000000-0000-4000-8000-000000000008",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000031"
+        ],
+        "data": {
+          "body": "Internal: refund within 60 days for late delivery, no questions asked.",
+          "title": "Refund exceptions (team only)",
+          "status": "published",
+          "audience": "team",
+          "category": "policies",
+          "is_public": "no"
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000036",
+        "tableId": "00000000-0000-4000-8000-000000000008",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000031"
+        ],
+        "data": {
+          "body": "Yes. Choose \"As a gift\" at checkout, add a name and a message, and the first letter arrives with a gift card inside. You can start it on any month.",
+          "title": "Do you send gifts to someone else?",
+          "status": "published",
+          "audience": "public",
+          "category": "how_to",
+          "is_public": "yes"
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000037",
+        "tableId": "00000000-0000-4000-8000-000000000008",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000031"
+        ],
+        "data": {
+          "body": "Each letter is a folded sheet of thick paper with a hand-painted illustration, a short story from Pip, a small map to colour in and a stamp from the country he is visiting.",
+          "title": "What do the letters look like?",
+          "status": "published",
+          "audience": "public",
+          "category": "getting_started",
+          "is_public": "yes"
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000038",
+        "tableId": "00000000-0000-4000-8000-000000000008",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000031"
+        ],
+        "data": {
+          "body": "Send us a message at any time. You can pause for up to three months, or cancel with no fee. The month already paid for is always delivered.",
+          "title": "How do I pause or cancel?",
+          "status": "published",
+          "audience": "public",
+          "category": "billing",
+          "is_public": "yes"
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000039",
+        "tableId": "00000000-0000-4000-8000-000000000008",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000031"
+        ],
+        "data": {
+          "body": "Yes. Reply to any order email with the new name or address before the 20th and the next letter goes there. Letters already in the post cannot be redirected.",
+          "title": "Can I change the name or address on a subscription?",
+          "status": "published",
+          "audience": "public",
+          "category": "how_to",
+          "is_public": "yes"
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000040",
+        "tableId": "00000000-0000-4000-8000-000000000008",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000031"
+        ],
+        "data": {
+          "body": "Order by the 20th of the month and your first letter arrives in the first week of the next month. It travels by ordinary post, so allow up to three working days within the Nordics.",
+          "title": "When will my first letter arrive?",
+          "status": "published",
+          "audience": "public",
+          "category": "getting_started",
+          "is_public": "yes"
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        }
+      }
+    ],
+    "post_faqs": [
+      {
+        "id": "00000000-0000-4000-8000-000000000041",
+        "tableId": "00000000-0000-4000-8000-000000000009",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "data": {
+          "post": "00000000-0000-4000-8000-000000000042",
+          "title": "When do new subscribers get their first letter?",
+          "answer": "Order by the 20th of the month and your first letter arrives in the first week of the next.",
+          "position": 1
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        },
+        "relations": {
+          "post": [
+            {
+              "tableId": "00000000-0000-4000-8000-000000000010",
+              "record": {
+                "id": "00000000-0000-4000-8000-000000000042",
+                "data": {
+                  "live": "yes",
+                  "slug": "summer-reading-letters-from-the-road",
+                  "tags": [
+                    "announcement",
+                    "tips"
+                  ],
+                  "title": "Summer reading: letters from the road",
+                  "author": "00000000-0000-4000-8000-000000000001",
+                  "status": "published",
+                  "ck_slug": "yes",
+                  "sources": "",
+                  "summary": "Pip is off to the mountains, the coast and a night train through three countries. Here is what is coming in the summer letters, and how to read along.",
+                  "category": "news",
+                  "ck_cover": "yes",
+                  "ck_title": "yes",
+                  "ck_author": "yes",
+                  "ck_keyword": "yes",
+                  "ck_sources": "no",
+                  "ck_summary": "yes",
+                  "cover_image": {
+                    "id": "00000000-0000-4000-8000-000000000043",
+                    "url": "{{origin}}/images/359acc07ce.png",
+                    "mime": "image/png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000043.png",
+                    "fileName": "summer-reading-letters-from-the-road.png",
+                    "fileSize": 71962
+                  },
+                  "ck_takeaways": "yes",
+                  "published_on": "2026-09-19T00:00:00.000Z",
+                  "focus_keyword": "summer letters",
+                  "key_takeaways": "Three new countries this summer\nEach letter has a small map to colour in\nOrder by the 20th to get June's letter",
+                  "cover_image_alt": "A hand-drawn map with a dotted line from mountains to the sea"
+                },
+                "createdAt": "2026-10-12T09:00:00.000Z",
+                "updatedAt": "2026-10-12T09:00:00.000Z",
+                "workspace": "00000000-0000-4000-8000-000000000002",
+                "table": "00000000-0000-4000-8000-000000000010",
+                "createdBy": "00000000-0000-4000-8000-000000000001"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000044",
+        "tableId": "00000000-0000-4000-8000-000000000009",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "data": {
+          "post": "00000000-0000-4000-8000-000000000045",
+          "title": "Can we buy the original paintings?",
+          "answer": "A few originals go on sale each December. Subscribers hear about them first.",
+          "position": 1
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        },
+        "relations": {
+          "post": [
+            {
+              "tableId": "00000000-0000-4000-8000-000000000010",
+              "record": {
+                "id": "00000000-0000-4000-8000-000000000045",
+                "data": {
+                  "live": "yes",
+                  "slug": "meet-the-illustrator",
+                  "tags": [
+                    "interview"
+                  ],
+                  "title": "Meet the illustrator behind every watercolour fox",
+                  "author": "00000000-0000-4000-8000-000000000005",
+                  "status": "published",
+                  "ck_slug": "yes",
+                  "sources": "Interview with our illustrator, September",
+                  "summary": "Every letter from Pip is painted by hand. We sat down with our illustrator to talk about brushes, patience and why nothing is ever printed from a screen.",
+                  "category": "opinion",
+                  "ck_cover": "yes",
+                  "ck_title": "yes",
+                  "ck_author": "yes",
+                  "ck_keyword": "no",
+                  "ck_sources": "yes",
+                  "ck_summary": "yes",
+                  "cover_image": {
+                    "id": "00000000-0000-4000-8000-000000000046",
+                    "url": "{{origin}}/images/9442e3789a.png",
+                    "mime": "image/png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000046.png",
+                    "fileName": "meet-the-illustrator.png",
+                    "fileSize": 58618
+                  },
+                  "ck_takeaways": "yes",
+                  "published_on": "2026-10-03T00:00:00.000Z",
+                  "focus_keyword": "watercolour illustrator",
+                  "key_takeaways": "Every letter is painted by hand\nOne letter takes about three evenings\nMistakes stay in, they are part of the charm",
+                  "cover_image_alt": "Watercolour brushes and a half-painted fox on a wooden desk"
+                },
+                "createdAt": "2026-10-12T09:00:00.000Z",
+                "updatedAt": "2026-10-12T09:00:00.000Z",
+                "workspace": "00000000-0000-4000-8000-000000000002",
+                "table": "00000000-0000-4000-8000-000000000010",
+                "createdBy": "00000000-0000-4000-8000-000000000001"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000047",
+        "tableId": "00000000-0000-4000-8000-000000000009",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "data": {
+          "post": "00000000-0000-4000-8000-000000000048",
+          "title": "How often should my child write?",
+          "answer": "Once a week is plenty. A short letter every week beats a long one every few months.",
+          "position": 2
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        },
+        "relations": {
+          "post": [
+            {
+              "tableId": "00000000-0000-4000-8000-000000000010",
+              "record": {
+                "id": "00000000-0000-4000-8000-000000000048",
+                "data": {
+                  "live": "yes",
+                  "slug": "get-your-child-writing-letters",
+                  "tags": [
+                    "how_to",
+                    "tips"
+                  ],
+                  "title": "Five ways to get your child writing letters again",
+                  "author": "00000000-0000-4000-8000-000000000001",
+                  "status": "published",
+                  "ck_slug": "yes",
+                  "sources": "https://www.literacytrust.org.uk/",
+                  "summary": "Children love getting letters but rarely write them. These five small habits make writing back something they look forward to, not a chore.",
+                  "category": "guides",
+                  "ck_cover": "yes",
+                  "ck_title": "yes",
+                  "ck_author": "yes",
+                  "ck_keyword": "yes",
+                  "ck_sources": "yes",
+                  "ck_summary": "yes",
+                  "cover_image": {
+                    "id": "00000000-0000-4000-8000-000000000049",
+                    "url": "{{origin}}/images/2599da3f22.png",
+                    "mime": "image/png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000049.png",
+                    "fileName": "get-your-child-writing-letters.png",
+                    "fileSize": 43931
+                  },
+                  "ck_takeaways": "yes",
+                  "published_on": "2026-10-09T00:00:00.000Z",
+                  "focus_keyword": "writing letters",
+                  "key_takeaways": "Start with a single sentence\nLet them choose the paper and pen\nPost it together, the same day",
+                  "cover_image_alt": "A child writing a letter at a kitchen table, with a fox drawn in the corner"
+                },
+                "createdAt": "2026-10-12T09:00:00.000Z",
+                "updatedAt": "2026-10-12T09:00:00.000Z",
+                "workspace": "00000000-0000-4000-8000-000000000002",
+                "table": "00000000-0000-4000-8000-000000000010",
+                "createdBy": "00000000-0000-4000-8000-000000000001"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000050",
+        "tableId": "00000000-0000-4000-8000-000000000009",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "data": {
+          "post": "00000000-0000-4000-8000-000000000048",
+          "title": "What age is best for writing letters?",
+          "answer": "From about four, with a grown-up helping. By seven most children write a few lines on their own.",
+          "position": 1
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        },
+        "relations": {
+          "post": [
+            {
+              "tableId": "00000000-0000-4000-8000-000000000010",
+              "record": {
+                "id": "00000000-0000-4000-8000-000000000048",
+                "data": {
+                  "live": "yes",
+                  "slug": "get-your-child-writing-letters",
+                  "tags": [
+                    "how_to",
+                    "tips"
+                  ],
+                  "title": "Five ways to get your child writing letters again",
+                  "author": "00000000-0000-4000-8000-000000000001",
+                  "status": "published",
+                  "ck_slug": "yes",
+                  "sources": "https://www.literacytrust.org.uk/",
+                  "summary": "Children love getting letters but rarely write them. These five small habits make writing back something they look forward to, not a chore.",
+                  "category": "guides",
+                  "ck_cover": "yes",
+                  "ck_title": "yes",
+                  "ck_author": "yes",
+                  "ck_keyword": "yes",
+                  "ck_sources": "yes",
+                  "ck_summary": "yes",
+                  "cover_image": {
+                    "id": "00000000-0000-4000-8000-000000000049",
+                    "url": "{{origin}}/images/2599da3f22.png",
+                    "mime": "image/png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000049.png",
+                    "fileName": "get-your-child-writing-letters.png",
+                    "fileSize": 43931
+                  },
+                  "ck_takeaways": "yes",
+                  "published_on": "2026-10-09T00:00:00.000Z",
+                  "focus_keyword": "writing letters",
+                  "key_takeaways": "Start with a single sentence\nLet them choose the paper and pen\nPost it together, the same day",
+                  "cover_image_alt": "A child writing a letter at a kitchen table, with a fox drawn in the corner"
+                },
+                "createdAt": "2026-10-12T09:00:00.000Z",
+                "updatedAt": "2026-10-12T09:00:00.000Z",
+                "workspace": "00000000-0000-4000-8000-000000000002",
+                "table": "00000000-0000-4000-8000-000000000010",
+                "createdBy": "00000000-0000-4000-8000-000000000001"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "posts": [
+      {
+        "id": "00000000-0000-4000-8000-000000000051",
+        "tableId": "00000000-0000-4000-8000-000000000010",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "data": {
+          "live": "no",
+          "slug": "our-plans-for-next-year",
+          "tags": [
+            "announcement"
+          ],
+          "title": "Our plans for next year",
+          "author": "00000000-0000-4000-8000-000000000001",
+          "status": "draft",
+          "ck_slug": "yes",
+          "summary": "A first look at what Pip will be doing next year. Not ready to share yet.",
+          "category": "news",
+          "ck_cover": "no",
+          "ck_title": "no",
+          "ck_author": "yes",
+          "ck_keyword": "no",
+          "ck_sources": "no",
+          "ck_summary": "yes",
+          "ck_takeaways": "no"
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        },
+        "users": {
+          "author": [
+            {
+              "id": "00000000-0000-4000-8000-000000000001",
+              "firstName": "Emma",
+              "lastName": "Larsen",
+              "email": "emma@pipspost.example",
+              "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+            }
+          ]
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000052",
+        "tableId": "00000000-0000-4000-8000-000000000010",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "data": {
+          "live": "yes",
+          "slug": "letter-day-in-bergen",
+          "tags": [
+            "interview",
+            "how_to"
+          ],
+          "title": "How one family in Bergen made letter day a ritual",
+          "author": "00000000-0000-4000-8000-000000000005",
+          "status": "published",
+          "ck_slug": "yes",
+          "sources": "",
+          "summary": "Every first Saturday, the Haugen family reads Pip's letter over pancakes and writes back before lunch. Here is how they made it stick.",
+          "category": "case_studies",
+          "ck_cover": "yes",
+          "ck_title": "yes",
+          "ck_author": "yes",
+          "ck_keyword": "no",
+          "ck_sources": "no",
+          "ck_summary": "yes",
+          "cover_image": {
+            "id": "00000000-0000-4000-8000-000000000053",
+            "url": "{{origin}}/images/bc53b680d6.png",
+            "mime": "image/png",
+            "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000053.png",
+            "fileName": "letter-day-in-bergen.png",
+            "fileSize": 61837
+          },
+          "ck_takeaways": "yes",
+          "published_on": "2026-09-12T00:00:00.000Z",
+          "focus_keyword": "family reading ritual",
+          "key_takeaways": "A fixed day makes it a habit\nPancakes help\nEach child writes their own reply",
+          "cover_image_alt": "A family around a breakfast table reading a letter together"
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        },
+        "users": {
+          "author": [
+            {
+              "id": "00000000-0000-4000-8000-000000000005",
+              "firstName": "Oskar",
+              "lastName": "Nilsen",
+              "email": "oskar@pipspost.example",
+              "avatarUrl": "{{origin}}/images/860f12d280.png"
+            }
+          ]
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000042",
+        "tableId": "00000000-0000-4000-8000-000000000010",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "data": {
+          "live": "yes",
+          "slug": "summer-reading-letters-from-the-road",
+          "tags": [
+            "announcement",
+            "tips"
+          ],
+          "title": "Summer reading: letters from the road",
+          "author": "00000000-0000-4000-8000-000000000001",
+          "status": "published",
+          "ck_slug": "yes",
+          "sources": "",
+          "summary": "Pip is off to the mountains, the coast and a night train through three countries. Here is what is coming in the summer letters, and how to read along.",
+          "category": "news",
+          "ck_cover": "yes",
+          "ck_title": "yes",
+          "ck_author": "yes",
+          "ck_keyword": "yes",
+          "ck_sources": "no",
+          "ck_summary": "yes",
+          "cover_image": {
+            "id": "00000000-0000-4000-8000-000000000043",
+            "url": "{{origin}}/images/359acc07ce.png",
+            "mime": "image/png",
+            "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000043.png",
+            "fileName": "summer-reading-letters-from-the-road.png",
+            "fileSize": 71962
+          },
+          "ck_takeaways": "yes",
+          "published_on": "2026-09-19T00:00:00.000Z",
+          "focus_keyword": "summer letters",
+          "key_takeaways": "Three new countries this summer\nEach letter has a small map to colour in\nOrder by the 20th to get June's letter",
+          "cover_image_alt": "A hand-drawn map with a dotted line from mountains to the sea"
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        },
+        "users": {
+          "author": [
+            {
+              "id": "00000000-0000-4000-8000-000000000001",
+              "firstName": "Emma",
+              "lastName": "Larsen",
+              "email": "emma@pipspost.example",
+              "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+            }
+          ]
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000054",
+        "tableId": "00000000-0000-4000-8000-000000000010",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "data": {
+          "live": "yes",
+          "slug": "research-letters-and-curiosity",
+          "tags": [
+            "research",
+            "tips"
+          ],
+          "title": "What research says about letters and curiosity",
+          "author": "00000000-0000-4000-8000-000000000007",
+          "status": "published",
+          "ck_slug": "yes",
+          "sources": "https://www.unesco.org/en/literacy\nReading Habits Survey, 2024",
+          "summary": "Studies on reading and writing at home point the same way: children who receive personal mail ask more questions and read for longer.",
+          "category": "guides",
+          "ck_cover": "yes",
+          "ck_title": "yes",
+          "ck_author": "yes",
+          "ck_keyword": "no",
+          "ck_sources": "yes",
+          "ck_summary": "yes",
+          "cover_image": {
+            "id": "00000000-0000-4000-8000-000000000055",
+            "url": "{{origin}}/images/ef2e040922.png",
+            "mime": "image/png",
+            "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000055.png",
+            "fileName": "research-letters-and-curiosity.png",
+            "fileSize": 54865
+          },
+          "ck_takeaways": "yes",
+          "published_on": "2026-09-26T00:00:00.000Z",
+          "focus_keyword": "children curiosity",
+          "key_takeaways": "Personal mail makes children ask more questions\nShort, regular reading beats long, rare sessions\nHandwriting helps memory",
+          "cover_image_alt": "A stack of letters tied with string next to an open atlas"
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        },
+        "users": {
+          "author": [
+            {
+              "id": "00000000-0000-4000-8000-000000000007",
+              "firstName": "Maja",
+              "lastName": "Holm",
+              "email": "maja@pipspost.example",
+              "avatarUrl": "{{origin}}/images/489b1308b0.png"
+            }
+          ]
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000045",
+        "tableId": "00000000-0000-4000-8000-000000000010",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "data": {
+          "live": "yes",
+          "slug": "meet-the-illustrator",
+          "tags": [
+            "interview"
+          ],
+          "title": "Meet the illustrator behind every watercolour fox",
+          "author": "00000000-0000-4000-8000-000000000005",
+          "status": "published",
+          "ck_slug": "yes",
+          "sources": "Interview with our illustrator, September",
+          "summary": "Every letter from Pip is painted by hand. We sat down with our illustrator to talk about brushes, patience and why nothing is ever printed from a screen.",
+          "category": "opinion",
+          "ck_cover": "yes",
+          "ck_title": "yes",
+          "ck_author": "yes",
+          "ck_keyword": "no",
+          "ck_sources": "yes",
+          "ck_summary": "yes",
+          "cover_image": {
+            "id": "00000000-0000-4000-8000-000000000046",
+            "url": "{{origin}}/images/9442e3789a.png",
+            "mime": "image/png",
+            "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000046.png",
+            "fileName": "meet-the-illustrator.png",
+            "fileSize": 58618
+          },
+          "ck_takeaways": "yes",
+          "published_on": "2026-10-03T00:00:00.000Z",
+          "focus_keyword": "watercolour illustrator",
+          "key_takeaways": "Every letter is painted by hand\nOne letter takes about three evenings\nMistakes stay in, they are part of the charm",
+          "cover_image_alt": "Watercolour brushes and a half-painted fox on a wooden desk"
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        },
+        "users": {
+          "author": [
+            {
+              "id": "00000000-0000-4000-8000-000000000005",
+              "firstName": "Oskar",
+              "lastName": "Nilsen",
+              "email": "oskar@pipspost.example",
+              "avatarUrl": "{{origin}}/images/860f12d280.png"
+            }
+          ]
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000048",
+        "tableId": "00000000-0000-4000-8000-000000000010",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "data": {
+          "live": "yes",
+          "slug": "get-your-child-writing-letters",
+          "tags": [
+            "how_to",
+            "tips"
+          ],
+          "title": "Five ways to get your child writing letters again",
+          "author": "00000000-0000-4000-8000-000000000001",
+          "status": "published",
+          "ck_slug": "yes",
+          "sources": "https://www.literacytrust.org.uk/",
+          "summary": "Children love getting letters but rarely write them. These five small habits make writing back something they look forward to, not a chore.",
+          "category": "guides",
+          "ck_cover": "yes",
+          "ck_title": "yes",
+          "ck_author": "yes",
+          "ck_keyword": "yes",
+          "ck_sources": "yes",
+          "ck_summary": "yes",
+          "cover_image": {
+            "id": "00000000-0000-4000-8000-000000000049",
+            "url": "{{origin}}/images/2599da3f22.png",
+            "mime": "image/png",
+            "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000049.png",
+            "fileName": "get-your-child-writing-letters.png",
+            "fileSize": 43931
+          },
+          "ck_takeaways": "yes",
+          "published_on": "2026-10-09T00:00:00.000Z",
+          "focus_keyword": "writing letters",
+          "key_takeaways": "Start with a single sentence\nLet them choose the paper and pen\nPost it together, the same day",
+          "cover_image_alt": "A child writing a letter at a kitchen table, with a fox drawn in the corner"
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        },
+        "users": {
+          "author": [
+            {
+              "id": "00000000-0000-4000-8000-000000000001",
+              "firstName": "Emma",
+              "lastName": "Larsen",
+              "email": "emma@pipspost.example",
+              "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+            }
+          ]
+        }
+      }
+    ],
+    "post_sections": [
+      {
+        "id": "00000000-0000-4000-8000-000000000056",
+        "tableId": "00000000-0000-4000-8000-000000000011",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "data": {
+          "body": "Still being written.",
+          "post": "00000000-0000-4000-8000-000000000051",
+          "title": "Draft",
+          "position": 1,
+          "word_count": 3,
+          "image_count": 0,
+          "heading_count": 0,
+          "missing_alt_count": 0
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        },
+        "relations": {
+          "post": [
+            {
+              "tableId": "00000000-0000-4000-8000-000000000010",
+              "record": {
+                "id": "00000000-0000-4000-8000-000000000051",
+                "data": {
+                  "live": "no",
+                  "slug": "our-plans-for-next-year",
+                  "tags": [
+                    "announcement"
+                  ],
+                  "title": "Our plans for next year",
+                  "author": "00000000-0000-4000-8000-000000000001",
+                  "status": "draft",
+                  "ck_slug": "yes",
+                  "summary": "A first look at what Pip will be doing next year. Not ready to share yet.",
+                  "category": "news",
+                  "ck_cover": "no",
+                  "ck_title": "no",
+                  "ck_author": "yes",
+                  "ck_keyword": "no",
+                  "ck_sources": "no",
+                  "ck_summary": "yes",
+                  "ck_takeaways": "no"
+                },
+                "createdAt": "2026-10-12T09:00:00.000Z",
+                "updatedAt": "2026-10-12T09:00:00.000Z",
+                "workspace": "00000000-0000-4000-8000-000000000002",
+                "table": "00000000-0000-4000-8000-000000000010",
+                "createdBy": "00000000-0000-4000-8000-000000000001"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000057",
+        "tableId": "00000000-0000-4000-8000-000000000011",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "data": {
+          "body": "The Haugens keep the first Saturday of the month free. Pancakes go on the table, the letter comes out of its envelope, and everybody gets a turn to read a paragraph.\n\n## Writing back\n\nAfter breakfast each child writes their own reply. The youngest draws hers.",
+          "post": "00000000-0000-4000-8000-000000000052",
+          "title": "Pancakes first",
+          "position": 1,
+          "word_count": 46,
+          "image_count": 0,
+          "heading_count": 1,
+          "missing_alt_count": 0
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        },
+        "relations": {
+          "post": [
+            {
+              "tableId": "00000000-0000-4000-8000-000000000010",
+              "record": {
+                "id": "00000000-0000-4000-8000-000000000052",
+                "data": {
+                  "live": "yes",
+                  "slug": "letter-day-in-bergen",
+                  "tags": [
+                    "interview",
+                    "how_to"
+                  ],
+                  "title": "How one family in Bergen made letter day a ritual",
+                  "author": "00000000-0000-4000-8000-000000000005",
+                  "status": "published",
+                  "ck_slug": "yes",
+                  "sources": "",
+                  "summary": "Every first Saturday, the Haugen family reads Pip's letter over pancakes and writes back before lunch. Here is how they made it stick.",
+                  "category": "case_studies",
+                  "ck_cover": "yes",
+                  "ck_title": "yes",
+                  "ck_author": "yes",
+                  "ck_keyword": "no",
+                  "ck_sources": "no",
+                  "ck_summary": "yes",
+                  "cover_image": {
+                    "id": "00000000-0000-4000-8000-000000000053",
+                    "url": "{{origin}}/images/bc53b680d6.png",
+                    "mime": "image/png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000053.png",
+                    "fileName": "letter-day-in-bergen.png",
+                    "fileSize": 61837
+                  },
+                  "ck_takeaways": "yes",
+                  "published_on": "2026-09-12T00:00:00.000Z",
+                  "focus_keyword": "family reading ritual",
+                  "key_takeaways": "A fixed day makes it a habit\nPancakes help\nEach child writes their own reply",
+                  "cover_image_alt": "A family around a breakfast table reading a letter together"
+                },
+                "createdAt": "2026-10-12T09:00:00.000Z",
+                "updatedAt": "2026-10-12T09:00:00.000Z",
+                "workspace": "00000000-0000-4000-8000-000000000002",
+                "table": "00000000-0000-4000-8000-000000000010",
+                "createdBy": "00000000-0000-4000-8000-000000000001"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000058",
+        "tableId": "00000000-0000-4000-8000-000000000011",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "data": {
+          "body": "June takes Pip up a mountain railway. July is all coast: tide pools, lighthouses and a very suspicious seagull. August is the night train.\n\n## A map in every letter\n\nEach letter now carries a small map to colour in, so children can follow the route with their own crayons.",
+          "post": "00000000-0000-4000-8000-000000000042",
+          "title": "Where Pip is going",
+          "position": 1,
+          "word_count": 50,
+          "image_count": 0,
+          "heading_count": 1,
+          "missing_alt_count": 0
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        },
+        "relations": {
+          "post": [
+            {
+              "tableId": "00000000-0000-4000-8000-000000000010",
+              "record": {
+                "id": "00000000-0000-4000-8000-000000000042",
+                "data": {
+                  "live": "yes",
+                  "slug": "summer-reading-letters-from-the-road",
+                  "tags": [
+                    "announcement",
+                    "tips"
+                  ],
+                  "title": "Summer reading: letters from the road",
+                  "author": "00000000-0000-4000-8000-000000000001",
+                  "status": "published",
+                  "ck_slug": "yes",
+                  "sources": "",
+                  "summary": "Pip is off to the mountains, the coast and a night train through three countries. Here is what is coming in the summer letters, and how to read along.",
+                  "category": "news",
+                  "ck_cover": "yes",
+                  "ck_title": "yes",
+                  "ck_author": "yes",
+                  "ck_keyword": "yes",
+                  "ck_sources": "no",
+                  "ck_summary": "yes",
+                  "cover_image": {
+                    "id": "00000000-0000-4000-8000-000000000043",
+                    "url": "{{origin}}/images/359acc07ce.png",
+                    "mime": "image/png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000043.png",
+                    "fileName": "summer-reading-letters-from-the-road.png",
+                    "fileSize": 71962
+                  },
+                  "ck_takeaways": "yes",
+                  "published_on": "2026-09-19T00:00:00.000Z",
+                  "focus_keyword": "summer letters",
+                  "key_takeaways": "Three new countries this summer\nEach letter has a small map to colour in\nOrder by the 20th to get June's letter",
+                  "cover_image_alt": "A hand-drawn map with a dotted line from mountains to the sea"
+                },
+                "createdAt": "2026-10-12T09:00:00.000Z",
+                "updatedAt": "2026-10-12T09:00:00.000Z",
+                "workspace": "00000000-0000-4000-8000-000000000002",
+                "table": "00000000-0000-4000-8000-000000000010",
+                "createdBy": "00000000-0000-4000-8000-000000000001"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000059",
+        "tableId": "00000000-0000-4000-8000-000000000011",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "data": {
+          "body": "You do not need a subscription to benefit. A grandparent, an aunt or a pen friend can do the same.\n\n1. Pick one person to write to your child\n2. Keep the letters in a box\n3. Re-read the old ones together",
+          "post": "00000000-0000-4000-8000-000000000054",
+          "title": "What to do with it",
+          "position": 2,
+          "word_count": 42,
+          "image_count": 0,
+          "heading_count": 0,
+          "missing_alt_count": 0
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        },
+        "relations": {
+          "post": [
+            {
+              "tableId": "00000000-0000-4000-8000-000000000010",
+              "record": {
+                "id": "00000000-0000-4000-8000-000000000054",
+                "data": {
+                  "live": "yes",
+                  "slug": "research-letters-and-curiosity",
+                  "tags": [
+                    "research",
+                    "tips"
+                  ],
+                  "title": "What research says about letters and curiosity",
+                  "author": "00000000-0000-4000-8000-000000000007",
+                  "status": "published",
+                  "ck_slug": "yes",
+                  "sources": "https://www.unesco.org/en/literacy\nReading Habits Survey, 2024",
+                  "summary": "Studies on reading and writing at home point the same way: children who receive personal mail ask more questions and read for longer.",
+                  "category": "guides",
+                  "ck_cover": "yes",
+                  "ck_title": "yes",
+                  "ck_author": "yes",
+                  "ck_keyword": "no",
+                  "ck_sources": "yes",
+                  "ck_summary": "yes",
+                  "cover_image": {
+                    "id": "00000000-0000-4000-8000-000000000055",
+                    "url": "{{origin}}/images/ef2e040922.png",
+                    "mime": "image/png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000055.png",
+                    "fileName": "research-letters-and-curiosity.png",
+                    "fileSize": 54865
+                  },
+                  "ck_takeaways": "yes",
+                  "published_on": "2026-09-26T00:00:00.000Z",
+                  "focus_keyword": "children curiosity",
+                  "key_takeaways": "Personal mail makes children ask more questions\nShort, regular reading beats long, rare sessions\nHandwriting helps memory",
+                  "cover_image_alt": "A stack of letters tied with string next to an open atlas"
+                },
+                "createdAt": "2026-10-12T09:00:00.000Z",
+                "updatedAt": "2026-10-12T09:00:00.000Z",
+                "workspace": "00000000-0000-4000-8000-000000000002",
+                "table": "00000000-0000-4000-8000-000000000010",
+                "createdBy": "00000000-0000-4000-8000-000000000001"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000060",
+        "tableId": "00000000-0000-4000-8000-000000000011",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "data": {
+          "body": "Researchers who follow children through primary school keep finding the same thing: those who get personal mail ask more questions about the world.\n\n## Why mail works\n\nA letter is addressed to one child. It feels like a secret, and children read secrets slowly and carefully.",
+          "post": "00000000-0000-4000-8000-000000000054",
+          "title": "What the studies found",
+          "position": 1,
+          "word_count": 46,
+          "image_count": 0,
+          "heading_count": 1,
+          "missing_alt_count": 0
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        },
+        "relations": {
+          "post": [
+            {
+              "tableId": "00000000-0000-4000-8000-000000000010",
+              "record": {
+                "id": "00000000-0000-4000-8000-000000000054",
+                "data": {
+                  "live": "yes",
+                  "slug": "research-letters-and-curiosity",
+                  "tags": [
+                    "research",
+                    "tips"
+                  ],
+                  "title": "What research says about letters and curiosity",
+                  "author": "00000000-0000-4000-8000-000000000007",
+                  "status": "published",
+                  "ck_slug": "yes",
+                  "sources": "https://www.unesco.org/en/literacy\nReading Habits Survey, 2024",
+                  "summary": "Studies on reading and writing at home point the same way: children who receive personal mail ask more questions and read for longer.",
+                  "category": "guides",
+                  "ck_cover": "yes",
+                  "ck_title": "yes",
+                  "ck_author": "yes",
+                  "ck_keyword": "no",
+                  "ck_sources": "yes",
+                  "ck_summary": "yes",
+                  "cover_image": {
+                    "id": "00000000-0000-4000-8000-000000000055",
+                    "url": "{{origin}}/images/ef2e040922.png",
+                    "mime": "image/png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000055.png",
+                    "fileName": "research-letters-and-curiosity.png",
+                    "fileSize": 54865
+                  },
+                  "ck_takeaways": "yes",
+                  "published_on": "2026-09-26T00:00:00.000Z",
+                  "focus_keyword": "children curiosity",
+                  "key_takeaways": "Personal mail makes children ask more questions\nShort, regular reading beats long, rare sessions\nHandwriting helps memory",
+                  "cover_image_alt": "A stack of letters tied with string next to an open atlas"
+                },
+                "createdAt": "2026-10-12T09:00:00.000Z",
+                "updatedAt": "2026-10-12T09:00:00.000Z",
+                "workspace": "00000000-0000-4000-8000-000000000002",
+                "table": "00000000-0000-4000-8000-000000000010",
+                "createdBy": "00000000-0000-4000-8000-000000000001"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000061",
+        "tableId": "00000000-0000-4000-8000-000000000011",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "data": {
+          "body": "Pip started as a doodle in the margin of a notebook. The ears are too big, the tail is too long, and that is exactly why children love him.\n\n## A favourite detail\n\nIn every letter there is one tiny hidden thing to find: a snail, a kite, a cup of cocoa.",
+          "post": "00000000-0000-4000-8000-000000000045",
+          "title": "What Pip looks like",
+          "position": 2,
+          "word_count": 52,
+          "image_count": 0,
+          "heading_count": 1,
+          "missing_alt_count": 0
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        },
+        "relations": {
+          "post": [
+            {
+              "tableId": "00000000-0000-4000-8000-000000000010",
+              "record": {
+                "id": "00000000-0000-4000-8000-000000000045",
+                "data": {
+                  "live": "yes",
+                  "slug": "meet-the-illustrator",
+                  "tags": [
+                    "interview"
+                  ],
+                  "title": "Meet the illustrator behind every watercolour fox",
+                  "author": "00000000-0000-4000-8000-000000000005",
+                  "status": "published",
+                  "ck_slug": "yes",
+                  "sources": "Interview with our illustrator, September",
+                  "summary": "Every letter from Pip is painted by hand. We sat down with our illustrator to talk about brushes, patience and why nothing is ever printed from a screen.",
+                  "category": "opinion",
+                  "ck_cover": "yes",
+                  "ck_title": "yes",
+                  "ck_author": "yes",
+                  "ck_keyword": "no",
+                  "ck_sources": "yes",
+                  "ck_summary": "yes",
+                  "cover_image": {
+                    "id": "00000000-0000-4000-8000-000000000046",
+                    "url": "{{origin}}/images/9442e3789a.png",
+                    "mime": "image/png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000046.png",
+                    "fileName": "meet-the-illustrator.png",
+                    "fileSize": 58618
+                  },
+                  "ck_takeaways": "yes",
+                  "published_on": "2026-10-03T00:00:00.000Z",
+                  "focus_keyword": "watercolour illustrator",
+                  "key_takeaways": "Every letter is painted by hand\nOne letter takes about three evenings\nMistakes stay in, they are part of the charm",
+                  "cover_image_alt": "Watercolour brushes and a half-painted fox on a wooden desk"
+                },
+                "createdAt": "2026-10-12T09:00:00.000Z",
+                "updatedAt": "2026-10-12T09:00:00.000Z",
+                "workspace": "00000000-0000-4000-8000-000000000002",
+                "table": "00000000-0000-4000-8000-000000000010",
+                "createdBy": "00000000-0000-4000-8000-000000000001"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000062",
+        "tableId": "00000000-0000-4000-8000-000000000011",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "data": {
+          "body": "A single letter takes about three evenings. First the pencil sketch, then the washes, then the tiny details that children find and point at.\n\n## Why not print from a screen?\n\nBecause a child can tell. Real paint has a little wobble, and that wobble says a person was here.",
+          "post": "00000000-0000-4000-8000-000000000045",
+          "title": "Slow on purpose",
+          "position": 1,
+          "word_count": 50,
+          "image_count": 0,
+          "heading_count": 1,
+          "missing_alt_count": 0
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        },
+        "relations": {
+          "post": [
+            {
+              "tableId": "00000000-0000-4000-8000-000000000010",
+              "record": {
+                "id": "00000000-0000-4000-8000-000000000045",
+                "data": {
+                  "live": "yes",
+                  "slug": "meet-the-illustrator",
+                  "tags": [
+                    "interview"
+                  ],
+                  "title": "Meet the illustrator behind every watercolour fox",
+                  "author": "00000000-0000-4000-8000-000000000005",
+                  "status": "published",
+                  "ck_slug": "yes",
+                  "sources": "Interview with our illustrator, September",
+                  "summary": "Every letter from Pip is painted by hand. We sat down with our illustrator to talk about brushes, patience and why nothing is ever printed from a screen.",
+                  "category": "opinion",
+                  "ck_cover": "yes",
+                  "ck_title": "yes",
+                  "ck_author": "yes",
+                  "ck_keyword": "no",
+                  "ck_sources": "yes",
+                  "ck_summary": "yes",
+                  "cover_image": {
+                    "id": "00000000-0000-4000-8000-000000000046",
+                    "url": "{{origin}}/images/9442e3789a.png",
+                    "mime": "image/png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000046.png",
+                    "fileName": "meet-the-illustrator.png",
+                    "fileSize": 58618
+                  },
+                  "ck_takeaways": "yes",
+                  "published_on": "2026-10-03T00:00:00.000Z",
+                  "focus_keyword": "watercolour illustrator",
+                  "key_takeaways": "Every letter is painted by hand\nOne letter takes about three evenings\nMistakes stay in, they are part of the charm",
+                  "cover_image_alt": "Watercolour brushes and a half-painted fox on a wooden desk"
+                },
+                "createdAt": "2026-10-12T09:00:00.000Z",
+                "updatedAt": "2026-10-12T09:00:00.000Z",
+                "workspace": "00000000-0000-4000-8000-000000000002",
+                "table": "00000000-0000-4000-8000-000000000010",
+                "createdBy": "00000000-0000-4000-8000-000000000001"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000063",
+        "tableId": "00000000-0000-4000-8000-000000000011",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "data": {
+          "body": "## Post it together\n\nWalk to the postbox the same day. The little thud as the letter drops in is half the magic.\n\n- Write on the same day every week\n- Keep stamps in a jar by the door\n- Read the reply out loud as a family\n\n> A letter is a small promise that someone is thinking of you.",
+          "post": "00000000-0000-4000-8000-000000000048",
+          "title": "Make it a ritual",
+          "position": 2,
+          "word_count": 62,
+          "image_count": 0,
+          "heading_count": 1,
+          "missing_alt_count": 0
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        },
+        "relations": {
+          "post": [
+            {
+              "tableId": "00000000-0000-4000-8000-000000000010",
+              "record": {
+                "id": "00000000-0000-4000-8000-000000000048",
+                "data": {
+                  "live": "yes",
+                  "slug": "get-your-child-writing-letters",
+                  "tags": [
+                    "how_to",
+                    "tips"
+                  ],
+                  "title": "Five ways to get your child writing letters again",
+                  "author": "00000000-0000-4000-8000-000000000001",
+                  "status": "published",
+                  "ck_slug": "yes",
+                  "sources": "https://www.literacytrust.org.uk/",
+                  "summary": "Children love getting letters but rarely write them. These five small habits make writing back something they look forward to, not a chore.",
+                  "category": "guides",
+                  "ck_cover": "yes",
+                  "ck_title": "yes",
+                  "ck_author": "yes",
+                  "ck_keyword": "yes",
+                  "ck_sources": "yes",
+                  "ck_summary": "yes",
+                  "cover_image": {
+                    "id": "00000000-0000-4000-8000-000000000049",
+                    "url": "{{origin}}/images/2599da3f22.png",
+                    "mime": "image/png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000049.png",
+                    "fileName": "get-your-child-writing-letters.png",
+                    "fileSize": 43931
+                  },
+                  "ck_takeaways": "yes",
+                  "published_on": "2026-10-09T00:00:00.000Z",
+                  "focus_keyword": "writing letters",
+                  "key_takeaways": "Start with a single sentence\nLet them choose the paper and pen\nPost it together, the same day",
+                  "cover_image_alt": "A child writing a letter at a kitchen table, with a fox drawn in the corner"
+                },
+                "createdAt": "2026-10-12T09:00:00.000Z",
+                "updatedAt": "2026-10-12T09:00:00.000Z",
+                "workspace": "00000000-0000-4000-8000-000000000002",
+                "table": "00000000-0000-4000-8000-000000000010",
+                "createdBy": "00000000-0000-4000-8000-000000000001"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000064",
+        "tableId": "00000000-0000-4000-8000-000000000011",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "data": {
+          "body": "The hardest part of a letter is the blank page. Ask for one sentence, not one page. \"Tell Pip what you had for breakfast\" is a complete letter, and a proud one.\n\n## Make the tools theirs\n\nLet your child pick the paper, the pen and the stickers. A letter written with a glitter pen is worth ten typed ones.\n\n![A child writing a letter at a kitchen table, with a fox drawn in the corner]({{origin}}/images/e0fced1011.png)",
+          "post": "00000000-0000-4000-8000-000000000048",
+          "title": "Start tiny",
+          "position": 1,
+          "word_count": 76,
+          "image_count": 1,
+          "heading_count": 1,
+          "missing_alt_count": 0
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        },
+        "relations": {
+          "post": [
+            {
+              "tableId": "00000000-0000-4000-8000-000000000010",
+              "record": {
+                "id": "00000000-0000-4000-8000-000000000048",
+                "data": {
+                  "live": "yes",
+                  "slug": "get-your-child-writing-letters",
+                  "tags": [
+                    "how_to",
+                    "tips"
+                  ],
+                  "title": "Five ways to get your child writing letters again",
+                  "author": "00000000-0000-4000-8000-000000000001",
+                  "status": "published",
+                  "ck_slug": "yes",
+                  "sources": "https://www.literacytrust.org.uk/",
+                  "summary": "Children love getting letters but rarely write them. These five small habits make writing back something they look forward to, not a chore.",
+                  "category": "guides",
+                  "ck_cover": "yes",
+                  "ck_title": "yes",
+                  "ck_author": "yes",
+                  "ck_keyword": "yes",
+                  "ck_sources": "yes",
+                  "ck_summary": "yes",
+                  "cover_image": {
+                    "id": "00000000-0000-4000-8000-000000000049",
+                    "url": "{{origin}}/images/2599da3f22.png",
+                    "mime": "image/png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000049.png",
+                    "fileName": "get-your-child-writing-letters.png",
+                    "fileSize": 43931
+                  },
+                  "ck_takeaways": "yes",
+                  "published_on": "2026-10-09T00:00:00.000Z",
+                  "focus_keyword": "writing letters",
+                  "key_takeaways": "Start with a single sentence\nLet them choose the paper and pen\nPost it together, the same day",
+                  "cover_image_alt": "A child writing a letter at a kitchen table, with a fox drawn in the corner"
+                },
+                "createdAt": "2026-10-12T09:00:00.000Z",
+                "updatedAt": "2026-10-12T09:00:00.000Z",
+                "workspace": "00000000-0000-4000-8000-000000000002",
+                "table": "00000000-0000-4000-8000-000000000010",
+                "createdBy": "00000000-0000-4000-8000-000000000001"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "links": {
+    "form": "00000000-0000-4000-8000-000000000002/demo-form",
+    "help": "00000000-0000-4000-8000-000000000002/demo-help",
+    "booking": "00000000-0000-4000-8000-000000000002/demo-booking",
+    "agent": "00000000-0000-4000-8000-000000000002/demo-agent"
+  },
+  "successMessage": "Thank you! Pip will write back soon."
+}
