@@ -3698,6 +3698,53 @@
       }
     ]
   },
+  "form": {
+    "title": "Contact",
+    "description": "",
+    "design": "card",
+    "fields": [
+      {
+        "id": "first_name",
+        "label": "First Name",
+        "kind": "text",
+        "required": false,
+        "inputType": "text",
+        "isMany": false
+      },
+      {
+        "id": "last_name",
+        "label": "Last Name",
+        "kind": "text",
+        "required": false,
+        "inputType": "text",
+        "isMany": false
+      },
+      {
+        "id": "emails",
+        "label": "Emails",
+        "kind": "text",
+        "required": true,
+        "inputType": "email",
+        "isMany": true
+      },
+      {
+        "id": "phones",
+        "label": "Phones",
+        "kind": "text",
+        "required": true,
+        "inputType": "phone",
+        "isMany": true
+      },
+      {
+        "id": "description",
+        "label": "Description",
+        "kind": "text",
+        "required": false,
+        "inputType": "textarea",
+        "isMany": false
+      }
+    ]
+  },
   "links": {
     "form": "00000000-0000-4000-8000-000000000002/demo-form",
     "help": "00000000-0000-4000-8000-000000000002/demo-help",

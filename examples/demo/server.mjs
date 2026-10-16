@@ -90,11 +90,16 @@ export async function startDemo({ port = 4010, dumpFile = path.join(here, 'dump.
 
     // Contact form: anyone may send; here it is only acknowledged.
     if (/^\/public\/forms\//.test(route)) {
-      if (request.method !== 'POST') return send(response, 200, { message: dump.successMessage });
+      if (request.method !== 'POST') return send(response, 200, dump.form);
       const text = await read(request);
       const fields = request.headers['content-type']?.includes('json') ? JSON.parse(text || '{}') : Object.fromEntries(new URLSearchParams(text));
       if (fields._website) return send(response, 200, { message: dump.successMessage });
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(fields.email ?? ''))) return send(response, 400, { message: 'Enter a valid email address.' });
+      // The form's own questions decide what is needed, as in the real app.
+      for (const field of dump.form.fields) {
+        const value = String(fields[field.id] ?? '').trim();
+        if (field.required && !value) return send(response, 400, { message: `${field.label} is required.` });
+        if (value && field.inputType === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value)) return send(response, 400, { message: 'Enter a valid email address.' });
+      }
       return send(response, 200, { message: dump.successMessage });
     }
 
