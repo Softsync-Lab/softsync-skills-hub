@@ -28,7 +28,7 @@ const site = {
 const pages = ['/help', '/contact', '/book'].filter((page) => env[`SOFTSYNC_${{ '/help': 'HELP', '/contact': 'FORM', '/book': 'BOOKING' }[page]}`]);
 const dist = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../dist');
 
-const content = createClient({ api: env.SOFTSYNC_API, apiKey: env.SOFTSYNC_API_KEY, cacheSeconds: Number(env.CACHE_SECONDS ?? 60) });
+const content = createClient({ api: env.SOFTSYNC_API, apiKey: env.SOFTSYNC_API_KEY, cacheSeconds: Number(env.CACHE_SECONDS ?? 60), preview: env.SOFTSYNC_PREVIEW === '1' });
 
 const types = { html: 'text/html; charset=utf-8', json: 'application/json', xml: 'application/xml; charset=utf-8', txt: 'text/plain; charset=utf-8', md: 'text/markdown; charset=utf-8' };
 const escape = (value) => String(value ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
@@ -77,6 +77,7 @@ async function handle(request, response) {
       const [authors, schema] = await Promise.all([content.authors(), content.schema()]);
       return send(200, 'json', postView({ post, authors, schema, siteUrl: site.url, siteName: site.name }));
     }
+    if (route === '/cms/blocks') return send(200, 'json', { blocks: await content.listItems('site_blocks') });
     if (route === '/cms/faq') {
       const [items, schema] = await Promise.all([content.listFaq(), content.schema()]);
       return send(200, 'json', { items, categories: schema.articleCategories });

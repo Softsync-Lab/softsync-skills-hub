@@ -2,15 +2,18 @@
 import { computed, onMounted, ref } from 'vue';
 import { RouterLink } from 'vue-router';
 
+import Landing from '../components/Landing.vue';
 import PostCard from '../components/PostCard.vue';
-import { listPosts } from '../lib/cms';
+import { listBlocks, listPosts, type Block } from '../lib/cms';
 import { links } from '../lib/config';
 import { useHead } from '../lib/useHead';
 
 const props = defineProps<{ site: { name: string; tagline: string } }>();
 const data = ref<Awaited<ReturnType<typeof listPosts>>>(null);
+const blocks = ref<Block[]>([]);
 onMounted(async () => {
   data.value = await listPosts();
+  blocks.value = await listBlocks();
 });
 useHead(
   computed(() => (props.site.name ? `${props.site.name} — ${props.site.tagline}` : 'Loading…')),
@@ -26,7 +29,8 @@ const doors = [
 
 <template>
   <main class="mx-auto max-w-6xl px-6">
-    <section class="py-16">
+    <Landing :blocks="blocks" />
+    <section v-if="!blocks.some((block) => block.block === 'hero')" class="py-16">
       <h1 class="font-serif text-6xl leading-none font-bold tracking-tight">{{ site.name }}</h1>
       <p class="mt-4 max-w-xl text-xl text-stone-600">{{ site.tagline }}</p>
     </section>

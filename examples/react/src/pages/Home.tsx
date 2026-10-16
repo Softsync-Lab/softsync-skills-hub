@@ -2,14 +2,17 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 
 import { PostCard } from '../components/PostCard';
-import { listPosts } from '../lib/cms';
+import { Landing } from '../components/Landing';
+import { listBlocks, listPosts, type Block } from '../lib/cms';
 import { links } from '../lib/config';
 import { useHead } from '../lib/useHead';
 
 export function Home({ site }: { site: { name: string; tagline: string } }) {
   const [data, setData] = useState<Awaited<ReturnType<typeof listPosts>>>(null);
+  const [blocks, setBlocks] = useState<Block[]>([]);
   useEffect(() => {
     listPosts().then(setData);
+    listBlocks().then(setBlocks);
   }, []);
   useHead(site.name ? `${site.name} — ${site.tagline}` : 'Loading…', site.tagline);
 
@@ -21,10 +24,11 @@ export function Home({ site }: { site: { name: string; tagline: string } }) {
 
   return (
     <main className="mx-auto max-w-6xl px-6">
-      <section className="py-16">
+      <Landing blocks={blocks} />
+      {!blocks.some((block) => block.block === 'hero') && <section className="py-16">
         <h1 className="font-serif text-6xl leading-none font-bold tracking-tight">{site.name}</h1>
         <p className="mt-4 max-w-xl text-xl text-stone-600">{site.tagline}</p>
-      </section>
+      </section>}
       {doors.length > 0 && (
         <section className="grid gap-4 sm:grid-cols-3">
           {doors.map((door) => (

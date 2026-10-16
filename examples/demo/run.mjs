@@ -22,6 +22,7 @@ const server = {
   SOFTSYNC_HELP: help,
   SOFTSYNC_AGENT: agent,
   CACHE_SECONDS: '0',
+  SOFTSYNC_PREVIEW: '0', // the demo shows the live site, not the drafts
 };
 const browser = (prefix) => Object.fromEntries(
   Object.entries({ APP: demo.origin, API: demo.origin, FORM: form, BOOKING: booking, HELP: help, AGENT: agent }).map(([k, v]) => [`${prefix}_SOFTSYNC_${k}`, v]),
@@ -36,8 +37,8 @@ const run = (script, extra = []) => new Promise((resolve, reject) => {
 console.log(`\nDemo data on ${demo.origin}. Nothing here needs an account or a key.\n`);
 try {
   if (scripts.api) await Promise.all([run('api'), run('dev')]);       // React, Vue: the small server and the browser app
-  else if (scripts.dev) await run('dev');                              // Next.js, Astro
-  else { await run('build'); await run('start'); }                     // Plain HTML
+  else if (scripts.dev) await run('dev');                              // Next.js, Astro, plain HTML (rebuilt every few seconds)
+  else { await run('build'); await run('start'); }
 } finally {
   await demo.close();
 }

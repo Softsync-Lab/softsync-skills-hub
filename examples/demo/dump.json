@@ -279,7 +279,7 @@
                   "tables": []
                 },
                 "type": "formula",
-                "version": 3,
+                "version": 5,
                 "volatile": false,
                 "expression": "IF(AND({fld:status} = {choice:published}, {fld:audience} = {choice:public}), \"yes\", \"no\")"
               },
@@ -1331,7 +1331,7 @@
                   "tables": []
                 },
                 "type": "formula",
-                "version": 4,
+                "version": 6,
                 "volatile": false,
                 "expression": "IF({fld:status} = {choice:published}, \"yes\", \"no\")"
               },
@@ -1573,6 +1573,170 @@
           "missing_alt_count",
           "heading_count"
         ]
+      },
+      {
+        "apiName": "site_blocks",
+        "id": "00000000-0000-4000-8000-000000000012",
+        "displayName": "Home page",
+        "fields": [
+          {
+            "apiName": "title",
+            "displayName": "Title",
+            "id": "title",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "text"
+            },
+            "order": 0
+          },
+          {
+            "apiName": "highlight",
+            "displayName": "Second line",
+            "id": "highlight",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "text"
+            },
+            "order": 1
+          },
+          {
+            "apiName": "body",
+            "displayName": "Text",
+            "id": "body",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "textarea"
+            },
+            "order": 2
+          },
+          {
+            "apiName": "image",
+            "displayName": "Picture",
+            "id": "image",
+            "kind": "file",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "isMany": false,
+              "maxSize": 5242880,
+              "fileType": "image",
+              "allowedMimeTypes": [
+                "image/jpeg",
+                "image/png",
+                "image/webp"
+              ]
+            },
+            "order": 3
+          },
+          {
+            "apiName": "image_alt",
+            "displayName": "Picture description",
+            "id": "image_alt",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "text"
+            },
+            "order": 4
+          },
+          {
+            "apiName": "block",
+            "displayName": "Kind",
+            "id": "block",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "choices": [
+                {
+                  "color": "#3b82f6",
+                  "label": "Hero",
+                  "value": "hero"
+                },
+                {
+                  "color": "#10b981",
+                  "label": "Section heading",
+                  "value": "section"
+                },
+                {
+                  "color": "#f59e0b",
+                  "label": "Card",
+                  "value": "feature"
+                }
+              ]
+            },
+            "order": 5
+          },
+          {
+            "apiName": "button_label",
+            "displayName": "Button text",
+            "id": "button_label",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "text"
+            },
+            "order": 6
+          },
+          {
+            "apiName": "button_link",
+            "displayName": "Button address",
+            "id": "button_link",
+            "kind": "text",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "inputType": "text"
+            },
+            "order": 7
+          },
+          {
+            "apiName": "position",
+            "displayName": "Order",
+            "id": "position",
+            "kind": "number",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "decimals": 0
+            },
+            "order": 8
+          },
+          {
+            "apiName": "status",
+            "displayName": "Status",
+            "id": "status",
+            "kind": "select",
+            "required": false,
+            "canRemove": true,
+            "options": {
+              "choices": [
+                {
+                  "color": "#9ca3af",
+                  "label": "Draft",
+                  "value": "draft"
+                },
+                {
+                  "color": "#10b981",
+                  "label": "Published",
+                  "value": "published"
+                }
+              ]
+            },
+            "order": 9
+          }
+        ],
+        "description": "The pieces of the home page. A website reads them through the API.",
+        "hasEmbeddings": false,
+        "isHidden": false
       }
     ],
     "members": [
@@ -1610,7 +1774,7 @@
     ],
     "groups": [
       {
-        "id": "00000000-0000-4000-8000-000000000012",
+        "id": "00000000-0000-4000-8000-000000000013",
         "title": "Companies",
         "description": "Active and potential companies",
         "visibility": "PRIVATE",
@@ -1633,9 +1797,9 @@
         "order": 0,
         "views": [
           {
-            "id": "00000000-0000-4000-8000-000000000013",
+            "id": "00000000-0000-4000-8000-000000000014",
             "name": "Table",
-            "tableId": "00000000-0000-4000-8000-000000000014",
+            "tableId": "00000000-0000-4000-8000-000000000015",
             "viewType": "table",
             "config": {
               "columns": [
@@ -1652,7 +1816,7 @@
         ]
       },
       {
-        "id": "00000000-0000-4000-8000-000000000015",
+        "id": "00000000-0000-4000-8000-000000000016",
         "title": "Contacts",
         "description": "People contacts",
         "visibility": "PRIVATE",
@@ -1675,9 +1839,9 @@
         "order": 0,
         "views": [
           {
-            "id": "00000000-0000-4000-8000-000000000016",
+            "id": "00000000-0000-4000-8000-000000000017",
             "name": "Table",
-            "tableId": "00000000-0000-4000-8000-000000000017",
+            "tableId": "00000000-0000-4000-8000-000000000018",
             "viewType": "table",
             "config": {
               "columns": [
@@ -1695,7 +1859,7 @@
         ]
       },
       {
-        "id": "00000000-0000-4000-8000-000000000018",
+        "id": "00000000-0000-4000-8000-000000000019",
         "title": "Tasks",
         "description": "Tasks and activities",
         "visibility": "PRIVATE",
@@ -1718,9 +1882,9 @@
         "order": 0,
         "views": [
           {
-            "id": "00000000-0000-4000-8000-000000000019",
+            "id": "00000000-0000-4000-8000-000000000020",
             "name": "List",
-            "tableId": "00000000-0000-4000-8000-000000000020",
+            "tableId": "00000000-0000-4000-8000-000000000021",
             "viewType": "table",
             "config": {
               "columns": [
@@ -1738,9 +1902,9 @@
             "isDefault": false
           },
           {
-            "id": "00000000-0000-4000-8000-000000000021",
+            "id": "00000000-0000-4000-8000-000000000022",
             "name": "Board",
-            "tableId": "00000000-0000-4000-8000-000000000020",
+            "tableId": "00000000-0000-4000-8000-000000000021",
             "viewType": "kanban",
             "config": {
               "groupBy": "priority",
@@ -1761,7 +1925,7 @@
         ]
       },
       {
-        "id": "00000000-0000-4000-8000-000000000022",
+        "id": "00000000-0000-4000-8000-000000000023",
         "title": "Deals",
         "description": "Sales pipeline deals",
         "visibility": "PRIVATE",
@@ -1772,30 +1936,30 @@
             "charts": [
               {
                 "chartId": "# of Companies",
-                "tableId": "00000000-0000-4000-8000-000000000014",
-                "groupId": "00000000-0000-4000-8000-000000000012",
+                "tableId": "00000000-0000-4000-8000-000000000015",
+                "groupId": "00000000-0000-4000-8000-000000000013",
                 "chartType": "metric",
                 "measure": "count"
               },
               {
                 "chartId": "# of Contacts",
-                "tableId": "00000000-0000-4000-8000-000000000017",
-                "groupId": "00000000-0000-4000-8000-000000000015",
+                "tableId": "00000000-0000-4000-8000-000000000018",
+                "groupId": "00000000-0000-4000-8000-000000000016",
                 "chartType": "metric",
                 "measure": "count"
               },
               {
                 "chartId": "Total Pipeline Value",
-                "tableId": "00000000-0000-4000-8000-000000000023",
-                "groupId": "00000000-0000-4000-8000-000000000022",
+                "tableId": "00000000-0000-4000-8000-000000000024",
+                "groupId": "00000000-0000-4000-8000-000000000023",
                 "chartType": "metric",
                 "measure": "sum",
                 "measureField": "deal_value"
               },
               {
                 "chartId": "Deal by Stage",
-                "tableId": "00000000-0000-4000-8000-000000000023",
-                "groupId": "00000000-0000-4000-8000-000000000022",
+                "tableId": "00000000-0000-4000-8000-000000000024",
+                "groupId": "00000000-0000-4000-8000-000000000023",
                 "chartType": "bar",
                 "measure": "sum",
                 "measureField": "deal_value",
@@ -1803,16 +1967,16 @@
               },
               {
                 "chartId": "Deal Sources",
-                "tableId": "00000000-0000-4000-8000-000000000023",
-                "groupId": "00000000-0000-4000-8000-000000000022",
+                "tableId": "00000000-0000-4000-8000-000000000024",
+                "groupId": "00000000-0000-4000-8000-000000000023",
                 "chartType": "pie",
                 "measure": "count",
                 "viewByField": "source"
               },
               {
                 "chartId": "Industry Distribution",
-                "tableId": "00000000-0000-4000-8000-000000000014",
-                "groupId": "00000000-0000-4000-8000-000000000012",
+                "tableId": "00000000-0000-4000-8000-000000000015",
+                "groupId": "00000000-0000-4000-8000-000000000013",
                 "chartType": "pie",
                 "measure": "count",
                 "viewByField": "industry"
@@ -1838,9 +2002,9 @@
         "order": 0,
         "views": [
           {
-            "id": "00000000-0000-4000-8000-000000000024",
+            "id": "00000000-0000-4000-8000-000000000025",
             "name": "List",
-            "tableId": "00000000-0000-4000-8000-000000000023",
+            "tableId": "00000000-0000-4000-8000-000000000024",
             "viewType": "table",
             "config": {
               "columns": [
@@ -1857,9 +2021,9 @@
             "isDefault": false
           },
           {
-            "id": "00000000-0000-4000-8000-000000000025",
+            "id": "00000000-0000-4000-8000-000000000026",
             "name": "Pipeline",
-            "tableId": "00000000-0000-4000-8000-000000000023",
+            "tableId": "00000000-0000-4000-8000-000000000024",
             "viewType": "kanban",
             "config": {
               "groupBy": "stage",
@@ -1880,7 +2044,7 @@
         ]
       },
       {
-        "id": "00000000-0000-4000-8000-000000000026",
+        "id": "00000000-0000-4000-8000-000000000027",
         "title": "Content",
         "description": "Posts your website reads through the API.",
         "visibility": "WORKSPACE",
@@ -1904,7 +2068,7 @@
         "order": 0,
         "views": [
           {
-            "id": "00000000-0000-4000-8000-000000000027",
+            "id": "00000000-0000-4000-8000-000000000028",
             "name": "All posts",
             "tableId": "00000000-0000-4000-8000-000000000010",
             "viewType": "table",
@@ -1929,7 +2093,7 @@
             "isDefault": true
           },
           {
-            "id": "00000000-0000-4000-8000-000000000028",
+            "id": "00000000-0000-4000-8000-000000000029",
             "name": "Drafts",
             "tableId": "00000000-0000-4000-8000-000000000010",
             "viewType": "table",
@@ -1958,7 +2122,7 @@
             "isDefault": false
           },
           {
-            "id": "00000000-0000-4000-8000-000000000029",
+            "id": "00000000-0000-4000-8000-000000000030",
             "name": "Published",
             "tableId": "00000000-0000-4000-8000-000000000010",
             "viewType": "table",
@@ -1990,7 +2154,7 @@
             "isDefault": false
           },
           {
-            "id": "00000000-0000-4000-8000-000000000030",
+            "id": "00000000-0000-4000-8000-000000000031",
             "name": "Archived",
             "tableId": "00000000-0000-4000-8000-000000000010",
             "viewType": "table",
@@ -2019,7 +2183,7 @@
         ]
       },
       {
-        "id": "00000000-0000-4000-8000-000000000031",
+        "id": "00000000-0000-4000-8000-000000000032",
         "title": "Wiki",
         "description": "Pages your team writes once and finds again.",
         "visibility": "WORKSPACE",
@@ -2043,7 +2207,7 @@
         "order": 0,
         "views": [
           {
-            "id": "00000000-0000-4000-8000-000000000032",
+            "id": "00000000-0000-4000-8000-000000000033",
             "name": "All pages",
             "tableId": "00000000-0000-4000-8000-000000000008",
             "viewType": "table",
@@ -2065,7 +2229,7 @@
             "isDefault": true
           },
           {
-            "id": "00000000-0000-4000-8000-000000000033",
+            "id": "00000000-0000-4000-8000-000000000034",
             "name": "Team pages",
             "tableId": "00000000-0000-4000-8000-000000000008",
             "viewType": "table",
@@ -2092,7 +2256,7 @@
             "isDefault": false
           },
           {
-            "id": "00000000-0000-4000-8000-000000000034",
+            "id": "00000000-0000-4000-8000-000000000035",
             "name": "Drafts",
             "tableId": "00000000-0000-4000-8000-000000000008",
             "viewType": "table",
@@ -2115,41 +2279,63 @@
             "isDefault": false
           }
         ]
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000036",
+        "title": "Website",
+        "description": "The pieces of the home page",
+        "visibility": "PRIVATE",
+        "charts": [],
+        "members": [
+          {
+            "userId": "00000000-0000-4000-8000-000000000001",
+            "firstName": "Emma",
+            "lastName": "Larsen",
+            "email": "emma@pipspost.example",
+            "avatarUrl": "{{origin}}/images/b0968fb55b.png",
+            "role": "OWNER",
+            "joinedAt": "2026-10-12T09:00:00.000Z",
+            "lastLoginAt": "2026-10-12T09:00:00.000Z"
+          }
+        ],
+        "metadata": null,
+        "order": 0,
+        "views": []
       }
     ],
     "dashboards": [
       {
-        "groupId": "00000000-0000-4000-8000-000000000022",
+        "groupId": "00000000-0000-4000-8000-000000000023",
         "config": {
           "id": "stats",
           "title": "Sales Dashboard",
           "charts": [
             {
               "chartId": "# of Companies",
-              "tableId": "00000000-0000-4000-8000-000000000014",
-              "groupId": "00000000-0000-4000-8000-000000000012",
+              "tableId": "00000000-0000-4000-8000-000000000015",
+              "groupId": "00000000-0000-4000-8000-000000000013",
               "chartType": "metric",
               "measure": "count"
             },
             {
               "chartId": "# of Contacts",
-              "tableId": "00000000-0000-4000-8000-000000000017",
-              "groupId": "00000000-0000-4000-8000-000000000015",
+              "tableId": "00000000-0000-4000-8000-000000000018",
+              "groupId": "00000000-0000-4000-8000-000000000016",
               "chartType": "metric",
               "measure": "count"
             },
             {
               "chartId": "Total Pipeline Value",
-              "tableId": "00000000-0000-4000-8000-000000000023",
-              "groupId": "00000000-0000-4000-8000-000000000022",
+              "tableId": "00000000-0000-4000-8000-000000000024",
+              "groupId": "00000000-0000-4000-8000-000000000023",
               "chartType": "metric",
               "measure": "sum",
               "measureField": "deal_value"
             },
             {
               "chartId": "Deal by Stage",
-              "tableId": "00000000-0000-4000-8000-000000000023",
-              "groupId": "00000000-0000-4000-8000-000000000022",
+              "tableId": "00000000-0000-4000-8000-000000000024",
+              "groupId": "00000000-0000-4000-8000-000000000023",
               "chartType": "bar",
               "measure": "sum",
               "measureField": "deal_value",
@@ -2157,16 +2343,16 @@
             },
             {
               "chartId": "Deal Sources",
-              "tableId": "00000000-0000-4000-8000-000000000023",
-              "groupId": "00000000-0000-4000-8000-000000000022",
+              "tableId": "00000000-0000-4000-8000-000000000024",
+              "groupId": "00000000-0000-4000-8000-000000000023",
               "chartType": "pie",
               "measure": "count",
               "viewByField": "source"
             },
             {
               "chartId": "Industry Distribution",
-              "tableId": "00000000-0000-4000-8000-000000000014",
-              "groupId": "00000000-0000-4000-8000-000000000012",
+              "tableId": "00000000-0000-4000-8000-000000000015",
+              "groupId": "00000000-0000-4000-8000-000000000013",
               "chartType": "pie",
               "measure": "count",
               "viewByField": "industry"
@@ -2179,10 +2365,10 @@
   "records": {
     "articles": [
       {
-        "id": "00000000-0000-4000-8000-000000000035",
+        "id": "00000000-0000-4000-8000-000000000037",
         "tableId": "00000000-0000-4000-8000-000000000008",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000031"
+          "00000000-0000-4000-8000-000000000032"
         ],
         "data": {
           "body": "Internal: refund within 60 days for late delivery, no questions asked.",
@@ -2206,10 +2392,10 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000036",
+        "id": "00000000-0000-4000-8000-000000000038",
         "tableId": "00000000-0000-4000-8000-000000000008",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000031"
+          "00000000-0000-4000-8000-000000000032"
         ],
         "data": {
           "body": "Yes. Choose \"As a gift\" at checkout, add a name and a message, and the first letter arrives with a gift card inside. You can start it on any month.",
@@ -2233,10 +2419,10 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000037",
+        "id": "00000000-0000-4000-8000-000000000039",
         "tableId": "00000000-0000-4000-8000-000000000008",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000031"
+          "00000000-0000-4000-8000-000000000032"
         ],
         "data": {
           "body": "Each letter is a folded sheet of thick paper with a hand-painted illustration, a short story from Pip, a small map to colour in and a stamp from the country he is visiting.",
@@ -2260,10 +2446,10 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000038",
+        "id": "00000000-0000-4000-8000-000000000040",
         "tableId": "00000000-0000-4000-8000-000000000008",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000031"
+          "00000000-0000-4000-8000-000000000032"
         ],
         "data": {
           "body": "Send us a message at any time. You can pause for up to three months, or cancel with no fee. The month already paid for is always delivered.",
@@ -2287,10 +2473,10 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000039",
+        "id": "00000000-0000-4000-8000-000000000041",
         "tableId": "00000000-0000-4000-8000-000000000008",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000031"
+          "00000000-0000-4000-8000-000000000032"
         ],
         "data": {
           "body": "Yes. Reply to any order email with the new name or address before the 20th and the next letter goes there. Letters already in the post cannot be redirected.",
@@ -2314,10 +2500,10 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000040",
+        "id": "00000000-0000-4000-8000-000000000042",
         "tableId": "00000000-0000-4000-8000-000000000008",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000031"
+          "00000000-0000-4000-8000-000000000032"
         ],
         "data": {
           "body": "Order by the 20th of the month and your first letter arrives in the first week of the next month. It travels by ordinary post, so allow up to three working days within the Nordics.",
@@ -2343,13 +2529,13 @@
     ],
     "post_faqs": [
       {
-        "id": "00000000-0000-4000-8000-000000000041",
+        "id": "00000000-0000-4000-8000-000000000043",
         "tableId": "00000000-0000-4000-8000-000000000009",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000026"
+          "00000000-0000-4000-8000-000000000027"
         ],
         "data": {
-          "post": "00000000-0000-4000-8000-000000000042",
+          "post": "00000000-0000-4000-8000-000000000044",
           "title": "When do new subscribers get their first letter?",
           "answer": "Order by the 20th of the month and your first letter arrives in the first week of the next.",
           "position": 1
@@ -2371,7 +2557,7 @@
             {
               "tableId": "00000000-0000-4000-8000-000000000010",
               "record": {
-                "id": "00000000-0000-4000-8000-000000000042",
+                "id": "00000000-0000-4000-8000-000000000044",
                 "data": {
                   "live": "yes",
                   "slug": "summer-reading-letters-from-the-road",
@@ -2393,10 +2579,10 @@
                   "ck_sources": "no",
                   "ck_summary": "yes",
                   "cover_image": {
-                    "id": "00000000-0000-4000-8000-000000000043",
+                    "id": "00000000-0000-4000-8000-000000000045",
                     "url": "{{origin}}/images/359acc07ce.png",
                     "mime": "image/png",
-                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000043.png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000045.png",
                     "fileName": "summer-reading-letters-from-the-road.png",
                     "fileSize": 71962
                   },
@@ -2417,13 +2603,13 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000044",
+        "id": "00000000-0000-4000-8000-000000000046",
         "tableId": "00000000-0000-4000-8000-000000000009",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000026"
+          "00000000-0000-4000-8000-000000000027"
         ],
         "data": {
-          "post": "00000000-0000-4000-8000-000000000045",
+          "post": "00000000-0000-4000-8000-000000000047",
           "title": "Can we buy the original paintings?",
           "answer": "A few originals go on sale each December. Subscribers hear about them first.",
           "position": 1
@@ -2445,7 +2631,7 @@
             {
               "tableId": "00000000-0000-4000-8000-000000000010",
               "record": {
-                "id": "00000000-0000-4000-8000-000000000045",
+                "id": "00000000-0000-4000-8000-000000000047",
                 "data": {
                   "live": "yes",
                   "slug": "meet-the-illustrator",
@@ -2466,10 +2652,10 @@
                   "ck_sources": "yes",
                   "ck_summary": "yes",
                   "cover_image": {
-                    "id": "00000000-0000-4000-8000-000000000046",
+                    "id": "00000000-0000-4000-8000-000000000048",
                     "url": "{{origin}}/images/9442e3789a.png",
                     "mime": "image/png",
-                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000046.png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000048.png",
                     "fileName": "meet-the-illustrator.png",
                     "fileSize": 58618
                   },
@@ -2490,13 +2676,13 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000047",
+        "id": "00000000-0000-4000-8000-000000000049",
         "tableId": "00000000-0000-4000-8000-000000000009",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000026"
+          "00000000-0000-4000-8000-000000000027"
         ],
         "data": {
-          "post": "00000000-0000-4000-8000-000000000048",
+          "post": "00000000-0000-4000-8000-000000000050",
           "title": "How often should my child write?",
           "answer": "Once a week is plenty. A short letter every week beats a long one every few months.",
           "position": 2
@@ -2518,7 +2704,7 @@
             {
               "tableId": "00000000-0000-4000-8000-000000000010",
               "record": {
-                "id": "00000000-0000-4000-8000-000000000048",
+                "id": "00000000-0000-4000-8000-000000000050",
                 "data": {
                   "live": "yes",
                   "slug": "get-your-child-writing-letters",
@@ -2540,10 +2726,10 @@
                   "ck_sources": "yes",
                   "ck_summary": "yes",
                   "cover_image": {
-                    "id": "00000000-0000-4000-8000-000000000049",
+                    "id": "00000000-0000-4000-8000-000000000051",
                     "url": "{{origin}}/images/2599da3f22.png",
                     "mime": "image/png",
-                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000049.png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000051.png",
                     "fileName": "get-your-child-writing-letters.png",
                     "fileSize": 43931
                   },
@@ -2564,13 +2750,13 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000050",
+        "id": "00000000-0000-4000-8000-000000000052",
         "tableId": "00000000-0000-4000-8000-000000000009",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000026"
+          "00000000-0000-4000-8000-000000000027"
         ],
         "data": {
-          "post": "00000000-0000-4000-8000-000000000048",
+          "post": "00000000-0000-4000-8000-000000000050",
           "title": "What age is best for writing letters?",
           "answer": "From about four, with a grown-up helping. By seven most children write a few lines on their own.",
           "position": 1
@@ -2592,7 +2778,7 @@
             {
               "tableId": "00000000-0000-4000-8000-000000000010",
               "record": {
-                "id": "00000000-0000-4000-8000-000000000048",
+                "id": "00000000-0000-4000-8000-000000000050",
                 "data": {
                   "live": "yes",
                   "slug": "get-your-child-writing-letters",
@@ -2614,10 +2800,10 @@
                   "ck_sources": "yes",
                   "ck_summary": "yes",
                   "cover_image": {
-                    "id": "00000000-0000-4000-8000-000000000049",
+                    "id": "00000000-0000-4000-8000-000000000051",
                     "url": "{{origin}}/images/2599da3f22.png",
                     "mime": "image/png",
-                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000049.png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000051.png",
                     "fileName": "get-your-child-writing-letters.png",
                     "fileSize": 43931
                   },
@@ -2640,10 +2826,10 @@
     ],
     "posts": [
       {
-        "id": "00000000-0000-4000-8000-000000000051",
+        "id": "00000000-0000-4000-8000-000000000053",
         "tableId": "00000000-0000-4000-8000-000000000010",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000026"
+          "00000000-0000-4000-8000-000000000027"
         ],
         "data": {
           "live": "no",
@@ -2690,10 +2876,10 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000052",
+        "id": "00000000-0000-4000-8000-000000000054",
         "tableId": "00000000-0000-4000-8000-000000000010",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000026"
+          "00000000-0000-4000-8000-000000000027"
         ],
         "data": {
           "live": "yes",
@@ -2716,10 +2902,10 @@
           "ck_sources": "no",
           "ck_summary": "yes",
           "cover_image": {
-            "id": "00000000-0000-4000-8000-000000000053",
+            "id": "00000000-0000-4000-8000-000000000055",
             "url": "{{origin}}/images/bc53b680d6.png",
             "mime": "image/png",
-            "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000053.png",
+            "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000055.png",
             "fileName": "letter-day-in-bergen.png",
             "fileSize": 61837
           },
@@ -2754,10 +2940,10 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000042",
+        "id": "00000000-0000-4000-8000-000000000044",
         "tableId": "00000000-0000-4000-8000-000000000010",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000026"
+          "00000000-0000-4000-8000-000000000027"
         ],
         "data": {
           "live": "yes",
@@ -2780,10 +2966,10 @@
           "ck_sources": "no",
           "ck_summary": "yes",
           "cover_image": {
-            "id": "00000000-0000-4000-8000-000000000043",
+            "id": "00000000-0000-4000-8000-000000000045",
             "url": "{{origin}}/images/359acc07ce.png",
             "mime": "image/png",
-            "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000043.png",
+            "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000045.png",
             "fileName": "summer-reading-letters-from-the-road.png",
             "fileSize": 71962
           },
@@ -2818,10 +3004,10 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000054",
+        "id": "00000000-0000-4000-8000-000000000056",
         "tableId": "00000000-0000-4000-8000-000000000010",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000026"
+          "00000000-0000-4000-8000-000000000027"
         ],
         "data": {
           "live": "yes",
@@ -2844,10 +3030,10 @@
           "ck_sources": "yes",
           "ck_summary": "yes",
           "cover_image": {
-            "id": "00000000-0000-4000-8000-000000000055",
+            "id": "00000000-0000-4000-8000-000000000057",
             "url": "{{origin}}/images/ef2e040922.png",
             "mime": "image/png",
-            "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000055.png",
+            "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000057.png",
             "fileName": "research-letters-and-curiosity.png",
             "fileSize": 54865
           },
@@ -2882,10 +3068,10 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000045",
+        "id": "00000000-0000-4000-8000-000000000047",
         "tableId": "00000000-0000-4000-8000-000000000010",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000026"
+          "00000000-0000-4000-8000-000000000027"
         ],
         "data": {
           "live": "yes",
@@ -2907,10 +3093,10 @@
           "ck_sources": "yes",
           "ck_summary": "yes",
           "cover_image": {
-            "id": "00000000-0000-4000-8000-000000000046",
+            "id": "00000000-0000-4000-8000-000000000048",
             "url": "{{origin}}/images/9442e3789a.png",
             "mime": "image/png",
-            "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000046.png",
+            "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000048.png",
             "fileName": "meet-the-illustrator.png",
             "fileSize": 58618
           },
@@ -2945,10 +3131,10 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000048",
+        "id": "00000000-0000-4000-8000-000000000050",
         "tableId": "00000000-0000-4000-8000-000000000010",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000026"
+          "00000000-0000-4000-8000-000000000027"
         ],
         "data": {
           "live": "yes",
@@ -2971,10 +3157,10 @@
           "ck_sources": "yes",
           "ck_summary": "yes",
           "cover_image": {
-            "id": "00000000-0000-4000-8000-000000000049",
+            "id": "00000000-0000-4000-8000-000000000051",
             "url": "{{origin}}/images/2599da3f22.png",
             "mime": "image/png",
-            "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000049.png",
+            "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000051.png",
             "fileName": "get-your-child-writing-letters.png",
             "fileSize": 43931
           },
@@ -3011,14 +3197,14 @@
     ],
     "post_sections": [
       {
-        "id": "00000000-0000-4000-8000-000000000056",
+        "id": "00000000-0000-4000-8000-000000000058",
         "tableId": "00000000-0000-4000-8000-000000000011",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000026"
+          "00000000-0000-4000-8000-000000000027"
         ],
         "data": {
           "body": "Still being written.",
-          "post": "00000000-0000-4000-8000-000000000051",
+          "post": "00000000-0000-4000-8000-000000000053",
           "title": "Draft",
           "position": 1,
           "word_count": 3,
@@ -3043,7 +3229,7 @@
             {
               "tableId": "00000000-0000-4000-8000-000000000010",
               "record": {
-                "id": "00000000-0000-4000-8000-000000000051",
+                "id": "00000000-0000-4000-8000-000000000053",
                 "data": {
                   "live": "no",
                   "slug": "our-plans-for-next-year",
@@ -3075,14 +3261,14 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000057",
+        "id": "00000000-0000-4000-8000-000000000059",
         "tableId": "00000000-0000-4000-8000-000000000011",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000026"
+          "00000000-0000-4000-8000-000000000027"
         ],
         "data": {
           "body": "The Haugens keep the first Saturday of the month free. Pancakes go on the table, the letter comes out of its envelope, and everybody gets a turn to read a paragraph.\n\n## Writing back\n\nAfter breakfast each child writes their own reply. The youngest draws hers.",
-          "post": "00000000-0000-4000-8000-000000000052",
+          "post": "00000000-0000-4000-8000-000000000054",
           "title": "Pancakes first",
           "position": 1,
           "word_count": 46,
@@ -3107,7 +3293,7 @@
             {
               "tableId": "00000000-0000-4000-8000-000000000010",
               "record": {
-                "id": "00000000-0000-4000-8000-000000000052",
+                "id": "00000000-0000-4000-8000-000000000054",
                 "data": {
                   "live": "yes",
                   "slug": "letter-day-in-bergen",
@@ -3129,10 +3315,10 @@
                   "ck_sources": "no",
                   "ck_summary": "yes",
                   "cover_image": {
-                    "id": "00000000-0000-4000-8000-000000000053",
+                    "id": "00000000-0000-4000-8000-000000000055",
                     "url": "{{origin}}/images/bc53b680d6.png",
                     "mime": "image/png",
-                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000053.png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000055.png",
                     "fileName": "letter-day-in-bergen.png",
                     "fileSize": 61837
                   },
@@ -3153,14 +3339,14 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000058",
+        "id": "00000000-0000-4000-8000-000000000060",
         "tableId": "00000000-0000-4000-8000-000000000011",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000026"
+          "00000000-0000-4000-8000-000000000027"
         ],
         "data": {
           "body": "June takes Pip up a mountain railway. July is all coast: tide pools, lighthouses and a very suspicious seagull. August is the night train.\n\n## A map in every letter\n\nEach letter now carries a small map to colour in, so children can follow the route with their own crayons.",
-          "post": "00000000-0000-4000-8000-000000000042",
+          "post": "00000000-0000-4000-8000-000000000044",
           "title": "Where Pip is going",
           "position": 1,
           "word_count": 50,
@@ -3185,7 +3371,7 @@
             {
               "tableId": "00000000-0000-4000-8000-000000000010",
               "record": {
-                "id": "00000000-0000-4000-8000-000000000042",
+                "id": "00000000-0000-4000-8000-000000000044",
                 "data": {
                   "live": "yes",
                   "slug": "summer-reading-letters-from-the-road",
@@ -3207,10 +3393,10 @@
                   "ck_sources": "no",
                   "ck_summary": "yes",
                   "cover_image": {
-                    "id": "00000000-0000-4000-8000-000000000043",
+                    "id": "00000000-0000-4000-8000-000000000045",
                     "url": "{{origin}}/images/359acc07ce.png",
                     "mime": "image/png",
-                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000043.png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000045.png",
                     "fileName": "summer-reading-letters-from-the-road.png",
                     "fileSize": 71962
                   },
@@ -3231,14 +3417,14 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000059",
+        "id": "00000000-0000-4000-8000-000000000061",
         "tableId": "00000000-0000-4000-8000-000000000011",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000026"
+          "00000000-0000-4000-8000-000000000027"
         ],
         "data": {
           "body": "You do not need a subscription to benefit. A grandparent, an aunt or a pen friend can do the same.\n\n1. Pick one person to write to your child\n2. Keep the letters in a box\n3. Re-read the old ones together",
-          "post": "00000000-0000-4000-8000-000000000054",
+          "post": "00000000-0000-4000-8000-000000000056",
           "title": "What to do with it",
           "position": 2,
           "word_count": 42,
@@ -3263,7 +3449,7 @@
             {
               "tableId": "00000000-0000-4000-8000-000000000010",
               "record": {
-                "id": "00000000-0000-4000-8000-000000000054",
+                "id": "00000000-0000-4000-8000-000000000056",
                 "data": {
                   "live": "yes",
                   "slug": "research-letters-and-curiosity",
@@ -3285,10 +3471,10 @@
                   "ck_sources": "yes",
                   "ck_summary": "yes",
                   "cover_image": {
-                    "id": "00000000-0000-4000-8000-000000000055",
+                    "id": "00000000-0000-4000-8000-000000000057",
                     "url": "{{origin}}/images/ef2e040922.png",
                     "mime": "image/png",
-                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000055.png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000057.png",
                     "fileName": "research-letters-and-curiosity.png",
                     "fileSize": 54865
                   },
@@ -3309,14 +3495,14 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000060",
+        "id": "00000000-0000-4000-8000-000000000062",
         "tableId": "00000000-0000-4000-8000-000000000011",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000026"
+          "00000000-0000-4000-8000-000000000027"
         ],
         "data": {
           "body": "Researchers who follow children through primary school keep finding the same thing: those who get personal mail ask more questions about the world.\n\n## Why mail works\n\nA letter is addressed to one child. It feels like a secret, and children read secrets slowly and carefully.",
-          "post": "00000000-0000-4000-8000-000000000054",
+          "post": "00000000-0000-4000-8000-000000000056",
           "title": "What the studies found",
           "position": 1,
           "word_count": 46,
@@ -3341,7 +3527,7 @@
             {
               "tableId": "00000000-0000-4000-8000-000000000010",
               "record": {
-                "id": "00000000-0000-4000-8000-000000000054",
+                "id": "00000000-0000-4000-8000-000000000056",
                 "data": {
                   "live": "yes",
                   "slug": "research-letters-and-curiosity",
@@ -3363,10 +3549,10 @@
                   "ck_sources": "yes",
                   "ck_summary": "yes",
                   "cover_image": {
-                    "id": "00000000-0000-4000-8000-000000000055",
+                    "id": "00000000-0000-4000-8000-000000000057",
                     "url": "{{origin}}/images/ef2e040922.png",
                     "mime": "image/png",
-                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000055.png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000057.png",
                     "fileName": "research-letters-and-curiosity.png",
                     "fileSize": 54865
                   },
@@ -3387,14 +3573,14 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000061",
+        "id": "00000000-0000-4000-8000-000000000063",
         "tableId": "00000000-0000-4000-8000-000000000011",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000026"
+          "00000000-0000-4000-8000-000000000027"
         ],
         "data": {
           "body": "Pip started as a doodle in the margin of a notebook. The ears are too big, the tail is too long, and that is exactly why children love him.\n\n## A favourite detail\n\nIn every letter there is one tiny hidden thing to find: a snail, a kite, a cup of cocoa.",
-          "post": "00000000-0000-4000-8000-000000000045",
+          "post": "00000000-0000-4000-8000-000000000047",
           "title": "What Pip looks like",
           "position": 2,
           "word_count": 52,
@@ -3419,7 +3605,7 @@
             {
               "tableId": "00000000-0000-4000-8000-000000000010",
               "record": {
-                "id": "00000000-0000-4000-8000-000000000045",
+                "id": "00000000-0000-4000-8000-000000000047",
                 "data": {
                   "live": "yes",
                   "slug": "meet-the-illustrator",
@@ -3440,10 +3626,10 @@
                   "ck_sources": "yes",
                   "ck_summary": "yes",
                   "cover_image": {
-                    "id": "00000000-0000-4000-8000-000000000046",
+                    "id": "00000000-0000-4000-8000-000000000048",
                     "url": "{{origin}}/images/9442e3789a.png",
                     "mime": "image/png",
-                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000046.png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000048.png",
                     "fileName": "meet-the-illustrator.png",
                     "fileSize": 58618
                   },
@@ -3464,14 +3650,14 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000062",
+        "id": "00000000-0000-4000-8000-000000000064",
         "tableId": "00000000-0000-4000-8000-000000000011",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000026"
+          "00000000-0000-4000-8000-000000000027"
         ],
         "data": {
           "body": "A single letter takes about three evenings. First the pencil sketch, then the washes, then the tiny details that children find and point at.\n\n## Why not print from a screen?\n\nBecause a child can tell. Real paint has a little wobble, and that wobble says a person was here.",
-          "post": "00000000-0000-4000-8000-000000000045",
+          "post": "00000000-0000-4000-8000-000000000047",
           "title": "Slow on purpose",
           "position": 1,
           "word_count": 50,
@@ -3496,7 +3682,7 @@
             {
               "tableId": "00000000-0000-4000-8000-000000000010",
               "record": {
-                "id": "00000000-0000-4000-8000-000000000045",
+                "id": "00000000-0000-4000-8000-000000000047",
                 "data": {
                   "live": "yes",
                   "slug": "meet-the-illustrator",
@@ -3517,10 +3703,10 @@
                   "ck_sources": "yes",
                   "ck_summary": "yes",
                   "cover_image": {
-                    "id": "00000000-0000-4000-8000-000000000046",
+                    "id": "00000000-0000-4000-8000-000000000048",
                     "url": "{{origin}}/images/9442e3789a.png",
                     "mime": "image/png",
-                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000046.png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000048.png",
                     "fileName": "meet-the-illustrator.png",
                     "fileSize": 58618
                   },
@@ -3541,14 +3727,14 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000063",
+        "id": "00000000-0000-4000-8000-000000000065",
         "tableId": "00000000-0000-4000-8000-000000000011",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000026"
+          "00000000-0000-4000-8000-000000000027"
         ],
         "data": {
           "body": "## Post it together\n\nWalk to the postbox the same day. The little thud as the letter drops in is half the magic.\n\n- Write on the same day every week\n- Keep stamps in a jar by the door\n- Read the reply out loud as a family\n\n> A letter is a small promise that someone is thinking of you.",
-          "post": "00000000-0000-4000-8000-000000000048",
+          "post": "00000000-0000-4000-8000-000000000050",
           "title": "Make it a ritual",
           "position": 2,
           "word_count": 62,
@@ -3573,7 +3759,7 @@
             {
               "tableId": "00000000-0000-4000-8000-000000000010",
               "record": {
-                "id": "00000000-0000-4000-8000-000000000048",
+                "id": "00000000-0000-4000-8000-000000000050",
                 "data": {
                   "live": "yes",
                   "slug": "get-your-child-writing-letters",
@@ -3595,10 +3781,10 @@
                   "ck_sources": "yes",
                   "ck_summary": "yes",
                   "cover_image": {
-                    "id": "00000000-0000-4000-8000-000000000049",
+                    "id": "00000000-0000-4000-8000-000000000051",
                     "url": "{{origin}}/images/2599da3f22.png",
                     "mime": "image/png",
-                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000049.png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000051.png",
                     "fileName": "get-your-child-writing-letters.png",
                     "fileSize": 43931
                   },
@@ -3619,14 +3805,14 @@
         }
       },
       {
-        "id": "00000000-0000-4000-8000-000000000064",
+        "id": "00000000-0000-4000-8000-000000000066",
         "tableId": "00000000-0000-4000-8000-000000000011",
         "groupIds": [
-          "00000000-0000-4000-8000-000000000026"
+          "00000000-0000-4000-8000-000000000027"
         ],
         "data": {
           "body": "The hardest part of a letter is the blank page. Ask for one sentence, not one page. \"Tell Pip what you had for breakfast\" is a complete letter, and a proud one.\n\n## Make the tools theirs\n\nLet your child pick the paper, the pen and the stickers. A letter written with a glitter pen is worth ten typed ones.\n\n![A child writing a letter at a kitchen table, with a fox drawn in the corner]({{origin}}/images/e0fced1011.png)",
-          "post": "00000000-0000-4000-8000-000000000048",
+          "post": "00000000-0000-4000-8000-000000000050",
           "title": "Start tiny",
           "position": 1,
           "word_count": 76,
@@ -3651,7 +3837,7 @@
             {
               "tableId": "00000000-0000-4000-8000-000000000010",
               "record": {
-                "id": "00000000-0000-4000-8000-000000000048",
+                "id": "00000000-0000-4000-8000-000000000050",
                 "data": {
                   "live": "yes",
                   "slug": "get-your-child-writing-letters",
@@ -3673,10 +3859,10 @@
                   "ck_sources": "yes",
                   "ck_summary": "yes",
                   "cover_image": {
-                    "id": "00000000-0000-4000-8000-000000000049",
+                    "id": "00000000-0000-4000-8000-000000000051",
                     "url": "{{origin}}/images/2599da3f22.png",
                     "mime": "image/png",
-                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000049.png",
+                    "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000051.png",
                     "fileName": "get-your-child-writing-letters.png",
                     "fileSize": 43931
                   },
@@ -3694,6 +3880,203 @@
               }
             }
           ]
+        }
+      }
+    ],
+    "site_blocks": [
+      {
+        "id": "00000000-0000-4000-8000-000000000067",
+        "tableId": "00000000-0000-4000-8000-000000000012",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000036"
+        ],
+        "data": {
+          "body": "Not ready to share yet.",
+          "block": "feature",
+          "title": "An idea for next year",
+          "status": "draft",
+          "position": 6
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000068",
+        "tableId": "00000000-0000-4000-8000-000000000012",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000036"
+        ],
+        "data": {
+          "body": "Every letter comes with a clever, fun craft your child can make on their own.",
+          "block": "feature",
+          "image": {
+            "id": "00000000-0000-4000-8000-000000000069",
+            "url": "{{origin}}/images/36d67791f5.png",
+            "mime": "image/png",
+            "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000069.png",
+            "fileName": "feature-craft.png",
+            "fileSize": 104067
+          },
+          "title": "Something to make",
+          "status": "published",
+          "position": 5,
+          "image_alt": "Paper, scissors and glue for a craft"
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000070",
+        "tableId": "00000000-0000-4000-8000-000000000012",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000036"
+        ],
+        "data": {
+          "body": "New words in many languages and fun facts that teach something new, plus a vintage-style map to stick on the wall.",
+          "block": "feature",
+          "image": {
+            "id": "00000000-0000-4000-8000-000000000071",
+            "url": "{{origin}}/images/c5666b6e53.png",
+            "mime": "image/png",
+            "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000071.png",
+            "fileName": "feature-facts.png",
+            "fileSize": 86474
+          },
+          "title": "Facts and new words",
+          "status": "published",
+          "position": 4,
+          "image_alt": "A vintage-style map and a card with words in three languages"
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000072",
+        "tableId": "00000000-0000-4000-8000-000000000012",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000036"
+        ],
+        "data": {
+          "body": "A beautifully illustrated, double-sided story that takes your child on a trip to somewhere new.",
+          "block": "feature",
+          "image": {
+            "id": "00000000-0000-4000-8000-000000000073",
+            "url": "{{origin}}/images/e872b14125.png",
+            "mime": "image/png",
+            "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000073.png",
+            "fileName": "feature-story.png",
+            "fileSize": 87380
+          },
+          "title": "A story from a new place",
+          "status": "published",
+          "position": 3,
+          "image_alt": "A letter with a story from a faraway country"
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000074",
+        "tableId": "00000000-0000-4000-8000-000000000012",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000036"
+        ],
+        "data": {
+          "block": "section",
+          "title": "What is in",
+          "status": "published",
+          "position": 2,
+          "highlight": "every Pip's Post letter"
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
+        }
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000075",
+        "tableId": "00000000-0000-4000-8000-000000000012",
+        "groupIds": [
+          "00000000-0000-4000-8000-000000000036"
+        ],
+        "data": {
+          "body": "Pip's Post is a letter subscription where curious children discover the world through the mail. Every month a beautifully illustrated letter arrives from a new country, full of stories, fun facts and words in the local language.",
+          "block": "hero",
+          "image": {
+            "id": "00000000-0000-4000-8000-000000000076",
+            "url": "{{origin}}/images/2dd4b8c0f9.png",
+            "mime": "image/png",
+            "path": "workspace/00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000076.png",
+            "fileName": "hero.png",
+            "fileSize": 69937
+          },
+          "title": "Letters from far away",
+          "status": "published",
+          "position": 1,
+          "highlight": "with Pip's Post",
+          "image_alt": "A paper boat sailing out of an open envelope",
+          "button_link": "/contact",
+          "button_label": "Start a subscription"
+        },
+        "metadata": null,
+        "createdAt": "2026-10-12T09:00:00.000Z",
+        "updatedAt": "2026-10-12T09:00:00.000Z",
+        "lastInteractionAt": null,
+        "isDeleted": false,
+        "createdBy": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "firstName": "Emma",
+          "lastName": "Larsen",
+          "email": "emma@pipspost.example",
+          "avatarUrl": "{{origin}}/images/b0968fb55b.png"
         }
       }
     ]

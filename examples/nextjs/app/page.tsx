@@ -1,10 +1,12 @@
 import Link from 'next/link';
 
+import { Landing } from '@/components/Landing';
 import { PostCard } from '@/components/PostCard';
 import { content, links, site } from '@/lib/site';
 
 export default async function Home() {
-  const [posts, authors, schema] = await Promise.all([content().listPosts({ limit: 3 }), content().authors(), content().schema()]);
+  const [posts, authors, schema, blocks] = await Promise.all([content().listPosts({ limit: 3 }), content().authors(), content().schema(), content().listItems('site_blocks')]);
+  const hasHero = blocks.some((block: any) => block.block === 'hero');
   const doors = [
     { show: links.help, href: '/help', title: 'Help centre', text: 'Answers to the questions we hear most.' },
     { show: links.form, href: '/contact', title: 'Write to us', text: 'A message that reaches us straight away.' },
@@ -12,10 +14,11 @@ export default async function Home() {
   ].filter((door) => door.show);
   return (
     <main className="mx-auto max-w-6xl px-6">
-      <section className="py-16">
+      <Landing blocks={blocks} />
+      {!hasHero && <section className="py-16">
         <h1 className="font-serif text-6xl leading-none font-bold tracking-tight">{site.name}</h1>
         <p className="mt-4 max-w-xl text-xl text-stone-600">{site.tagline}</p>
-      </section>
+      </section>}
       {doors.length > 0 && (
         <section className="grid gap-4 sm:grid-cols-3">
           {doors.map((door) => (

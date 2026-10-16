@@ -43,3 +43,16 @@ export const listPosts = (query: { tag?: string; q?: string } = {}) =>
   );
 export const getPost = (slug: string) => read<PostPage>(`/cms/posts/${encodeURIComponent(slug)}`);
 export const listFaq = () => read<{ items: { id: string; question: string; answer: string; category: string }[]; categories: Record<string, string> }>('/cms/faq');
+
+export interface Block {
+  id: string;
+  block: string;
+  title?: string;
+  highlight?: string;
+  body?: string;
+  image?: { url: string; alt: string };
+  button_label?: string;
+  button_link?: string;
+}
+/** The home page's own pieces, written in the app. */
+export const listBlocks = async () => (await read<{ blocks: Block[] }>('/cms/blocks'))?.blocks ?? [];

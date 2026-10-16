@@ -24,8 +24,8 @@ const links = {
 };
 const out = env.OUT_DIR ?? 'dist';
 
-const content = createClient({ api: links.api, apiKey: env.SOFTSYNC_API_KEY, cacheSeconds: 3600 });
-const [posts, schema, authors, faq] = await Promise.all([content.listPosts({ limit: 100 }), content.schema(), content.authors(), content.listFaq()]);
+const content = createClient({ api: links.api, apiKey: env.SOFTSYNC_API_KEY, cacheSeconds: 3600, preview: env.SOFTSYNC_PREVIEW === '1' });
+const [posts, schema, authors, faq, blocks] = await Promise.all([content.listPosts({ limit: 100 }), content.schema(), content.authors(), content.listFaq(), content.listItems('site_blocks')]);
 
 const esc = (text) => String(text ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const jsonLdTag = (items) => items.map((item) => `<script type="application/ld+json">${JSON.stringify(item).replace(/</g, '\\u003c')}</script>`).join('\n');
@@ -154,6 +154,29 @@ const searchPage = `<main class="mx-auto max-w-6xl px-6">
   });
 </script>`;
 
+/** The home page's own pieces, written in the app: a hero, a heading and picture cards. */
+function landing(blocks) {
+  const hero = blocks.find((b) => b.block === 'hero');
+  const heading = blocks.find((b) => b.block === 'section');
+  const cards = blocks.filter((b) => b.block === 'feature');
+  const picture = (image) => (image ? `<img src="${esc(image.url)}" alt="${esc(image.alt)}" class="aspect-[4/5] w-full rounded-3xl object-cover shadow-sm">` : '');
+  const second = (b) => (b?.highlight ? `<span class="block text-orange-700">${esc(b.highlight)}</span>` : '');
+  return [
+    hero && `<section class="grid items-center gap-10 py-16 md:grid-cols-2">
+    ${picture(hero.image)}
+    <div>
+      <h1 class="font-serif text-5xl leading-tight font-bold tracking-tight">${esc(hero.title)}${second(hero)}</h1>
+      <p class="mt-5 text-lg text-stone-600">${esc(hero.body)}</p>
+      ${hero.button_label ? `<a href="${esc(hero.button_link || '#')}" class="mt-8 inline-block rounded-full bg-stone-900 px-6 py-3 font-medium text-white hover:bg-orange-700">${esc(hero.button_label)}</a>` : ''}
+    </div>
+  </section>`,
+    cards.length > 0 && `<section class="py-10">
+    ${heading ? `<h2 class="mb-10 text-center font-serif text-4xl font-bold tracking-tight">${esc(heading.title)}${second(heading)}</h2>` : ''}
+    <div class="grid gap-8 sm:grid-cols-3">${cards.map((c) => `<article>${picture(c.image)}<h3 class="mt-5 text-xl font-semibold">${esc(c.title)}</h3><p class="mt-2 text-stone-600">${esc(c.body)}</p></article>`).join('')}</div>
+  </section>`,
+  ].filter(Boolean).join('\n  ');
+}
+
 const files = new Map();
 const add = (path, text) => files.set(path, text);
 const visible = posts.filter((post) => !post.hidden);
@@ -163,7 +186,7 @@ add('index.html', page({
   path: '/',
   jsonLd: [{ '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: site.url }],
   body: `<main class="mx-auto max-w-6xl px-6">
-  <section class="py-16"><h1 class="font-serif text-6xl leading-none font-bold tracking-tight">${esc(site.name)}</h1><p class="mt-4 max-w-xl text-xl text-stone-600">${esc(site.tagline)}</p></section>
+  ${landing(blocks) || `<section class="py-16"><h1 class="font-serif text-6xl leading-none font-bold tracking-tight">${esc(site.name)}</h1><p class="mt-4 max-w-xl text-xl text-stone-600">${esc(site.tagline)}</p></section>`}
   <h2 class="mt-14 mb-6 text-sm font-semibold tracking-widest text-stone-500 uppercase">From the blog <a href="/blog" class="ml-2 font-normal tracking-normal normal-case underline">All articles</a></h2>
   <div class="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">${visible.slice(0, 3).map(card).join('\n')}</div>
 </main>`,
