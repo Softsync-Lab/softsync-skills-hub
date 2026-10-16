@@ -10,3 +10,14 @@ npm run build && npm start     # one port: the app and its small server
 ```
 
 Without a key the site stops and says what is missing. See the [examples overview](../README.md) for what each value is.
+
+## Try it with demo data
+
+No account or key yet? Run the example against a small sample business:
+
+```bash
+npm install
+npm run demo
+```
+
+You get a working blog, FAQ and contact page with sample posts, authors and pictures. Nothing is saved, and nothing leaves your computer. When you are ready, copy `.env.example` to `.env` and use your own workspace.

@@ -33,6 +33,11 @@ The API allows 120 requests a minute per key, so the examples remember answers f
 
 These examples are tested against the real app on every change, so what you copy works.
 
+### Try it without an account
+
+Every framework folder has `npm run demo`. It starts the example against a small sample business (blog posts with covers and authors, help articles, a contact form), served from recorded data in [`demo/`](demo). No account, no key, no internet needed. It is the quickest way to see what each example does before you connect your own workspace.
+
+
 Every page in `website-embeds/` has `https://app.softsync.ai`, `WORKSPACE_ID` and `LINK_ID` to replace. Each feature's *Embed* or *Add to website* button gives you the exact line, with your values filled in.
 
 ## Which way should I use?

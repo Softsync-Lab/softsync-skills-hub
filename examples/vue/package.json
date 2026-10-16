@@ -6,7 +6,8 @@
     "dev": "vite",
     "api": "node --env-file-if-exists=.env server/server.mjs",
     "build": "vue-tsc --noEmit && vite build",
-    "start": "node --env-file-if-exists=.env server/server.mjs"
+    "start": "node --env-file-if-exists=.env server/server.mjs",
+    "demo": "node ../demo/run.mjs"
   },
   "dependencies": {
     "vue": "^3.5.0",

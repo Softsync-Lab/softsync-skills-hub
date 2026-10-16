@@ -15,3 +15,14 @@ What you get in `dist/`: the home page, `/blog`, a page per tag and per article,
 - **Your design** — the pages are written in `build.mjs`; change the Tailwind classes there.
 - **Your own form** — `/contact` shows the app's form in one line, and again as your own form: the questions are read when you build, and the answers go straight to the form's address.
 - **Hosting** — a folder like `/blog/my-post/` must answer with its `index.html`, which every static host does.
+
+## Try it with demo data
+
+No account or key yet? Run the example against a small sample business:
+
+```bash
+npm install
+npm run demo
+```
+
+You get a working blog, FAQ and contact page with sample posts, authors and pictures. Nothing is saved, and nothing leaves your computer. When you are ready, copy `.env.example` to `.env` and use your own workspace.

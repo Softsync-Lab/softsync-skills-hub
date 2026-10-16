@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "build": "node --env-file-if-exists=.env build.mjs && tailwindcss -i src/styles.css -o dist/styles.css --minify",
-    "start": "npx --yes serve dist"
+    "start": "npx --yes serve dist",
+    "demo": "node ../demo/run.mjs"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.3",
