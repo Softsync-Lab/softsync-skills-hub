@@ -72,6 +72,10 @@ The assistant should look the company up, read the emails, show you a short summ
 
 The skills are generated from the same guidance SoftSync's own in-app assistant and MCP server use, so all three always teach the same, current way of working. Please don't edit them here — changes are overwritten on the next release.
 
+## Examples for your website
+
+The [`examples/`](examples) folder shows how to put a form, a booking page, your help centre and the web agent on your own website (one line of code, a frame, a link, a pop-up…), and how to run a blog from the CMS and an FAQ from your knowledge base so that search engines and AI assistants can read them.
+
 ## Calling the REST API directly
 
 The skills above are for AI assistants. If you are writing code instead, the public API reference has a

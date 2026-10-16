@@ -1,0 +1,43 @@
+<!doctype html>
+<!--
+  Put the web agent (a chat that answers from your help articles and hands
+  over to your team) on your website: three ways.
+
+  Replace https://app.softsync.ai with your app address and WORKSPACE_ID/LINK_ID with the agent's link
+  (Add to website on the agent shows the line ready-made).
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chat with us</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 860px; margin: 48px auto; padding: 0 20px; color: #1c1917; line-height: 1.6 }
+    section { margin: 56px 0; padding-top: 24px; border-top: 1px solid #e7e2da }
+    h2 { margin: 0 0 4px } p.note { color: #57534e; margin: 0 0 16px }
+    .button { display: inline-block; padding: 10px 18px; border-radius: 10px; background: #1c1917; color: #fff; text-decoration: none }
+  </style>
+</head>
+<body>
+
+<!-- 1. The chat bubble (recommended). One line before </body> puts a round
+        button in the corner of every page. It only shows once the agent is
+        live, so a switched-off agent leaves nothing behind. Colour, name and
+        icon come from the agent's settings, in the visitor's language. -->
+<script src="https://app.softsync.ai/web-agent.js" data-agent="WORKSPACE_ID/LINK_ID" async></script>
+
+<!-- 2. The chat on a page of its own: a "Talk to us" page inside your site. -->
+<section id="inline">
+  <h2>2. The chat inside a page</h2>
+  <iframe src="https://app.softsync.ai/agent/WORKSPACE_ID/LINK_ID?embed=1" title="Chat with us" loading="lazy"
+          style="width:100%;max-width:420px;height:620px;border:1px solid #e7e2da;border-radius:16px"></iframe>
+</section>
+
+<!-- 3. A link to the full-page chat (emails, QR codes, social profiles). -->
+<section id="link">
+  <h2>3. A link</h2>
+  <a class="button" href="https://app.softsync.ai/agent/WORKSPACE_ID/LINK_ID">Chat with us</a>
+</section>
+
+</body>
+</html>

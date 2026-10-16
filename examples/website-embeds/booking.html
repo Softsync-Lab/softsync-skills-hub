@@ -1,0 +1,56 @@
+<!doctype html>
+<!--
+  Put a booking page on your website: four ways.
+
+  Replace https://app.softsync.ai with your app address and WORKSPACE_ID/LINK_ID with the booking page's
+  public link (the Embed button on the booking page gives you this line ready-made).
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a call</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 860px; margin: 48px auto; padding: 0 20px; color: #1c1917; line-height: 1.6 }
+    section { margin: 56px 0; padding-top: 24px; border-top: 1px solid #e7e2da }
+    h2 { margin: 0 0 4px } p.note { color: #57534e; margin: 0 0 16px }
+    .button { display: inline-block; padding: 12px 20px; border-radius: 10px; background: #1c1917; color: #fff; text-decoration: none; border: 0; font: inherit; cursor: pointer }
+    dialog { border: 0; border-radius: 16px; padding: 0; width: min(760px, 96vw); box-shadow: 0 30px 80px rgba(0, 0, 0, .3) }
+    dialog::backdrop { background: rgba(0, 0, 0, .45) }
+  </style>
+</head>
+<body>
+
+<!-- 1. One line (recommended). Grows to fit the page, so no box to scroll in.
+        theme can be system (default), light or dark. -->
+<section id="one-line">
+  <h2>1. One line</h2>
+  <script src="https://app.softsync.ai/embed.js" data-page="book/WORKSPACE_ID/LINK_ID?theme=light" data-title="Book a call" async></script>
+</section>
+
+<!-- 2. A plain frame, for builders that do not allow scripts. -->
+<section id="plain-frame">
+  <h2>2. A plain frame</h2>
+  <iframe src="https://app.softsync.ai/book/WORKSPACE_ID/LINK_ID?embed=1&amp;theme=light"
+          title="Book a call" loading="lazy" style="width:100%;height:760px;border:0"></iframe>
+</section>
+
+<!-- 3. A button that opens the booking page in a pop-up. -->
+<section id="popup">
+  <h2>3. A pop-up</h2>
+  <button class="button" type="button" onclick="document.getElementById('book-dialog').showModal()">Book a call</button>
+  <dialog id="book-dialog">
+    <form method="dialog" style="text-align:right;padding:8px 12px"><button>Close</button></form>
+    <iframe src="https://app.softsync.ai/book/WORKSPACE_ID/LINK_ID?embed=1"
+            title="Book a call" style="width:100%;height:720px;border:0"></iframe>
+  </dialog>
+</section>
+
+<!-- 4. A link to the booking page's own page (good for emails and social profiles). -->
+<section id="link">
+  <h2>4. A link</h2>
+  <a class="button" href="https://app.softsync.ai/book/WORKSPACE_ID/LINK_ID">Book a call</a>
+</section>
+
+</body>
+</html>
