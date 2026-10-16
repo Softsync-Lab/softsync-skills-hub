@@ -1,0 +1,12 @@
+---
+import PostList from '../../components/PostList.astro';
+import Base from '../../layouts/Base.astro';
+import { content, site } from '../../lib/site';
+
+const { tag } = Astro.params;
+const label = (await content().schema()).tags[tag!] ?? tag;
+---
+
+<Base title={label} description={`Articles tagged ${label}.`} canonical={`${site.url}/tag/${tag}`}>
+  <PostList tag={tag} heading={label} />
+</Base>

@@ -1,0 +1,21 @@
+---
+import { dayLabel } from '../lib/seo.js';
+
+const { post, authors, tags } = Astro.props;
+---
+
+<article class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-200 transition hover:-translate-y-1 hover:shadow-xl">
+  <a href={`/blog/${post.slug}`} tabindex="-1" aria-hidden="true" class="block aspect-video bg-stone-100">
+    {post.cover && <img src={post.cover.url} alt="" loading="lazy" class="h-full w-full object-cover" />}
+  </a>
+  <div class="flex flex-1 flex-col gap-2 p-6">
+    <div class="flex flex-wrap gap-1.5">
+      {post.tags.map((tag: string) => (
+        <a href={`/tag/${tag}`} class="rounded-full bg-orange-50 px-2.5 py-0.5 text-xs font-semibold text-orange-800 hover:bg-orange-100">{tags[tag] ?? tag}</a>
+      ))}
+    </div>
+    <h2 class="font-serif text-2xl leading-snug font-bold tracking-tight"><a href={`/blog/${post.slug}`}>{post.title}</a></h2>
+    <p class="flex-1 text-stone-600">{post.summary}</p>
+    <p class="text-sm text-stone-500">{authors[post.author ?? '']?.name ?? 'The team'} · {dayLabel(post.publishedOn)} · {post.readingMinutes} min read</p>
+  </div>
+</article>

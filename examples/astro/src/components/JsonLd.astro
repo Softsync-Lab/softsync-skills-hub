@@ -1,0 +1,6 @@
+---
+// Structured data for search engines and AI assistants. `<` is escaped so a post can never close the tag.
+const { data } = Astro.props;
+---
+
+{data.map((item: object) => <script type="application/ld+json" set:html={JSON.stringify(item).replace(/</g, '\\u003c')} />)}

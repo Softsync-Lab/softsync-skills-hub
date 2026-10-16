@@ -1,0 +1,11 @@
+---
+import PostList from '../components/PostList.astro';
+import Base from '../layouts/Base.astro';
+
+const q = (Astro.url.searchParams.get('q') ?? '').trim().slice(0, 100);
+---
+
+<!-- Search results are for people, not for search engines. -->
+<Base title="Search" robots="noindex, follow">
+  <PostList q={q || undefined} heading={q ? `Results for “${q}”` : 'Search'} />
+</Base>

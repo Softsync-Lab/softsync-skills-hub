@@ -1,0 +1,67 @@
+---
+import { links } from '../lib/site';
+
+// Your own design for a form from the app. The script below reads the form's
+// questions (so a new question shows up here without a code change), draws
+// them with your own Tailwind classes and sends the answers straight to the
+// form's address. Nothing from the app's own look is used.
+const { form } = Astro.props;
+const endpoint = `${links.api}/public/forms/${form}`;
+---
+
+<form data-contact-form data-endpoint={endpoint} class="flex flex-col gap-4"></form>
+<p data-contact-result role="status" class="hidden rounded-xl bg-emerald-50 px-5 py-4 text-emerald-900"></p>
+
+<script>
+  const input =
+    'w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-stone-900 outline-none focus:border-orange-600 focus:ring-2 focus:ring-orange-600/20';
+  const form = document.querySelector<HTMLFormElement>('[data-contact-form]')!;
+  const result = document.querySelector<HTMLElement>('[data-contact-result]')!;
+  const endpoint = form.dataset.endpoint!;
+
+  const escape = (text: string) => text.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+
+  fetch(endpoint)
+    .then((response) => response.json())
+    .then((view) => {
+      const fields = (view.fields ?? []).filter((field: any) => field.kind !== 'file');
+      form.innerHTML =
+        fields
+          .map((field: any) => {
+            const name = escape(field.id);
+            const required = field.required ? ' required' : '';
+            const control =
+              field.kind === 'select'
+                ? `<select name="${name}"${required} class="${input}"><option value="">Choose…</option>${(field.choices ?? [])
+                    .map((choice: any) => `<option value="${escape(choice.value)}">${escape(choice.label)}</option>`)
+                    .join('')}</select>`
+                : field.inputType === 'textarea'
+                  ? `<textarea name="${name}"${required} rows="4" class="${input}"></textarea>`
+                  : `<input name="${name}"${required} type="${field.inputType === 'email' ? 'email' : field.inputType === 'phone' ? 'tel' : 'text'}" class="${input}">`;
+            return `<label class="flex flex-col gap-1 text-sm font-medium text-stone-700">${escape(field.label)}${control}</label>`;
+          })
+          .join('') +
+        // Catches spam bots: people never see it, so leave it in.
+        '<input type="text" name="_website" tabindex="-1" autocomplete="off" hidden>' +
+        '<button type="submit" class="self-start rounded-full bg-stone-900 px-6 py-2.5 font-medium text-white hover:bg-orange-700 disabled:opacity-50">Send</button>' +
+        '<p data-error role="alert" class="hidden text-sm text-red-700">Something went wrong. Please try again.</p>';
+    });
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      // Asking for JSON gives {"message": "…"} back instead of a page.
+      headers: { Accept: 'application/json' },
+      body: new URLSearchParams(Object.fromEntries(new FormData(form)) as Record<string, string>),
+    });
+    const answer = await response.json().catch(() => ({}));
+    if (response.ok) {
+      form.classList.add('hidden');
+      result.textContent = answer.message || 'Thank you!';
+      result.classList.remove('hidden');
+    } else {
+      form.querySelector('[data-error]')?.classList.remove('hidden');
+    }
+  });
+</script>

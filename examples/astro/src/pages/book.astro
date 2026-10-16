@@ -1,0 +1,14 @@
+---
+import Embed from '../components/Embed.astro';
+import Base from '../layouts/Base.astro';
+import { links } from '../lib/site';
+
+if (!links.booking) return new Response('Not found', { status: 404 });
+---
+
+<Base title="Book a time">
+  <main class="mx-auto max-w-5xl px-6">
+    <h1 class="mt-10 mb-6 font-serif text-5xl font-bold tracking-tight">Book a time</h1>
+    <Embed page={`book/${links.booking}`} title="Book a time" />
+  </main>
+</Base>

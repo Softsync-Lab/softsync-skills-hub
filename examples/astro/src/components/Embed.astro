@@ -1,0 +1,11 @@
+---
+// Puts one of the app's pages inside yours with the app's own one-line embed.
+// `page` is `forms/WORKSPACE_ID/LINK_ID`, `book/…` or `portal/…`, as the Embed
+// button shows it. The frame grows with its content, so there is no scrollbar
+// inside a box.
+import { links } from '../lib/site';
+
+const { page, title } = Astro.props;
+---
+
+<script is:inline src={`${links.app}/embed.js`} data-page={page} data-title={title} async></script>

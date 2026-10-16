@@ -1,0 +1,19 @@
+---
+import PostList from '../../components/PostList.astro';
+import Base from '../../layouts/Base.astro';
+import { content, site } from '../../lib/site';
+
+const posts = await content().listPosts({ limit: 10 });
+const blog = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: site.name,
+  description: site.tagline,
+  url: `${site.url}/blog`,
+  blogPost: posts.map((post: any) => ({ '@type': 'BlogPosting', headline: post.title, url: `${site.url}/blog/${post.slug}`, datePublished: post.publishedOn })),
+};
+---
+
+<Base title="Blog" canonical={`${site.url}/blog`} jsonLd={[blog]}>
+  <PostList heading="Latest articles" />
+</Base>

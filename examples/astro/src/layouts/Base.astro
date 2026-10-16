@@ -1,0 +1,69 @@
+---
+import '../styles.css';
+import JsonLd from '../components/JsonLd.astro';
+import { links, site } from '../lib/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  robots?: string;
+  image?: string;
+  article?: { publishedTime: string; modifiedTime: string; author: string };
+  jsonLd?: object[];
+}
+const { title, description = site.tagline, canonical, robots, image, article, jsonLd = [] } = Astro.props;
+const fullTitle = title ? `${title} · ${site.name}` : `${site.name} — ${site.tagline}`;
+const url = canonical ?? `${site.url}${Astro.url.pathname}`;
+const nav = [
+  { label: 'Blog', href: '/blog' },
+  ...(links.help ? [{ label: 'Help', href: '/help' }, { label: 'FAQ', href: '/faq' }] : []),
+  ...(links.form ? [{ label: 'Contact', href: '/contact' }] : []),
+  ...(links.booking ? [{ label: 'Book', href: '/book' }] : []),
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={url} />
+    {robots && <meta name="robots" content={robots} />}
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:title" content={title ?? site.name} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    {image && <meta property="og:image" content={image} />}
+    <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+    {article && <meta property="article:published_time" content={article.publishedTime} />}
+    {article && <meta property="article:modified_time" content={article.modifiedTime} />}
+    {article && <meta property="article:author" content={article.author} />}
+    <JsonLd data={jsonLd} />
+  </head>
+  <body class="bg-stone-50 text-stone-900 antialiased">
+    <header class="sticky top-0 z-10 border-b border-stone-200 bg-stone-50/90 backdrop-blur">
+      <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-x-8 gap-y-3 px-6 py-4">
+        <a href="/" class="font-serif text-2xl font-bold tracking-tight">{site.name}</a>
+        <nav class="flex flex-1 gap-5 text-[15px] text-stone-600">
+          {nav.map((item) => <a href={item.href} class="hover:text-orange-700">{item.label}</a>)}
+        </nav>
+        <form action="/search" role="search" class="flex gap-2">
+          <input type="search" name="q" placeholder="Search articles" aria-label="Search articles" class="w-56 rounded-full border border-stone-300 bg-white px-4 py-2 text-[15px] outline-none focus:border-orange-600 focus:ring-2 focus:ring-orange-600/20" />
+          <button class="rounded-full bg-stone-900 px-4 py-2 text-sm text-white">Search</button>
+        </form>
+      </div>
+    </header>
+    <slot />
+    <footer class="mt-20 border-t border-stone-200 py-8 text-sm text-stone-500">
+      <div class="mx-auto max-w-6xl px-6">
+        <b>{site.name}</b> · {site.tagline} · <a href="/sitemap.xml">Sitemap</a> · <a href="/llms.txt">For AI assistants</a>
+      </div>
+    </footer>
+    {/* The chat bubble: one line, on every page. It only appears once the agent is live. */}
+    {links.agent && <script is:inline src={`${links.app}/web-agent.js`} data-agent={links.agent} async />}
+  </body>
+</html>

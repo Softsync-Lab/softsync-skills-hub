@@ -1,0 +1,30 @@
+---
+import JsonLd from '../components/JsonLd.astro';
+import Base from '../layouts/Base.astro';
+import { content, site } from '../lib/site';
+import { renderMarkdown } from '../lib/markdown.js';
+import { faqJsonLd } from '../lib/seo.js';
+
+// The help centre's public articles as a FAQ page. Team-only articles never leave the app.
+const [faq, schema] = await Promise.all([content().listFaq(), content().schema()]);
+if (faq.length === 0) return new Response('Not found', { status: 404 });
+const groups = new Map<string, typeof faq>();
+for (const item of faq) groups.set(item.category, [...(groups.get(item.category) ?? []), item]);
+---
+
+<Base title="FAQ" description="Answers to the questions we hear most, from our help centre." canonical={`${site.url}/faq`} jsonLd={[faqJsonLd(faq)]}>
+  <main class="mx-auto max-w-3xl px-6">
+    <h1 class="mt-10 font-serif text-5xl font-bold tracking-tight">Frequently asked questions</h1>
+    {[...groups].map(([category, items]) => (
+      <section class="mt-10">
+        <h2 class="mb-3 font-serif text-2xl font-bold">{schema.articleCategories[category] ?? 'General'}</h2>
+        {items.map((item: { question: string; answer: string }) => (
+          <details class="mb-2.5 rounded-xl border border-stone-200 bg-white px-5 py-3.5">
+            <summary class="cursor-pointer font-semibold">{item.question}</summary>
+            <div class="prose prose-stone mt-2" set:html={renderMarkdown(item.answer).html} />
+          </details>
+        ))}
+      </section>
+    ))}
+  </main>
+</Base>

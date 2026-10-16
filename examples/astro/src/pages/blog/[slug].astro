@@ -1,0 +1,84 @@
+---
+import JsonLd from '../../components/JsonLd.astro';
+import Base from '../../layouts/Base.astro';
+import { content, site } from '../../lib/site';
+import { dayLabel, postView } from '../../lib/seo.js';
+
+const post = await content().getPost(Astro.params.slug!);
+if (!post) return new Response('Not found', { status: 404 });
+const [authors, schema] = await Promise.all([content().authors(), content().schema()]);
+const view = postView({ post, authors, schema, siteUrl: site.url, siteName: site.name });
+const { author } = view;
+---
+
+<Base
+  title={post.title}
+  description={post.summary}
+  canonical={view.url}
+  robots={view.robots}
+  image={post.cover?.url}
+  article={{ publishedTime: post.publishedOn, modifiedTime: post.updatedAt, author: author.name }}
+  jsonLd={view.jsonLd}
+>
+  <main class="mx-auto max-w-3xl px-6">
+    <article>
+      <p class="mt-9 mb-3 text-sm text-stone-500"><a href="/">Home</a> / <a href="/blog">Blog</a> / {view.categoryLabel}</p>
+      <div class="flex flex-wrap gap-1.5">
+        {view.tagLabels.map((tag: { value: string; label: string }) => (
+          <a href={`/tag/${tag.value}`} class="rounded-full bg-orange-50 px-2.5 py-0.5 text-xs font-semibold text-orange-800">{tag.label}</a>
+        ))}
+      </div>
+      <h1 class="mt-3 font-serif text-5xl leading-tight font-bold tracking-tight">{post.title}</h1>
+      <p class="mt-4 text-xl text-stone-700">{post.summary}</p>
+      <div class="mt-6 flex items-center gap-3 text-[15px]">
+        {author.avatar
+          ? <img src={author.avatar} alt="" class="size-11 rounded-full object-cover" />
+          : <span class="grid size-11 place-items-center rounded-full bg-orange-700 font-bold text-white">{author.name[0]}</span>}
+        <div>
+          <b>{author.name}</b><br />
+          <small class="text-stone-500">Published <time datetime={post.publishedOn}>{dayLabel(post.publishedOn)}</time> · {post.readingMinutes} min read</small>
+        </div>
+      </div>
+      {post.cover && (
+        <figure class="my-8"><img src={post.cover.url} alt={post.cover.alt} fetchpriority="high" class="w-full rounded-2xl" /></figure>
+      )}
+      {post.takeaways.length > 0 && (
+        <aside class="mb-8 rounded-r-2xl border-l-4 border-orange-700 bg-orange-50 px-6 py-5">
+          <h2 class="mb-2 text-xs font-bold tracking-widest text-orange-800 uppercase">In short</h2>
+          <ul class="list-disc pl-5">{post.takeaways.map((item: string) => <li>{item}</li>)}</ul>
+        </aside>
+      )}
+      {view.headings.length > 2 && (
+        <nav aria-label="On this page" class="mb-8 flex flex-col gap-1 rounded-2xl border border-stone-200 bg-white px-5 py-4 text-[15px]">
+          <b>On this page</b>
+          {view.headings.map((heading: { id: string; text: string; level: number }) => (
+            <a href={`#${heading.id}`} class={heading.level > 2 ? 'ml-4' : ''}>{heading.text}</a>
+          ))}
+        </nav>
+      )}
+      {/* The post's text is made safe by the Markdown reader: it escapes everything before it adds markup. */}
+      <div class="prose prose-stone prose-lg prose-a:text-orange-700 max-w-none" set:html={view.html} />
+      {post.faqs.length > 0 && (
+        <section class="mt-12 border-t border-stone-200 pt-4">
+          <h2 class="mb-4 font-serif text-2xl font-bold">Questions people ask</h2>
+          {post.faqs.map((faq: { question: string; answer: string }) => (
+            <details class="mb-2.5 rounded-xl border border-stone-200 bg-white px-5 py-3.5">
+              <summary class="cursor-pointer font-semibold">{faq.question}</summary>
+              <p class="mt-2 text-stone-700">{faq.answer}</p>
+            </details>
+          ))}
+        </section>
+      )}
+      {post.sources.length > 0 && (
+        <section class="mt-12 border-t border-stone-200 pt-4 text-[15px] text-stone-600">
+          <h2 class="mb-2 font-serif text-2xl font-bold text-stone-900">Sources</h2>
+          <ul class="list-disc pl-5">
+            {post.sources.map((source: string) => (
+              <li>{/^https?:/.test(source) ? <a href={source} rel="noopener" class="underline">{source}</a> : source}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </article>
+  </main>
+</Base>

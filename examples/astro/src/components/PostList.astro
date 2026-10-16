@@ -1,0 +1,26 @@
+---
+import { content } from '../lib/site';
+import PostCard from './PostCard.astro';
+
+// The blog's list body: tag chips, a heading and the cards. Used by the list, tag and search pages.
+const { tag, q, heading } = Astro.props;
+const [posts, authors, schema] = await Promise.all([content().listPosts({ tag, q }), content().authors(), content().schema()]);
+const visible = posts.filter((post: { hidden: boolean }) => !post.hidden || q);
+const chip = 'rounded-full border px-4 py-1.5 text-sm';
+---
+
+<main class="mx-auto max-w-6xl px-6">
+  <nav aria-label="Filter by tag" class="mt-8 flex flex-wrap gap-2">
+    <a href="/blog" class={`${chip} ${!tag && !q ? 'border-stone-900 bg-stone-900 text-white' : 'border-stone-300 bg-white'}`}>All</a>
+    {Object.entries(schema.tags as Record<string, string>).map(([value, label]) => (
+      <a href={`/tag/${value}`} class={`${chip} ${tag === value ? 'border-orange-700 bg-orange-700 text-white' : 'border-stone-300 bg-white hover:border-orange-600'}`}>{label}</a>
+    ))}
+  </nav>
+  <h1 class="mt-10 mb-6 text-sm font-semibold tracking-widest text-stone-500 uppercase">
+    {heading} <small class="ml-2 font-normal tracking-normal normal-case">{visible.length} {visible.length === 1 ? 'article' : 'articles'}</small>
+  </h1>
+  <div class="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+    {visible.map((post: any) => <PostCard post={post} authors={authors} tags={schema.tags} />)}
+  </div>
+  {visible.length === 0 && <p class="text-stone-500 italic">Nothing here yet. Try another tag or search.</p>}
+</main>

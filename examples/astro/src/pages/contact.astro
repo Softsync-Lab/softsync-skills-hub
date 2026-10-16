@@ -1,0 +1,23 @@
+---
+import ContactForm from '../components/ContactForm.astro';
+import Embed from '../components/Embed.astro';
+import Base from '../layouts/Base.astro';
+import { links } from '../lib/site';
+
+if (!links.form) return new Response('Not found', { status: 404 });
+---
+
+<!-- The same form twice: the app's own look (one line), and your own design (your Tailwind classes). -->
+<Base title="Contact">
+  <main class="mx-auto grid max-w-5xl gap-12 px-6 md:grid-cols-2">
+    <section>
+      <h1 class="mt-10 mb-6 font-serif text-4xl font-bold tracking-tight">Write to us</h1>
+      <h2 class="mb-3 text-sm font-semibold tracking-widest text-stone-500 uppercase">The app’s own look</h2>
+      <Embed page={`forms/${links.form}`} title="Contact" />
+    </section>
+    <section>
+      <h2 class="mt-10 mb-6 text-sm font-semibold tracking-widest text-stone-500 uppercase md:mt-[4.9rem]">Your own design</h2>
+      <ContactForm form={links.form} />
+    </section>
+  </main>
+</Base>
