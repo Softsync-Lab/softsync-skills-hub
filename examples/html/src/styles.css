@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+}
+
+@source "../dist";

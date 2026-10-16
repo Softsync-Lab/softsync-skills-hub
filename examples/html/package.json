@@ -1,0 +1,14 @@
+{
+  "name": "softsync-html-example",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs && tailwindcss -i src/styles.css -o dist/styles.css --minify",
+    "start": "npx --yes serve dist"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "@tailwindcss/typography": "^0.5.20",
+    "tailwindcss": "^4.3.3"
+  }
+}
