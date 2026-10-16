@@ -83,7 +83,7 @@
       const response = await fetch('https://api.softsync.ai/public/forms/WORKSPACE_ID/LINK_ID', {
         method: 'POST',
         headers: { Accept: 'application/json' },
-        body: new FormData(event.target),
+        body: new URLSearchParams(new FormData(event.target)),
       });
       const { message } = await response.json();
       document.getElementById('js-result').textContent = response.ok ? message : 'Something went wrong. Please try again.';
