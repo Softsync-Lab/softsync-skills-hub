@@ -50,5 +50,12 @@ Body text is standard Markdown: `##` and `###` headings (never `#`, the article 
 - Render on the server or at build time so the text is in the first response, not added by script afterwards.
 - A page that is not found, or not published, answers 404.
 
+## Live preview in the app
+The team edits with the website shown beside the editor: they click any text or picture on the page and the app opens the record it comes from; they save and the page follows. This needs one line from you and nothing else:
+- Add `<script src="https://<the app address>/preview.js" async></script>` to the site's shared layout, just before the closing `</body>` tag, so it is on every page. It does nothing for visitors; it only wakes up inside the app's preview.
+- Do not add attributes or ids to elements for this; the app finds the record from the text on the page. Just render the content as it comes.
+- In development and preview deployments, remember answers for at most 10 seconds and show drafts, so a saved change is on the page after a reload. Keep the longer cache for the live site.
+- Tell the team the address of the running site (for example the preview or development address) and that they paste it into **Live preview** on the Blog & content card in Templates.
+
 ## Before you finish
 Read one published article back through the site, check that its pictures and video show and that a draft does not, and tell the team what you added or changed and where to look for it in the app.
