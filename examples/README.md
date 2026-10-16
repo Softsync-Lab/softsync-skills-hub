@@ -33,6 +33,10 @@ The API allows 120 requests a minute per key, so the examples remember answers f
 
 These examples are tested against the real app on every change, so what you copy works.
 
+### More than a blog
+
+Besides posts, each example's home page is built from a second kind of content: a table made in the app (a hero, a heading and picture cards). Any table works the same way with `listItems`. While building, `SOFTSYNC_PREVIEW=1` shows drafts and picks up edits within seconds. Both are explained in each example's README.
+
 ### Try it without an account
 
 Every framework folder has `npm run demo`. It starts the example against a small sample business (blog posts with covers and authors, help articles, a contact form), served from recorded data in [`demo/`](demo). No account, no key, no internet needed. It is the quickest way to see what each example does before you connect your own workspace.

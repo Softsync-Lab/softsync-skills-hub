@@ -31,6 +31,7 @@ export function content() {
     api: env.SOFTSYNC_API,
     apiKey: env.SOFTSYNC_API_KEY,
     cacheSeconds: Number(env.CACHE_SECONDS ?? 60),
+    preview: env.SOFTSYNC_PREVIEW === '1',
   });
   return client;
 }

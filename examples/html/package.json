@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "node --env-file-if-exists=.env build.mjs && tailwindcss -i src/styles.css -o dist/styles.css --minify",
+    "dev": "node --env-file-if-exists=.env dev.mjs",
     "start": "npx --yes serve dist",
     "demo": "node ../demo/run.mjs"
   },
