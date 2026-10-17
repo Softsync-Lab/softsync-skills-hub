@@ -20,7 +20,7 @@ export function createClient({ api = 'https://api.softsync.ai', apiKey, cacheSec
     const hit = cache.get(key);
     if (hit && hit.until > Date.now()) return hit.value;
     const value = await load();
-    cache.set(key, { value, until: Date.now() + seconds * 1000 });
+    cache.set(key, { value, until: Date.now() + (typeof seconds === 'function' ? seconds(value) : seconds) * 1000 });
     return value;
   }
 
@@ -35,7 +35,8 @@ export function createClient({ api = 'https://api.softsync.ai', apiKey, cacheSec
       // The help articles of the knowledge base (Wiki), when the workspace has one.
       articles: tables.articles?.id, articleCategories: tables.articles ? labels('articles', 'category') : {},
     };
-  }, 3600);
+  // A workspace that has not added its content tables yet is looked at again soon, not in an hour.
+  }, (schema) => (schema.posts ? 3600 : 5));
 
   /** The people who can be an author: name and picture, never an email address. */
   const authors = () => remembered('authors', async () => {
