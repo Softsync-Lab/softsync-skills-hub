@@ -7,7 +7,7 @@ description: "Use the workspace as the content system of a website: read publish
 
 # Website content
 
-The CMS template keeps a site's articles (`posts`), their sections (`post_sections`) and questions (`post_faqs`) as ordinary tables. A site shows the rows whose `status` is `published`.
+The CMS template keeps a site's articles (`posts`) and their sections (`post_sections`) as ordinary tables. A site shows the rows whose `status` is `published`.
 
 ## Do this
 1. Call `describe_workspace_schema` to see the tables and fields the workspace really has, including any extra content tables.
@@ -21,4 +21,4 @@ The CMS template keeps a site's articles (`posts`), their sections (`post_sectio
 
 ## More detail
 Read these when the task needs them:
-- [using-softsync-as-cms](references/using-softsync-as-cms.md): The full guide to hand to an AI website builder: reading and writing content over the API, uploading files, Markdown pictures, sizes and video embeds, and writing for search and AI answers.
+- [using-softsync-as-cms](references/using-softsync-as-cms.md): The full guide to hand to an AI website builder: reading and writing content over the API, uploading files, Markdown pictures, sizes and video embeds, and writing clear page content.
