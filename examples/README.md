@@ -6,6 +6,7 @@ Copy-paste starting points for putting the app's pages on your own website.
 | --- | --- |
 | [`website-embeds/`](website-embeds) | Plain HTML pages. A **form**, a **booking page**, your **help centre** and the **web agent** chat, each placed on a website in every way the app supports: one line of code, a plain frame, a link, a pop-up or slide-over, and (for forms) your own HTML form. |
 | [`content-site/`](content-site) | A **blog from the app's CMS** and an **FAQ from the knowledge base**, built to be found by search engines and AI assistants: article and breadcrumb data, a sitemap, a feed, `robots.txt`, `llms.txt` and every article as Markdown. Runs with one API key. |
+| [`tidybooks/`](tidybooks) | A **whole SaaS website**, the one our feature videos are filmed on: a landing page made of blocks (hero, feature cards, video, call to action), a blog, and the booking, help centre, FAQ and contact pages and chat bubble placed on it. |
 | [`nextjs/`](nextjs), [`astro/`](astro), [`react/`](react), [`vue/`](vue), [`html/`](html) | The **whole website in your framework**, styled with Tailwind: blog, tags, search, FAQ, contact (the app's form and your own design), booking, help centre and the chat bubble. See below. |
 
 ## One site, five frameworks

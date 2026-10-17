@@ -31,10 +31,15 @@ export function createBlog({
   // Your own home page: `home({ content, cards, esc, base })` returns
   // `{ title, description, body, jsonLd? }`, and the site wraps it in the same header and footer.
   home,
+  // More pages of your own, by address: `{ '/book': ({ content, esc, base }) => ({ title, description, body }) }`.
+  // Each is wrapped in the same header and footer and listed in the sitemap.
+  pages = {},
   // HTML added before </body> on every page: the chat bubble, an analytics line…
   bodyEnd = '',
 } = {}) {
   const content = createClient({ api, apiKey, cacheSeconds });
+  // `nav`, `pages` and `bodyEnd` may be functions, read on every request, to follow settings that change.
+  const now = (value) => (typeof value === 'function' ? value() : value);
   const base = siteUrl.replace(/\/$/, '');
   const tint = (tag) => TAG_COLORS[[...tag].reduce((n, c) => n + c.charCodeAt(0), 0) % TAG_COLORS.length];
   const day = (iso) => new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -60,11 +65,11 @@ ${extraHead}
 ${jsonLd.map((d) => `<script type="application/ld+json">${JSON.stringify(d).replace(/</g, '\\u003c')}</script>`).join('\n')}
 <style>${CSS}</style></head>
 <body>
-<header class="top"><div class="wrap bar"><a class="brand" href="/">${esc(siteName)}</a><nav class="links">${nav.map((l) => `<a href="${esc(l.href)}">${esc(l.label)}</a>`).join('')}</nav>
+<header class="top"><div class="wrap bar"><a class="brand" href="/">${esc(siteName)}</a><nav class="links">${now(nav).map((l) => `<a href="${esc(l.href)}">${esc(l.label)}</a>`).join('')}</nav>
 <form class="search" action="/search" method="get" role="search"><input type="search" name="q" placeholder="Search articles" aria-label="Search articles" value="${esc(q)}"><button type="submit">Search</button></form></div></header>
 ${body}
 <footer><div class="wrap"><b>${esc(siteName)}</b> · ${esc(tagline)} · <a href="/feed.xml">RSS</a> · <a href="/sitemap.xml">Sitemap</a> · <a href="/llms.txt">For AI assistants</a></div></footer>
-${bodyEnd}
+${now(bodyEnd)}
 </body></html>`;
   }
 
@@ -167,6 +172,7 @@ ${[...groups].map(([category, items]) => `<section class="faq"><h2>${esc(schema.
     const urls = [
       `<url><loc>${base}${listPath}</loc><lastmod>${(visible[0]?.updatedAt ?? new Date().toISOString())}</lastmod></url>`,
       ...(home ? [`<url><loc>${base}/</loc></url>`] : []),
+      ...Object.keys(now(pages)).map((address) => `<url><loc>${base}${address}</loc></url>`),
       ...((await content.listFaq()).length ? [`<url><loc>${base}/faq</loc></url>`] : []),
       ...Object.keys(schema.tags).filter((t) => visible.some((p) => p.tags.includes(t))).map((t) => `<url><loc>${base}/tag/${t}</loc></url>`),
       ...visible.map((p) => `<url><loc>${base}/blog/${p.slug}</loc><lastmod>${p.updatedAt}</lastmod>${p.cover ? `<image:image><image:loc>${esc(p.cover.url)}</image:loc></image:image>` : ''}</url>`),
@@ -212,6 +218,10 @@ ${[...groups].map(([category, items]) => `<section class="faq"><h2>${esc(schema.
         };
         const page = await home({ content, cards, tint, day, esc, base });
         return send(200, 'html', layout({ path: '/', ...page }));
+      }
+      if (now(pages)[path]) {
+        const page = await now(pages)[path]({ content, tint, day, esc, base });
+        return send(200, 'html', layout({ path, ...page }));
       }
       if (path === listPath) return send(200, 'html', await listPage({}));
       if (path === '/search') return send(200, 'html', await listPage({ q: (url.searchParams.get('q') ?? '').trim().slice(0, 100) || undefined }));

@@ -75,7 +75,7 @@ await fetch('https://api.softsync.ai/records/search', {
 
 ## Make it yours
 
-Options of `createBlog` (all optional): `listPath` (where the article list lives; `/blog` when your own home page is at `/`), `nav` (the header links), `home` (your own home page, wrapped in the same header and footer; it gets `content`, `cards(posts)` and `esc`) and `bodyEnd` (HTML added before `</body>` on every page, such as the web agent's chat bubble).
+Options of `createBlog` (all optional): `listPath` (where the article list lives; `/blog` when your own home page is at `/`), `nav` (the header links), `home` (your own home page, wrapped in the same header and footer; it gets `content`, `cards(posts)` and `esc`), `pages` (more pages of your own by address, such as `/book`, in the same header and footer and listed in the sitemap) and `bodyEnd` (HTML added before `</body>` on every page, such as the web agent's chat bubble).
 
 
 `server.mjs` holds the page design in one `CSS` block at the bottom and the page templates above it. Change the colours, fonts and layout there; the data and search information stay as they are. To use another framework (Next.js, Astro, Eleventy…), keep `softsync.mjs` and `markdown.mjs` as they are and build your pages from `listPosts`, `getPost`, `listFaq`, `authors` and `schema`.
