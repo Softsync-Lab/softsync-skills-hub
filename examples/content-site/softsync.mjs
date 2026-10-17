@@ -60,7 +60,8 @@ export function createClient({ api = 'https://api.softsync.ai', apiKey, cacheSec
         sort: { fieldId: 'published_on', direction: 'desc' },
         ...(q ? { semanticQuery: q, disableVector: true } : {}),
       });
-      return items.map(shape);
+      // A page of the site (the home page) is not an article in the list.
+      return items.map(shape).filter((post) => post.category !== 'page');
     });
   }
 
