@@ -16,7 +16,7 @@ Messages are everything the workspace has received or written about its records:
 - **Calendar events** ("my meetings this week", "when did we last meet Acme?"): use `calendar_events` (action `list`) from the meetings skill, not `query_messages`.
 - **Meeting summaries**: a summary someone saved to a record is a note on that record. Find it with `query_messages` on the record. Recordings that were never saved to a record stay in the desktop app and cannot be reached from here.
 - **How many** ("how many emails have we exchanged with Acme?"): `get_message_statistics` counts messages linked to a record or person.
-- **How-to and policy questions** ("what is our refund policy?", "how do I reset the router?"): `search_knowledge` finds the passages in the workspace's own articles and guides. Quote them and name the source; do not answer from memory. When drafting a reply to a customer, set `audience` to `public` so only what customers may see is used.
+- **How-to and policy questions** ("what is our refund policy?", "how do I reset the router?"): `search_knowledge` finds the passages in the workspace's own articles and guides. Quote them and name the source; do not answer from memory. When drafting a reply to a customer, set `audience` to `public` so only what the help center already shows customers is used.
 
 ## Sending a text
 - `send_message` sends a text (SMS) to a contact (`toRecordId`) or a phone number (`to`). It shows on the contact's timeline like an email.
