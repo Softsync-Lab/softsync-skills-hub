@@ -17,6 +17,12 @@ A document template turns one record into a PDF, for example an invoice from an 
 - `manage_document_templates` with action `generate`: make the real PDF and list it on the record.
 - Action `delete` removes a template. PDFs already made are kept.
 
+## Signing
+- `record_files` with action `list`: a record's Files tab — folders, uploads and documents — with each PDF's signing state and the roles its fields need.
+- `send_for_signature`: email one of those PDFs to people to sign. Give one signer per role, named exactly as the fields name it; add people with kind `copy` who only get the signed PDF. People with the same step sign at the same time; a higher step waits for the lower ones. Everyone gets the sealed signed PDF at the end.
+- `record_files` with action `signing_status`: who has signed and who is still to sign, for one signing or every signing of a record.
+
 ## Rules
 - Changing templates needs editor rights in the template's group.
+- Sending for signature emails real people. Like other sends, it is held until the user approves it: show the document, who signs in which order, and wait for a clear yes.
 - Saving a template makes no PDF and is easy to change back, so save what the user asked for without asking first. Then preview it on a real record and show them the result.
