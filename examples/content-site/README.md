@@ -23,7 +23,7 @@ Every page is built on the server, so they all read real text.
 | --- | --- |
 | `/` and `/tag/<tag>` | Latest articles, newest first. Tag chips filter the list; each tag has its own page that search engines can index. |
 | `/search?q=…` | The search bar. Marked `noindex` so result pages stay out of search results. |
-| `/blog/<slug>` | One article: title, summary, author, date, reading time, cover image, **In short** box, table of contents, text and pictures, questions and answers, sources. |
+| `/blog/<slug>` | One article: title, summary, author, date, reading time, cover image, **In short** box, table of contents, text and pictures, sources. |
 | `/blog/<slug>.md` | The same article as plain Markdown, for AI assistants and tools. |
 | `/faq` | The help centre's customer-facing articles as questions and answers. |
 | `/sitemap.xml` | Every article (with last-changed time and cover image), tag page and the FAQ. Articles hidden from search engines are left out. |
@@ -40,7 +40,7 @@ Nothing is typed twice. It is all built from fields your writers already fill in
 | `rel="canonical"` | *Original address* if set, otherwise the article's own address |
 | `noindex` | *Hide from search engines* |
 | Article data (`BlogPosting`) | Title, Summary, Author (name and picture), Published on, last change, Tags, Focus keyword, word count, Reading minutes, Sources |
-| Question data (`FAQPage`) | The article's Questions, or the Wiki's customer-facing articles on `/faq` |
+| Question data (`FAQPage`) | The Wiki's customer-facing articles on `/faq` |
 | Breadcrumbs (`BreadcrumbList`) | Category and Title |
 | **In short** box | Key takeaways |
 | Sources list | Sources |

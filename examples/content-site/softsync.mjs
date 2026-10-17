@@ -30,7 +30,7 @@ export function createClient({ api = 'https://api.softsync.ai', apiKey, cacheSec
     const tables = Object.fromEntries(description.tables.map((t) => [t.apiName, t]));
     const labels = (table, field) => Object.fromEntries((tables[table].fields.find((f) => f.apiName === field)?.options?.choices ?? []).map((c) => [c.value, c.label]));
     return {
-      posts: tables.posts?.id, sections: tables.post_sections?.id, faqs: tables.post_faqs?.id,
+      posts: tables.posts?.id, sections: tables.post_sections?.id,
       tags: tables.posts ? labels('posts', 'tags') : {}, categories: tables.posts ? labels('posts', 'category') : {},
       // The help articles of the knowledge base (Wiki), when the workspace has one.
       articles: tables.articles?.id, articleCategories: tables.articles ? labels('articles', 'category') : {},
@@ -64,10 +64,10 @@ export function createClient({ api = 'https://api.softsync.ai', apiKey, cacheSec
     });
   }
 
-  /** One post: its details, its sections in order and its questions. */
+  /** One post: its details, its sections in order. */
   async function getPost(slug) {
     return remembered(`post:${slug}`, async () => {
-      const { posts, sections, faqs } = await schema();
+      const { posts, sections } = await schema();
       const { items } = await call('/records/search', {
         tableId: posts,
         limit: 1,
@@ -76,14 +76,10 @@ export function createClient({ api = 'https://api.softsync.ai', apiKey, cacheSec
       if (!items[0]) return null;
       const post = shape(items[0]);
       const byPost = { fieldId: 'post', operator: 'eq', value: post.id };
-      const [body, questions] = await Promise.all([
-        call('/records/search', { tableId: sections, limit: 100, fieldFilters: [byPost], sort: { fieldId: 'position', direction: 'asc' } }),
-        call('/records/search', { tableId: faqs, limit: 100, fieldFilters: [byPost], sort: { fieldId: 'position', direction: 'asc' } }),
-      ]);
+      const body = await call('/records/search', { tableId: sections, limit: 100, fieldFilters: [byPost], sort: { fieldId: 'position', direction: 'asc' } });
       return {
         ...post,
         sections: body.items.map((s) => ({ title: s.data.title, body: s.data.body ?? '' })),
-        faqs: questions.items.map((f) => ({ question: f.data.title, answer: f.data.answer ?? '' })),
       };
     });
   }

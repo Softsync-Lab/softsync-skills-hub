@@ -124,8 +124,7 @@ ${tag || q ? '' : `<section class="hero"><h1>${esc(siteName)}</h1><p>${esc(tagli
       { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: base },
         { '@type': 'ListItem', position: 2, name: 'Articles', item: `${base}${listPath}` },
-        { '@type': 'ListItem', position: 3, name: post.title, item: url }] },
-      ...(post.faqs.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: post.faqs.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })) }] : [])];
+        { '@type': 'ListItem', position: 3, name: post.title, item: url }] }];
     const body = `<main class="wrap post"><article>
 <p class="crumbs"><a href="/">Home</a> / <a href="${listPath}">Articles</a> / ${esc(schema.categories[post.category] ?? 'Guides')}</p>
 <div class="chips">${chips(post, schema.tags)}</div>
@@ -135,7 +134,6 @@ ${post.cover ? `<figure class="hero-img"><img src="${esc(post.cover.url)}" alt="
 ${post.takeaways.length ? `<aside class="short"><h2>In short</h2><ul>${post.takeaways.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></aside>` : ''}
 ${headings.length > 2 ? `<nav class="toc" aria-label="On this page"><b>On this page</b>${headings.map((h) => `<a class="l${h.level}" href="#${h.id}">${esc(h.text)}</a>`).join('')}</nav>` : ''}
 <div class="prose">${html}</div>
-${post.faqs.length ? `<section class="faq"><h2>Questions people ask</h2>${post.faqs.map((f) => `<details><summary>${esc(f.question)}</summary><p>${esc(f.answer)}</p></details>`).join('')}</section>` : ''}
 ${post.sources.length ? `<section class="sources"><h2>Sources</h2><ul>${post.sources.map((s) => `<li>${/^https?:/.test(s) ? `<a href="${esc(s)}" rel="noopener">${esc(s)}</a>` : esc(s)}</li>`).join('')}</ul></section>` : ''}
 </article></main>`;
     return layout({
@@ -196,7 +194,6 @@ ${[...groups].map(([category, items]) => `<section class="faq"><h2>${esc(schema.
     return [`# ${post.title}`, '', `*By ${who} · ${day(post.publishedOn)} · ${post.readingMinutes} min read*`, '', `> ${post.summary}`, '',
       ...(post.takeaways.length ? ['## In short', '', ...post.takeaways.map((t) => `- ${t}`), ''] : []),
       ...post.sections.flatMap((s) => [s.body, '']),
-      ...(post.faqs.length ? ['## Questions people ask', '', ...post.faqs.flatMap((f) => [`**${f.question}**`, '', f.answer, ''])] : []),
       ...(post.sources.length ? ['## Sources', '', ...post.sources.map((s) => `- ${s}`), ''] : [])].join('\n');
   }
 

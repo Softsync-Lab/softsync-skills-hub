@@ -53,7 +53,7 @@ export function postView({ post, authors, schema, siteUrl, siteName }) {
     categoryLabel: schema.categories[post.category] ?? 'Articles',
     tagLabels: post.tags.map((tag) => ({ value: tag, label: schema.tags[tag] ?? tag })),
     // One <script type="application/ld+json"> each. A FAQ block lets assistants quote the answers.
-    jsonLd: [article, breadcrumbs, ...(post.faqs.length ? [faqJsonLd(post.faqs)] : [])],
+    jsonLd: [article, breadcrumbs],
     // `noindex` for a post marked "hide from search engines".
     robots: post.hidden ? 'noindex, follow' : 'index, follow, max-image-preview:large',
   };
@@ -121,7 +121,6 @@ export function postMarkdown({ post, authors }) {
     '',
     ...(post.takeaways.length ? ['## In short', '', ...post.takeaways.map((item) => `- ${item}`), ''] : []),
     ...post.sections.flatMap((section) => [section.body, '']),
-    ...(post.faqs.length ? ['## Questions people ask', '', ...post.faqs.flatMap((faq) => [`**${faq.question}**`, '', faq.answer, ''])] : []),
     ...(post.sources.length ? ['## Sources', '', ...post.sources.map((source) => `- ${source}`), ''] : []),
   ].join('\n');
 }

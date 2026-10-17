@@ -36,7 +36,7 @@ export function createClient({ api = 'https://api.softsync.ai', apiKey, cacheSec
     const tables = Object.fromEntries(description.tables.map((t) => [t.apiName, t]));
     const labels = (table, field) => Object.fromEntries((tables[table].fields.find((f) => f.apiName === field)?.options?.choices ?? []).map((c) => [c.value, c.label]));
     return {
-      posts: tables.posts?.id, sections: tables.post_sections?.id, faqs: tables.post_faqs?.id,
+      posts: tables.posts?.id, sections: tables.post_sections?.id,
       tags: tables.posts ? labels('posts', 'tags') : {}, categories: tables.posts ? labels('posts', 'category') : {},
       // Every table by name, for content that is not a blog: pages, products, people, anything you add.
       tables: Object.fromEntries(Object.values(tables).map((t) => [t.apiName, { id: t.id, fields: t.fields.map((f) => f.apiName) }])),
@@ -75,10 +75,10 @@ export function createClient({ api = 'https://api.softsync.ai', apiKey, cacheSec
     });
   }
 
-  /** One post: its details, its sections in order and its questions. */
+  /** One post: its details, its sections in order. */
   async function getPost(slug) {
     return remembered(`post:${slug}`, async () => {
-      const { posts, sections, faqs } = await schema();
+      const { posts, sections } = await schema();
       const { items } = await call('/records/search', {
         tableId: posts,
         limit: 1,
@@ -87,14 +87,10 @@ export function createClient({ api = 'https://api.softsync.ai', apiKey, cacheSec
       if (!items[0]) return null;
       const post = shape(items[0]);
       const byPost = { fieldId: 'post', operator: 'eq', value: post.id };
-      const [body, questions] = await Promise.all([
-        call('/records/search', { tableId: sections, limit: 100, fieldFilters: [byPost], sort: { fieldId: 'position', direction: 'asc' } }),
-        call('/records/search', { tableId: faqs, limit: 100, fieldFilters: [byPost], sort: { fieldId: 'position', direction: 'asc' } }),
-      ]);
+      const body = await call('/records/search', { tableId: sections, limit: 100, fieldFilters: [byPost], sort: { fieldId: 'position', direction: 'asc' } });
       return {
         ...post,
         sections: body.items.map((s) => ({ title: s.data.title, body: s.data.body ?? '' })),
-        faqs: questions.items.map((f) => ({ question: f.data.title, answer: f.data.answer ?? '' })),
       };
     });
   }

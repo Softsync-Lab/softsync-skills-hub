@@ -14,7 +14,6 @@ export interface Post {
   takeaways: string[];
   sources: string[];
   cover: { url: string; alt: string } | null;
-  faqs: { question: string; answer: string }[];
 }
 
 export interface PostPage {

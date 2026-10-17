@@ -75,17 +75,6 @@ export function Post() {
         )}
         {/* The small server made this HTML safe: its Markdown reader escapes everything before it adds markup. */}
         <div className="prose prose-stone prose-lg prose-a:text-orange-700 max-w-none" dangerouslySetInnerHTML={{ __html: view.html }} />
-        {post.faqs.length > 0 && (
-          <section className="mt-12 border-t border-stone-200 pt-4">
-            <h2 className="mb-4 font-serif text-2xl font-bold">Questions people ask</h2>
-            {post.faqs.map((faq) => (
-              <details key={faq.question} className="mb-2.5 rounded-xl border border-stone-200 bg-white px-5 py-3.5">
-                <summary className="cursor-pointer font-semibold">{faq.question}</summary>
-                <p className="mt-2 text-stone-700">{faq.answer}</p>
-              </details>
-            ))}
-          </section>
-        )}
         {post.sources.length > 0 && (
           <section className="mt-12 border-t border-stone-200 pt-4 text-[15px] text-stone-600">
             <h2 className="mb-2 font-serif text-2xl font-bold text-stone-900">Sources</h2>

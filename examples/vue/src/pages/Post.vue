@@ -65,13 +65,6 @@ useHead(
       </nav>
       <!-- The small server made this HTML safe: its Markdown reader escapes everything before it adds markup. -->
       <div class="prose prose-stone prose-lg prose-a:text-orange-700 max-w-none" v-html="view.html" />
-      <section v-if="view.post.faqs.length" class="mt-12 border-t border-stone-200 pt-4">
-        <h2 class="mb-4 font-serif text-2xl font-bold">Questions people ask</h2>
-        <details v-for="faq in view.post.faqs" :key="faq.question" class="mb-2.5 rounded-xl border border-stone-200 bg-white px-5 py-3.5">
-          <summary class="cursor-pointer font-semibold">{{ faq.question }}</summary>
-          <p class="mt-2 text-stone-700">{{ faq.answer }}</p>
-        </details>
-      </section>
       <section v-if="view.post.sources.length" class="mt-12 border-t border-stone-200 pt-4 text-[15px] text-stone-600">
         <h2 class="mb-2 font-serif text-2xl font-bold text-stone-900">Sources</h2>
         <ul class="list-disc pl-5">
