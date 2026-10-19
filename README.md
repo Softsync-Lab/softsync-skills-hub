@@ -4,12 +4,13 @@ For SoftSync customers — you need a SoftSync account to use it.
 
 Work with your [SoftSync](https://softsync.ai) CRM from any AI assistant: look up companies and people, keep records up to date, check your calendar, book meetings, write notes after a call, set reminders, write and send email templates, manage forms and run your automations.
 
-This repository has two parts that work together:
+This is the public home of SoftSync's agent skills and sample code. It has three parts:
 
 - **The SoftSync connection** (an MCP server at `https://api.softsync.ai/mcp/softsync`). It gives the assistant the tools to read and change your SoftSync data.
 - **Skills** (`skills/`). Short guides that teach the assistant which tool to use, in what order, and when to ask you first.
+- **Examples** (`examples/`). Copy-paste sample code for putting your forms, booking page, help centre, web agent and blog on your own website.
 
-Both follow open standards ([Agent Skills](https://agentskills.io) and [Agent Plugins](https://agent-plugins.org)), so one repository works in every assistant below.
+The connection and skills follow open standards ([Agent Skills](https://agentskills.io) and [Agent Plugins](https://agent-plugins.org)), so the skills work in every assistant below.
 
 ## Install
 
@@ -98,11 +99,9 @@ a workflow call your system instead.
 | `gemini-extension.json`, `GEMINI.md` | Gemini CLI |
 | `.cursor-plugin/plugin.json` | Cursor |
 
-## Publish to ChatGPT
+## Try the skills from a local copy
 
-Run `scripts/package-plugin.sh` and upload `dist/softsync-plugin.zip` at [platform.openai.com/plugins](https://platform.openai.com/plugins). The ZIP carries the listing, icon, skills, connection and review test cases. Reviewer sign-in details and the demo video link are entered in the dashboard, never in this repository.
-
-## Test locally
+Clone this repository to try the skills without installing them:
 
 - **Claude Code:** `claude --plugin-dir .`, then run `/mcp` and check `softsync` is listed.
 - **Cursor:** copy this folder to `~/.cursor/plugins/local/softsync` and reload Cursor.
